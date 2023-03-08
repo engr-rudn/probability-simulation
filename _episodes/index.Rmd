@@ -1,0 +1,61 @@
+---
+knit: 'bookdown::render_book("index.Rmd", "tufte_html_book")'
+title: 'Probability and Statistics'
+subtitle: 'a simulation-based introduction'
+author: 'Bob Carpenter'
+date: '2019'
+output:
+  bookdown::tufte_html_book:
+    split_by: chapter
+    toc_depth: 1
+  bookdown::tufte_book:
+    latex_engine: "pdflatex"
+    includes:
+      in_header: header.tex
+    toc:
+      collapse: section
+    fontsize: 11pt
+---
+
+# Preface {-}
+
+This book provides a short, accessible introduction to *applied*
+probabilistic modeling and statistical inference.^[Application areas
+include the physical sciences, biological sciences, social sciences,
+engineering, health and medicine, business and finance, education,
+government, and sport and leisure---anywhere there is data from which
+we want to draw conclusions or make decisions.]
+
+
+## Goal {-}
+
+After reading this book, you should have a solid grasp of how to draw
+sound inferences from noisy measurements and how to make reasoned
+decisions in the face of uncertainty.
+
+
+## Approach {-}
+
+This book differs from other books covering similar material in that
+it
+
+* is short, top-down, and example-driven;
+* assumes only introductory-level mathematics and
+ computation;^[Specifically, this book assumes some familiarity
+ with algebra, integral calculus, and exposure to basic programming
+ concepts.]
+* develops probability theory and statistical inference through simulation;
+* takes an unapologetically Bayesian approach to modeling and inference;
+* is fully reproducible with open-source code, figures, and text.
+
+## Licensing {-}
+
+The text of this book is distributed under the [<small>CC BY-ND
+4.0</small>](https://creativecommons.org/licenses/by-nd/4.0/) license.
+The accompanying code is distributed under the [<small>BSD
+3</small>-clause](https://opensource.org/licenses/BSD-3-Clause)
+license.
+
+## Acknowledgements {-}
+
+Thanks to Mitzi Morris for proofreading.
