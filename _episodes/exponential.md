@@ -1,3 +1,13 @@
+---
+title: "Exponential and Poisson Distributions"
+teaching: 
+exercises:
+questions:
+objectives:
+
+keypoints:
+
+---
 # Exponential and Poisson Distributions
 
 In this chapter, we'll see how the exponential distribution can be
@@ -32,7 +42,7 @@ same.  In other words, the expected waiting time for the next arrival
 doesn't change based on how long you've already been waiting.
 
 A distribution of arrival times satisfying these properties is the
-exponential distribution.  If $Y \sim \mbox{exponential}(1)$ has a standard
+exponential distribution.  If $$Y \sim \mbox{exponential}(1)$$ has a standard
 exponential distribution, then its density has a particularly simple
 form^[We can work backward from this density to the definite integral
 $$\int_0^{\infty} \exp(-y) = 1.$$]
@@ -46,10 +56,10 @@ waiting time between arrivals is distributed according to a standard
 exponential distribution.^[We will circle back and explain how to
 generate exponential variates shortly.]
 
-We can simulate a sequence of arrivals during $\lambda$ time units,
+We can simulate a sequence of arrivals during $$\lambda$$ time units,
 assuming the waiting time between arrivals is distributed as standard
-exponential.  We start at time $t = 0$ and continue adding the waiting
-times $w_n \sim \mbox{exponential}(1)$ until we pass a time $\lambda$,
+exponential.  We start at time $$t = 0$$ and continue adding the waiting
+times $$w_n \sim \mbox{exponential}(1)$$ until we pass a time $$\lambda$$,
 at which point we return the arrival times we have accumulated.^[The
 loop notation `1:infinity` is meant to indicate that `n` is
 unbounded.  Such "forever" loops must be broken with internal logic
@@ -65,9 +75,9 @@ for n in 1:infinity
   y[n] = t
 ```
 
-Let's look at four realizations of this process up to time $\lambda = 10$.
+Let's look at four realizations of this process up to time $$\lambda = 10$$.
 
-```{r fig.asp = 0.35, fig.cap = "Four simulations of the first $\\lambda = 10$ time units of an arrival process where waiting times are distributed as $\\mbox{exponential}(1)$."}
+```{r fig.asp = 0.35, fig.cap = "Four simulations of the first $$\\lambda = 10$$ time units of an arrival process where waiting times are distributed as $$\\mbox{exponential}(1)$$."}
 
 gen_arrivals <- function(lambda) {
   y <- c()
@@ -113,15 +123,15 @@ A different number of arrivals occur in the different simulations.
 As with any continuous distribution, the exponential may be scaled.
 As with scaling the normal distribution, this simply stretches or
 shrinks the distribution without changing its basic shape.  In the
-normal distribution, the scale parameter $\sigma$ multiplies a
-standard normal variate to get a scale $\sigma$ variate.  Instead of
+normal distribution, the scale parameter $$\sigma$$ multiplies a
+standard normal variate to get a scale $$\sigma$$ variate.  Instead of
 multiplying a standard exponential variate by a scale, it is
 traditional to divide it by a rate (an inverse scale).
 
-If $U \sim \mbox{exponential}(1)$ is a standard exponential variable,
-then $Y = U / \lambda$ is an exponential variable with rate $\lambda$
-(i.e., with scale $1 / \lambda$), for which we write $Y \sim
-\mbox{exponential}(\lambda)$, and have the following^[This is a
+If $$U \sim \mbox{exponential}(1)$$ is a standard exponential variable,
+then $$Y = U / \lambda$$ is an exponential variable with rate $$\lambda$$
+(i.e., with scale $$1 / \lambda$$), for which we write $$Y \sim
+\mbox{exponential}(\lambda)$$, and have the following^[This is a
 straightforward derivation using the usual Jacobian formula, for which
 the adjustment for the inverse transform is $$\Big| \,
 \frac{\mathrm{d}}{\mathrm{d} y} \lambda \times y \, \Big| =
@@ -142,10 +152,10 @@ $$
 ## Simulating from the exponential distribution
 
 Simulating a standard exponential variate is straightforward because
-of the simple form of the cumulative distribution function.  If $Y
-\sim \mbox{exponential}(1)$, then the probability density function is
-$p_Y(y) = \exp(-y)$ and the cumulative distribution function $F_Y :
-[0, \infty) \rightarrow [0, 1)$ is given by
+of the simple form of the cumulative distribution function.  If $$Y
+\sim \mbox{exponential}(1)$$, then the probability density function is
+$$p_Y(y) = \exp(-y)$$ and the cumulative distribution function $$F_Y :
+[0, \infty) \rightarrow [0, 1)$$ is given by
 
 $$
 \begin{array}{rcl}
@@ -156,13 +166,13 @@ F_Y(y) & = & \int_0^y \exp(-v') \mbox{d}v
 $$
 
 This function is easily inverted to produce the inverse cumulative
-distribution function, $F_y^{-1}:[0,1) \rightarrow [0, \infty)$,
+distribution function, $$F_y^{-1}:[0,1) \rightarrow [0, \infty)$$,
 
 $$
 F_Y^{-1}(u) = - \log (1 - u).
 $$
 
-If we take $U \sim \mbox{uniform}(0,1)$, then
+If we take $$U \sim \mbox{uniform}(0,1)$$, then
 
 $$
 F_Y^{-1}(u) \sim \mbox{exponential}(1).
@@ -171,7 +181,7 @@ $$
 This is a very general trick for distributions for which we can
 compute the inverse cumulative distribution function.  We first saw
 this used to generate logistic variates by log-odds transforming
-uniform variates.^[The log-odds function, written $\mbox{logit}(u)$,
+uniform variates.^[The log-odds function, written $$\mbox{logit}(u)$$,
 is the inverse cumulative distribution function for the standard
 logistic distribution.]
 
@@ -183,10 +193,10 @@ u <- uniform(0, 1)
 y <- -log(1 - u)
 ```
 
-It is traditional here to replace the term $\log 1 - u$ with the term
-$\log u$ because if $u \sim \mbox{uniform}(0,1)$, then we also know $1
-- u \sim \mbox{uniform}(0,1)$.  We can then generalize to the
-nonstandard exponential with rate (i.e., inverse scale) $\lambda$ by
+It is traditional here to replace the term $$\log 1 - u$$ with the term
+$$\log u$$ because if $$u \sim \mbox{uniform}(0,1)$$, then we also know $$1
+- u \sim \mbox{uniform}(0,1)$$.  We can then generalize to the
+nonstandard exponential with rate (i.e., inverse scale) $$\lambda$$ by
 dividing.  This gives us the following exponential distribution
 pseudorandom number generator.
 
@@ -201,9 +211,9 @@ exponential_rng(lambda)
 ## Memorylessness of exponential waiting times
 
 Suppose we simulate a sequence standard exponential waiting times,
-$W_1, \ldots, W_N \sim \mbox{exponential}(1).$  Now what if we look at
-the distribution of all of the $W$ and compare it to the distribution
-of just those $W > 1$ and those $W > 2.5$.  To make sure we have the
+$$W_1, \ldots, W_N \sim \mbox{exponential}(1).$$  Now what if we look at
+the distribution of all of the $$W$$ and compare it to the distribution
+of just those $$W > 1$$ and those $$W > 2.5$$.  To make sure we have the
 same number of draws so the histograms are scaled, we'll take 1000 of
 each situations by using simple rejection sampling.
 
@@ -214,9 +224,9 @@ for (m in 1:M)
     w[m] = exponential_rng(1)
 ```
 
-Let's plot histograms of $10\,000$ draws for $\mbox{min} = 0, 1, 2.5$.
+Let's plot histograms of $$10\,000$$ draws for $$\mbox{min} = 0, 1, 2.5$$.
 
-```{r fig.asp = 0.4, fig.cap = "Plot of $10\\,000$ draws from the standard exponential distribution (left) and discarding all draws below 1 (center) or 2.5 (right).  Each histogram is the same, just shifted.  This illustrates the memoryless of the exponential distribution as a model of waiting times---no matter how long you have already waited, the remaining wait time distribution is the same."}
+```{r fig.asp = 0.4, fig.cap = "Plot of $$10\\,000$$ draws from the standard exponential distribution (left) and discarding all draws below 1 (center) or 2.5 (right).  Each histogram is the same, just shifted.  This illustrates the memoryless of the exponential distribution as a model of waiting times---no matter how long you have already waited, the remaining wait time distribution is the same."}
 
 exp_min <- function(lb, M) {
   y <- rep(NA, M)
@@ -252,8 +262,8 @@ has exactly the same distribution shifted over by the amount of wait
 time already experienced.
 
 We can characterize this property in terms of the probability density
-function.  If $Y \sim \mbox{exponential}(\lambda)$, for some fixed
-$\lambda$, then for any fixed $c > 0$, we have
+function.  If $$Y \sim \mbox{exponential}(\lambda)$$, for some fixed
+$$\lambda$$, then for any fixed $$c > 0$$, we have
 
 $$
 p_Y(y \mid \lambda)
@@ -266,13 +276,13 @@ $$
 ## The Poisson distribution
 
 The Poisson distribution is a discrete distribution over counts
-$\mathbb{N} = 0, 1, 2, \ldots$ which can be defined as the number of
-arrivals that occur in a fixed unit $\lambda$ of time when the
-waiting times $w_n$ between arrivals are independently standard exponential
-distributed, $w_n \sim \mbox{exponential}(1).$
+$$\mathbb{N} = 0, 1, 2, \ldots$$ which can be defined as the number of
+arrivals that occur in a fixed unit $$\lambda$$ of time when the
+waiting times $$w_n$$ between arrivals are independently standard exponential
+distributed, $$w_n \sim \mbox{exponential}(1).$$
 
-If $Y \sim \mbox{Poisson}(\lambda)$, then we can simulate values of
-$Y$ as follows.
+If $$Y \sim \mbox{Poisson}(\lambda)$$, then we can simulate values of
+$$Y$$ as follows.
 
 ```
 poisson_rng(lambda)
@@ -287,13 +297,13 @@ poisson_rng(lambda)
       y += 1
 ```
 
-We start at time $t = 0$, with $y = 0$ arrivals, then continue
-simulating arrivals until we have past the total time $\lambda$, at
+We start at time $$t = 0$$, with $$y = 0$$ arrivals, then continue
+simulating arrivals until we have past the total time $$\lambda$$, at
 which point we report the number of arrivals we have seen before the
-arrival that put us past time $\lambda.$
+arrival that put us past time $$\lambda.$$
 
 We can use this simulator to estimate the expectation and variance of
-a variable $Y \sim \mbox{Poisson}(\lambda)$, as follows
+a variable $$Y \sim \mbox{Poisson}(\lambda)$$, as follows
 
 ```
 for (m in 1:M)
@@ -327,9 +337,9 @@ Another way to arrive at the Poisson distribution is as the limit of a
 sequence of binomial distributions.  A random variable with a Poisson
 distribution is unbounded in that any value may arise.^[All but a few
 values will be wildly improbable, but still possible.]  A binomial
-variable on the other hand takes on values between 0 and $N$ for some
-fixed $N$.  But if we let that the total count $N$ grows without bound
-while keeping the expected value at $\lambda$, the binomial approaches
+variable on the other hand takes on values between 0 and $$N$$ for some
+fixed $$N$$.  But if we let that the total count $$N$$ grows without bound
+while keeping the expected value at $$\lambda$$, the binomial approaches
 the Poisson distribution,
 
 $$
@@ -338,10 +348,10 @@ $$
 $$
 
 We can see what the binomial approximation looks like through
-simulation.  We'll simulate $\mbox{binomial}(N, 5.5 / N)$ for various
-$N$ and compare with $\mbox{Poisson}(5.5)$.
+simulation.  We'll simulate $$\mbox{binomial}(N, 5.5 / N)$$ for various
+$$N$$ and compare with $$\mbox{Poisson}(5.5)$$.
 
-```{r fig.cap = "Histograms of $1\\,000\\,000$ draws for a $\\mbox{Poisson}(5.5)$ and successively larger $N$ binomial approximations."}
+```{r fig.cap = "Histograms of $$1\\,000\\,000$$ draws for a $$\\mbox{Poisson}(5.5)$$ and successively larger $$N$$ binomial approximations."}
 binom_poisson_df <- data.frame(y = c(), N = c())
 lambda <- 5.5
 M <- 1000000

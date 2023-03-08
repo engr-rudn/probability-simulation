@@ -1,3 +1,13 @@
+---
+title: "Statistical Inference and Inverse Problems"
+teaching: 
+exercises:
+questions:
+objectives:
+
+keypoints:
+
+---
 # Statistical Inference and Inverse Problems
 
 *Deductive inference* works from facts toward conclusions
@@ -34,8 +44,8 @@ $$
 $$
 
 Laplace assumed each birth is independent and each has probability
-$\Theta \in [0, 1]$ of being a boy.  Letting $Y$ be the number of male
-births and $N$ be the total number of births, Laplace assumed the
+$$\Theta \in [0, 1]$$ of being a boy.  Letting $$Y$$ be the number of male
+births and $$N$$ be the total number of births, Laplace assumed the
 model
 
 $$
@@ -43,10 +53,10 @@ Y  \sim \mbox{binomial}(N, \Theta).
 $$
 
 In other words, his data-generating distribution had the probability
-mass function^[The constant $N$ that appears in the full binomial
-notation is suppressed in the density notation $p_{Y \mid
-\Theta}$---it is common to suppress constants in the notation to make
-the relationship between the modeled data $Y$ and parameters $\Theta$
+mass function^[The constant $$N$$ that appears in the full binomial
+notation is suppressed in the density notation $$p_{Y \mid
+\Theta}$$---it is common to suppress constants in the notation to make
+the relationship between the modeled data $$Y$$ and parameters $$\Theta$$
 easier to scan.]
 
 $$
@@ -56,14 +66,14 @@ p_{Y \mid \Theta}(y \mid \theta)
 $$
 
 Because it employs a binomial distribution, this model assumes that
-the sex of each baby is independent, with probability $\theta$ of
+the sex of each baby is independent, with probability $$\theta$$ of
 being a boy.  This may or may not be a good approximation to reality.
 Part of our job is going to be to check the assumptions like this
 built into our models.
 
-We know how to generate $Y$ given values for the parameter $\Theta$,
+We know how to generate $$Y$$ given values for the parameter $$\Theta$$,
 but we are now faced with the *inverse problem* of drawing inferences
-about $\Theta$ based on observations about $Y$.
+about $$\Theta$$ based on observations about $$Y$$.
 
 
 ## What is a model?
@@ -114,11 +124,11 @@ relative to its intended application.
 ## What is a random variable?
 
 As in all statistical modeling, Laplace treated the observed number of
-male births $Y$ as a random variable.  This assumes a form of
+male births $$Y$$ as a random variable.  This assumes a form of
 counterfactual reasoning whereby we assume the world might have been
 some other way than it actually turned out to be.
 
-As in most statistical models, Laplace treated $N$ as a constant.  In
+As in most statistical models, Laplace treated $$N$$ as a constant.  In
 many cases, the denominator of binary events is not itself a constant,
 but is itself a random variable determined by factors of the
 environment.  For instance, the number of attempts an athlete on a
@@ -129,34 +139,34 @@ As originally formulated by Thomas Bayes,^[Bayes, T., 1763. LII. An
 essay towards solving a problem in the doctrine of chances. By the
 late Rev. Mr. Bayes, FRS communicated by Mr. Price, in a letter to
 John Canton, AMFRS. *Philosophical Transactions of the Royal Society*,
-pp. 370--418.]  Laplace also treated $\Theta$ as a random variable.
+pp. 370--418.]  Laplace also treated $$\Theta$$ as a random variable.
 That is, Laplace wanted to infer, based on observation and
-measurement, that the probability that $\Theta$'s value was in a
+measurement, that the probability that $$\Theta$$'s value was in a
 certain range.  Specifically, Laplace was curious about the question
 of whether the male birth rate is higher, which can be expressed in
-probabilistic terms by the event probability $\mbox{Pr}[\Theta >
-0.5]$.
+probabilistic terms by the event probability $$\mbox{Pr}[\Theta >
+0.5]$$.
 
 
 ## Laplace's inverse problem
 
-Given a total of $N$ births, we have introduced random variables for
+Given a total of $$N$$ births, we have introduced random variables for
 
-* the observed data of $Y$ male births, and
-* the probability $\Theta$ that a live birth will result in a boy.
+* the observed data of $$Y$$ male births, and
+* the probability $$\Theta$$ that a live birth will result in a boy.
 
-We also have the actual observed number of male births, $y$.  That is,
-we know the value of the random variable $Y$.  Given our observed
+We also have the actual observed number of male births, $$y$$.  That is,
+we know the value of the random variable $$Y$$.  Given our observed
 data, we can ask two obvious questions, namely
 
 * What is the probability of a boy being born?
 * Is it more likely that a boy is born than a girl?
 
-Given that $\Theta$ is the male birth rate, the first question is
-asking about the value of $\Theta$.  To provide a probabilistic
-answer, we want to look at the distribution of $\Theta$ given that we
-observe the actual data $Y = y$, which has the density $p_{\Theta \mid
-Y}(\theta \mid y)$.  We can summarize this distribution
+Given that $$\Theta$$ is the male birth rate, the first question is
+asking about the value of $$\Theta$$.  To provide a probabilistic
+answer, we want to look at the distribution of $$\Theta$$ given that we
+observe the actual data $$Y = y$$, which has the density $$p_{\Theta \mid
+Y}(\theta \mid y)$$.  We can summarize this distribution
 probabilistically using intervals, for instance by reporting the
 central 95% interval probability,
 
@@ -168,7 +178,7 @@ $$
 $$
 
 The second question, namely whether boys are more likely to be born,
-is true if $\Theta > \frac{1}{2}$.  The probability of this event is
+is true if $$\Theta > \frac{1}{2}$$.  The probability of this event is
 
 $$
 \mbox{Pr}\left[ \Theta > \frac{1}{2}
@@ -185,10 +195,10 @@ quality of the data and the quality of the model.]
 
 The model we have is a *generative model*^[Also known as a *forward
 model* or a *mechanistic model* by scientists.]---it works from a
-parameter value $\theta$ to the observed data $y$ through a *sampling
-distribution* with probability function $p_{Y \mid \Theta}(y \mid
-\theta).$ What we need to solve our inference problems is the
-*posterior density* $p_{\Theta \mid Y}(\theta \mid y)$.  Bayes
+parameter value $$\theta$$ to the observed data $$y$$ through a *sampling
+distribution* with probability function $$p_{Y \mid \Theta}(y \mid
+\theta).$$ What we need to solve our inference problems is the
+*posterior density* $$p_{\Theta \mid Y}(\theta \mid y)$$.  Bayes
 realized that the posterior could be defined in terms of the sampling
 distribution as
 
@@ -216,10 +226,10 @@ to a proportion.
 ## The prior distribution
 
 This still leaves the not inconsequential matter of how to determine
-$p_{\Theta}(\theta)$, the density of the so-called *prior
-distribution* of $\Theta$.  The prior distribution encapsulates what
-we know about the parameters $\Theta$ before observing the actual data
-$y$.  This prior knowledge may be derived in many different ways.
+$$p_{\Theta}(\theta)$$, the density of the so-called *prior
+distribution* of $$\Theta$$.  The prior distribution encapsulates what
+we know about the parameters $$\Theta$$ before observing the actual data
+$$y$$.  This prior knowledge may be derived in many different ways.
 
 * We may have prior knowledge from physical constraints.  For example,
   if we are modeling the concentration of a molecule in a solution,
@@ -239,7 +249,7 @@ $y$.  This prior knowledge may be derived in many different ways.
 
 Because we are working probabilistically, our prior knowledge will
 itself be modeled with a probability distribution, say with density
-$p_{\Theta}(\theta)$.  The prior distribution may depend on
+$$p_{\Theta}(\theta)$$.  The prior distribution may depend on
 parameters, which may be constants or may themselves be unknown.  This
 may seem like an awfully strong imposition to have to express prior
 knowledge as a density.  If we can express our knowledge well and
@@ -270,7 +280,7 @@ $$
 
 Here, the bounds zero and one, expressed as constant parameters of the
 uniform distribution, are logical constraints imposed by the fact that
-the random variable $\Theta$ denotes a probability.
+the random variable $$\Theta$$ denotes a probability.
 
 Other than the logical bounds, this uniform prior distribution is
 saying a value in the range 0.01 to 0.05 is as likely as one in 0.48
@@ -280,8 +290,8 @@ about births.  Nevertheless, it will suffice for this first analysis.
 ## The proportional posterior
 
 With a prior and likelihood,^[Remember, the likelihood is just the
-sampling distribution $p_{Y \mid \Theta}(y \mid \theta)$ viewed as a
-function of $\theta$ for fixed $y$.] we have our full joint model in
+sampling distribution $$p_{Y \mid \Theta}(y \mid \theta)$$ viewed as a
+function of $$\theta$$ for fixed $$y$$.] we have our full joint model in
 hand,
 
 $$
@@ -291,13 +301,13 @@ p_{Y \mid \Theta}(y \mid N, \theta) \times p_{\Theta}(\theta)
   \times \mbox{uniform}(\theta \mid 0, 1).
 $$
 
-We have carried along the constant $N$ so we don't forget it, but it
+We have carried along the constant $$N$$ so we don't forget it, but it
 simply appears on the right of the conditioning bar on both sides of
 the equation.
 
-The sampling distribution $p(y \mid \theta)$ is considered as a
-density for $y$ given a value of $\theta$.  If we instead fix $y$ and
-view $p(y \mid \theta)$ as a function of $\theta$, it is called the
+The sampling distribution $$p(y \mid \theta)$$ is considered as a
+density for $$y$$ given a value of $$\theta$$.  If we instead fix $$y$$ and
+view $$p(y \mid \theta)$$ as a function of $$\theta$$, it is called the
 *likelihood function*.  As a function, the likelihood function is not
 itself a density.  Nevertheless, it is crucial in posterior inference.
 
@@ -341,7 +351,7 @@ p_{\Theta \mid Y}(\theta \mid y, N)
 \end{array}
 $$
 
-To summarize, we know the posterior $p_{\Theta \mid Y}$ up to a
+To summarize, we know the posterior $$p_{\Theta \mid Y}$$ up to a
 proportion, but are still missing the normalizing constant so that it
 integrates to one.^[We return to the normalizer later when we discuss
 the beta distribution.]
@@ -354,9 +364,9 @@ are in business for sampling from the posterior.  All of the sampling
 algorithms in common use require the density only up to a proportion.
 
 For now, we will simply assume a method exists to draw a sample
-$\theta^{(1)}, \cdots, \theta^{(M)}$ where each $\theta^{(m)}$ is
-drawn from the posterior $p_{\Theta \mid y}(\theta \mid y)$ given the
-observed data $y$.
+$$\theta^{(1)}, \cdots, \theta^{(M)}$$ where each $$\theta^{(m)}$$ is
+drawn from the posterior $$p_{\Theta \mid y}(\theta \mid y)$$ given the
+observed data $$y$$.
 
 When we do begin to employ general samplers, they are going to require
 specifications of our models that are exact enough to be programmed.
@@ -406,7 +416,7 @@ print 'theta = ' theta ';  y = ' y
 
 
 Before we can actually simulate, we need to set the constants, because
-they don't have priors.  Here, we'll just take $N = 10$ for
+they don't have priors.  Here, we'll just take $$N = 10$$ for
 pedagogical convenience.  Let's run it a few times and see what we
 get.
 
@@ -420,16 +430,16 @@ for (m in 1:5) {
 }
 ```
 
-The values simulated for $\theta$ are not round numbers, so we know
-that we won't satisfy $y = N \times \theta$, the expected value of a
-random variable $Y$ such that $Y \sim \mbox{binomial}(N, \theta)$.
-From an estimation perspective, we won't have $\theta = y / N$,
+The values simulated for $$\theta$$ are not round numbers, so we know
+that we won't satisfy $$y = N \times \theta$$, the expected value of a
+random variable $$Y$$ such that $$Y \sim \mbox{binomial}(N, \theta)$$.
+From an estimation perspective, we won't have $$\theta = y / N$$,
 either.  So the question becomes what are reasonable values for
-$\theta$ based on our observation of $y$?  That's precisely the
+$$\theta$$ based on our observation of $$y$$?  That's precisely the
 posterior, so let's proceed to sampling from that.  We'll just assume
 we have a function that samples from the posterior of a model with a
 given name when passed the data for the model.  Here, the data
-consists of the values of $y$ and $N$, and we will run $M = 1\,000$
+consists of the values of $$y$$ and $$N$$, and we will run $$M = 1\,000$$
 iterations.
 
 ```
@@ -453,13 +463,13 @@ for (n in 1:10) printf('%3.2f  ', theta[n])
 
 It's hard to glean much from the draws. What it does tell us is that
 the posterior in the range we expect it to be in---near 0.3, because
-the data was $y = 3$ boys in $N = 10$ births.  The first thing we want
+the data was $$y = 3$$ boys in $$N = 10$$ births.  The first thing we want
 to do with any posterior is check that it's reasonable.
 
 For visualizing draws of a single variable, such as the proportion of
-boy births $\theta$, histograms are handy.
+boy births $$\theta$$, histograms are handy.
 
-```{r fig.cap = 'Histogram of one thousand draws from the posterior $p(\\theta \\mid y)$.   With thirty bins, the histogram appears ragged, but conveys the rough shape and location of the posterior.'}
+```{r fig.cap = 'Histogram of one thousand draws from the posterior $$p(\\theta \\mid y)$$.   With thirty bins, the histogram appears ragged, but conveys the rough shape and location of the posterior.'}
 
 
 binom_post_df <- data.frame(theta = theta)
@@ -475,14 +485,14 @@ binomial_post_plot <-
 binomial_post_plot
 ```
 
-Let's up $M$ to $1\,000\,000$ and double the number of bins to get a
-better look at the posterior density. ^[A sample size $M > 100$ is
+Let's up $$M$$ to $$1\,000\,000$$ and double the number of bins to get a
+better look at the posterior density. ^[A sample size $$M > 100$$ is
 rarely necessary for calculating estimates, event probabilities, or
 other expectations conditioned on data. For histograms, many draws are
 required to ensure low relative error in every bin so that the
 resulting histogram is smooth.]
 
-```{r fig.cap = 'Histogram of one million draws from the posterior $p(\\theta \\mid y)$.  A *much* larger $M$ is required to get a fine-grained view of the whole posterior distribution than is required for an accurate summary statistic.'}
+```{r fig.cap = 'Histogram of one million draws from the posterior $$p(\\theta \\mid y)$$.  A *much* larger $$M$$ is required to get a fine-grained view of the whole posterior distribution than is required for an accurate summary statistic.'}
 
 set.seed(1234)
 M <- 1e6
@@ -507,7 +517,7 @@ asymmetric, with a longer tail to the right than to the left, but
 asymmetry can be difficult to detect visually until it is more extreme
 than here. Asymmetric distributions are said to be *skewed*, either to
 the right or left, depending on which tail is longer.^[The formal
-measurement of the *skew* of a random variable $Y$ is just another
+measurement of the *skew* of a random variable $$Y$$ is just another
 expectation that may be estimated via simulation, $$\mbox{skew}[Y] =
 \mathbb{E}\left[\left(\frac{Y -
 \mathbb{E}[Y]}{\mbox{sd}[Y]}\right)^3\right].$$] It's also hard to
@@ -563,7 +573,7 @@ printf('estimated posterior central 90 pct interval = (%3.2f, %3.2f)\n',
 ```
 
 The posterior simulations and summaries answer Laplace's question
-about the value of $\theta$, i.e., the proportion of boys born, at
+about the value of $$\theta$$, i.e., the proportion of boys born, at
 least relative to this tiny data set.
 
 We have reported a central 90% interval here. It is a 90% interval in
@@ -583,10 +593,10 @@ central part of the distribution.
 ## Estimating event probabilities
 
 To answer the question about whether boys are more prevalent than
-girls, we need to estimate $\mbox{Pr}[\theta > 0.5]$, which is
+girls, we need to estimate $$\mbox{Pr}[\theta > 0.5]$$, which is
 straightforward with simulation. As usual, we just count the number of
-times that the simulated value $\theta^{(m)} > 0.5$ and divide by the
-number of simulations $M$,
+times that the simulated value $$\theta^{(m)} > 0.5$$ and divide by the
+number of simulations $$M$$,
 
 ```
 print 'estimated Pr[theta > 0.5] = ' sum(theta > 0.5) / M
@@ -602,11 +612,11 @@ printf('estimated Pr[theta > 0.5] = %3.2f\n', sum(theta > 0.5) / M)
 
 Now let's overlay the median and central 90% interval.
 
-```{r fig.cap = 'Histogram of $1\\,000\\,000$ draws from the posterior $$p(\\theta \\mid y, N) \\propto \\mbox{binomial}(y \\mid N, \\theta),$$ given $N = 10, y = 3$.  The median (50 percent quantile) is indicated with a dashed line and the boundaries of the central 90 percent interval (5 percent and 95 percent quantiles) are picked out with dotted lines.  The proportion of the total area shaded to the right of 0.5 represents the posterior probability that $\\theta > 0.5,$ which is about 11 percent.'}
+```{r fig.cap = 'Histogram of $$1\\,000\\,000$$ draws from the posterior $$p(\\theta \\mid y, N) \\propto \\mbox{binomial}(y \\mid N, \\theta),$$ given $$N = 10, y = 3$$.  The median (50 percent quantile) is indicated with a dashed line and the boundaries of the central 90 percent interval (5 percent and 95 percent quantiles) are picked out with dotted lines.  The proportion of the total area shaded to the right of 0.5 represents the posterior probability that $$\\theta > 0.5,$$ which is about 11 percent.'}
 
-q05 <- quantile(binom_post_df2$theta, 0.05)
-q50 <- quantile(binom_post_df2$theta, 0.50)
-q95 <- quantile(binom_post_df2$theta, 0.95)
+q05 <- quantile(binom_post_df2$$theta, 0.05)
+q50 <- quantile(binom_post_df2$$theta, 0.50)
+q95 <- quantile(binom_post_df2$$theta, 0.95)
 
 binomial_post_plot3 <-
   ggplot(binom_post_df2, aes(x = theta)) +
@@ -644,10 +654,10 @@ binomial_post_plot3
 
 What happens if we use Laplace's data, rather than our small data set,
 which had roughly 110 thousand male births and 105 thousand female?
-Let's take some draws from the posterior $p(\theta \mid y, N)$ where
-$y = 110\,312$ boys out of $N = 110\,312 + 105\,287$ total births.
-We'll take $M = 1\,000\,000$ simulations $\theta^{(1)}, \ldots,
-\theta^{(M)}$ here because they are cheap and we would like low
+Let's take some draws from the posterior $$p(\theta \mid y, N)$$ where
+$$y = 110\,312$$ boys out of $$N = 110\,312 + 105\,287$$ total births.
+We'll take $$M = 1\,000\,000$$ simulations $$\theta^{(1)}, \ldots,
+\theta^{(M)}$$ here because they are cheap and we would like low
 sampling error.
 
 ```{r}
@@ -673,20 +683,20 @@ laplace_plot
 
 The mean of the posterior sample is approximately 0.511, or a slightly
 higher than 51% chance of a male birth.  The central 90% posterior
-interval calculated from quantiles of the sample is $(0.510, 0.513)$.
+interval calculated from quantiles of the sample is $$(0.510, 0.513)$$.
 
 What about the event probability that boy births are more likely than
-girl births, i.e., $\mbox{Pr}[\theta > 0.5]$?  If we make our usual
-calculation, taking draws $\theta^{(1)}, \ldots, \theta^{(M)}$ from
-the posterior and look at the proportion for which $\theta^{(m)} >
-0.5$, the result is 1.  No decimal places, just 1.  If we look at the
-draws, the minimum value of $\theta^{(m)}$ in $1\,000,000$ draws was
-approximately 0.506.  The proportion of draws for which $\theta^{(m)}
-> 0.5$ is thus 100%, which forms our estimate for $\mbox{Pr}[\theta >
-0.5]$.
+girl births, i.e., $$\mbox{Pr}[\theta > 0.5]$$?  If we make our usual
+calculation, taking draws $$\theta^{(1)}, \ldots, \theta^{(M)}$$ from
+the posterior and look at the proportion for which $$\theta^{(m)} >
+0.5$$, the result is 1.  No decimal places, just 1.  If we look at the
+draws, the minimum value of $$\theta^{(m)}$$ in $$1\,000,000$$ draws was
+approximately 0.506.  The proportion of draws for which $$\theta^{(m)}
+> 0.5$$ is thus 100%, which forms our estimate for $$\mbox{Pr}[\theta >
+0.5]$$.
 
 As we have seen before, simulation-based estimates provide
-probabilistic guarantees about absolute tolerances.  With $100\,000$
+probabilistic guarantees about absolute tolerances.  With $$100\,000$$
 draws, we are sure that the answer is 1.0000 to within plus or minus
 0.0001 or less.^[Tolerances can be calculated using the central limit
 theorem, which we will define properly when we introduce the normal
@@ -707,38 +717,38 @@ higher than that of a girl being born.
 ## Inference for and comparison of multiple variables
 
 The first example of Laplace's is simple in that it has only a single
-parameter of interest, $\theta$, the probability of a male birth.  Now
+parameter of interest, $$\theta$$, the probability of a male birth.  Now
 we will consider a very similar model with two variables, so that we
 can do some posterior comparisons.  We will consider some simple
 review data for two New York City-based Mexican restaurants.  The
 first contender is Downtown Bakery II, an East Village Mexican
-restaurant has $Y_1 = 114$ out of $N_1 = 235$ 5-star reviews on Yelp,
-La Delicias Mexicanas, in Spanish Harlem, has $Y_1 = 24$ out of $N_2 =
-51$ 5-start reviews.  Our question is, which is more likely to deliver
+restaurant has $$Y_1 = 114$$ out of $$N_1 = 235$$ 5-star reviews on Yelp,
+La Delicias Mexicanas, in Spanish Harlem, has $$Y_1 = 24$$ out of $$N_2 =
+51$$ 5-start reviews.  Our question is, which is more likely to deliver
 a 5-star experience?  In terms of proportion of 5-star votes, they are
 close, with Downtown Bakery garnering 49% 5-star reviews and La
 Delicias only 47%.  Knowing how noisy binomial data is, this is too
 close to call.
 
-We'll model each restaurant independently for $n \in 1:2$ as
+We'll model each restaurant independently for $$n \in 1:2$$ as
 
 $$
 Y_n \sim \mbox{binomial}(N, \Theta_n)
 $$
 
-with independent uniform priors for $n \in 1:2$ as
+with independent uniform priors for $$n \in 1:2$$ as
 
 $$
 \Theta_n \sim \mbox{uniform}(0, 1).
 $$
 
-We can now draw $\theta^{(1)}, \ldots, \theta^{(M)}$ simulations from
-the posterior $p_{\Theta \mid Y, N}(\theta \mid y, N)$ as usual.
+We can now draw $$\theta^{(1)}, \ldots, \theta^{(M)}$$ simulations from
+the posterior $$p_{\Theta \mid Y, N}(\theta \mid y, N)$$ as usual.
 
-The main event is whether $\theta_1 > \theta_2$---we want to know if
+The main event is whether $$\theta_1 > \theta_2$$---we want to know if
 the probability of getting a five-star review is higher at Downtown
 Bakery than La Delicias.  All we need to do is look at the posterior
-mean of the indicator function $\mathrm{I}[\theta_1 > \theta_2]$.  The
+mean of the indicator function $$\mathrm{I}[\theta_1 > \theta_2]$$.  The
 calculus gets more complicated---a double integral is now required
 because there are two variables.  The simulation-based estimate, on
 the other hand, proceeds as before, counting proportion of draws in
@@ -769,7 +779,7 @@ for (m in 1:M)
 print 'Pr[theta[1] > theta[2] | y, M] = ' success / M
 ```
 
-Let's run that with $M = 10\,000$ simulations and see what we get:
+Let's run that with $$M = 10\,000$$ simulations and see what we get:
 
 ```{r}
 M <- 10000
@@ -787,9 +797,9 @@ this diner loves Downtown Bakery, the nod for food, ambience, and the
 existence of beer goes to La Delicias Mexicanas.]
 
 To get a sense of the posterior, we can construct a histogram of
-posterior draws of $\Delta = \Theta_1 - \Theta_2$.
+posterior draws of $$\Delta = \Theta_1 - \Theta_2$$.
 
-```{r fig.cap = 'Histogram of posterior differences between probability of Downtown Bakery getting a 5-star review ($\\theta_1$) and that of La Delicias Mexicanas getting one ($\\theta_2$).  The draws for which $\\delta > 0$ (equivalently, $\\theta_1 > \\theta_2$) are shaded darker.  The area of the darker region divided by the total area is the estimate of the probability that Downtown Bakery is more likely to get a 5-star review than La Delicias Mexicanas.'}
+```{r fig.cap = 'Histogram of posterior differences between probability of Downtown Bakery getting a 5-star review ($$\\theta_1$$) and that of La Delicias Mexicanas getting one ($$\\theta_2$$).  The draws for which $$\\delta > 0$$ (equivalently, $$\\theta_1 > \\theta_2$$) are shaded darker.  The area of the darker region divided by the total area is the estimate of the probability that Downtown Bakery is more likely to get a 5-star review than La Delicias Mexicanas.'}
 
 delta <- theta1 - theta2
 delicias_df <- data.frame(delta = delta)

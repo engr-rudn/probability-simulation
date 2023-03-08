@@ -36,17 +36,17 @@ deviated above or below the median.
 ## Binomial example
 
 We're going to use simulation to demonstrate what regression to the
-mean looks like in a controlled situation.  Let's suppose we have $N =
-500$ robot athletes, all of whom have exactly the same chance $\theta
-= 0.3$ of success.^[Imagine spiking serves, hitting baseballs, sinking
+mean looks like in a controlled situation.  Let's suppose we have $$N =
+500$$ robot athletes, all of whom have exactly the same chance $$\theta
+= 0.3$$ of success.^[Imagine spiking serves, hitting baseballs, sinking
 putts, ringing horseshoes, bullseying darts, or curling stones to a
 mark; the chance of success is arbitrarily chosen to make the example
 concrete.]
 
-A season's outcomes may be represented as a random variable $U = U_1,
-\ldots, U_N$, where $U_n \in 0:M$.  Now let's imagine we're going to
-simulate a season in which each robot athlete gets exactly $M =
-50$ chances,
+A season's outcomes may be represented as a random variable $$U = U_1,
+\ldots, U_N$$, where $$U_n \in 0:M$$.  Now let's imagine we're going to
+simulate a season in which each robot athlete gets exactly $$M =
+50$$ chances,
 
 $$
 U_n \sim \mbox{binomial}(M, \theta).
@@ -56,7 +56,7 @@ In the time off between seasons, the manager decides that robots who
 had below average performance would have a better chance of success
 with a fresh coat of bright orange paint.  Assuming the paint has no
 effect on the robots, who are only following programming.  The second
-season's outcome can be represented as a variable $V = V_1, \ldots, V_N$, where
+season's outcome can be represented as a variable $$V = V_1, \ldots, V_N$$, where
 
 $$
 V_n \sim \mbox{binomial}(M, \theta).
@@ -86,7 +86,7 @@ v <- rbinom(N, M, theta)
 
 Here's a bar plot of the robots scores in the first season.
 
-```{r fig.cap = "Histogram of first season robots for $N = 500$ given $M = 50$ attempts at a task for which they each have a 30 percent chance of success.  The vertical dotted line is at the expected performance ($N \\times \\theta = 15$)."}
+```{r fig.cap = "Histogram of first season robots for $$N = 500$$ given $$M = 50$$ attempts at a task for which they each have a 30 percent chance of success.  The vertical dotted line is at the expected performance ($$N \\times \\theta = 15$$)."}
 
 robot_1_plot <-
   ggplot(data = data.frame(U = u), aes(x = U)) +
@@ -153,7 +153,7 @@ they were jealous of the repainted robots?
 All that's really going on is an effect known as *regression to the
 mean*.  Suppose a robot athlete had 10 successes in the first
 season. That's pretty unlucky, because it's well below the expectation
-of 15 successes.  In general, if $U_n$ and $V_n$ have the same
+of 15 successes.  In general, if $$U_n$$ and $$V_n$$ have the same
 distribution and
 
 $$
@@ -161,7 +161,7 @@ $$
 $$
 
 as it does in our robot athlete example, then if the result of the
-first season is $U_n = m$ successes, the average change expected in
+first season is $$U_n = m$$ successes, the average change expected in
 the second season is
 
 $$

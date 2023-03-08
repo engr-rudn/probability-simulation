@@ -1,3 +1,13 @@
+---
+title: "Random Walk Metropolis"
+teaching: 
+exercises:
+questions:
+objectives:
+
+keypoints:
+
+---
 # Random Walk Metropolis
 
 The Metropolis algorithm is a general purpose technique to sample from
@@ -11,25 +21,25 @@ from the target density.
 
 ## Random-walk Metropolis
 
-Suppose $p(\theta)$ is the density of an $N$-dimensional target
+Suppose $$p(\theta)$$ is the density of an $$N$$-dimensional target
 distribution over from which we want to sample.^[Typically, this is a
-posterior $p(\theta \mid y)$ but we will suppress $y$ here as it
+posterior $$p(\theta \mid y)$$ but we will suppress $$y$$ here as it
 remains constant throughout.]  For the sake of convenience, we will
-assume it has support on all real values, i.e., $p(\theta) > 0$ for all
-$\theta \in \mathbb{R}^N$.^[Most distributions with constrained
-support on $\mathbb{R}^N$ can be smoothly transformed to have support
-on all of $\mathbb{R}^N$.]
+assume it has support on all real values, i.e., $$p(\theta) > 0$$ for all
+$$\theta \in \mathbb{R}^N$$.^[Most distributions with constrained
+support on $$\mathbb{R}^N$$ can be smoothly transformed to have support
+on all of $$\mathbb{R}^N$$.]
 
 The random walk Metropolis algorithm generates a Markov chain
-$\theta^{(1)}, \theta^{(2)}, \ldots$ whose stationary distribution is
-$p(\theta).$ The algorithm can start anywhere, so we will simply start
+$$\theta^{(1)}, \theta^{(2)}, \ldots$$ whose stationary distribution is
+$$p(\theta).$$ The algorithm can start anywhere, so we will simply start
 it at the origin,^[Later, we will have motivation to simulate multiple
 chains from diffuse starting locations, but for now, starting at the
 origin keeps things simple.]
 
-$\theta^{(1)} = 0.$
+$$\theta^{(1)} = 0.$$
 
-For each subsequent step $m + 1$, we first simulate a proposed
+For each subsequent step $$m + 1$$, we first simulate a proposed
 jump,^[The
 algorithm may be generalized to allow arbitrary jump proposal
 distributions.  Popular choices include varying scale by dimension,
@@ -46,7 +56,7 @@ u^{(m)} \sim \mbox{uniform}(0, 1),
 $$
 
 to inform a probabilistic decision of whether or not to move from
-state $\theta^{(m)}$ to state $\theta^{(m)} + \epsilon^{(m)}$.  With
+state $$\theta^{(m)}$$ to state $$\theta^{(m)} + \epsilon^{(m)}$$.  With
 these simulated values in hand, the random walk Metropolis algorithm
 sets the next state to be
 
@@ -66,21 +76,21 @@ u^{(m)} \ < \
 $$
 
 Given the definition, we always accept the proposed jump if it takes
-us to a state of higher density, i.e., if $p\!\left( \theta^{(m)} +
-\epsilon^{(m)} \right) > p\!\left( \theta^{(m)} \right).$ If the jump
+us to a state of higher density, i.e., if $$p\!\left( \theta^{(m)} +
+\epsilon^{(m)} \right) > p\!\left( \theta^{(m)} \right).$$ If the jump
 takes us to a state of lower density, we accept the jump with
 probability equal to the density ratio of the proposed state and
 current state.  This means the continuous-state Markov chain defined
 by the Metropolis algorithm can stay in the same state from time step
-to time step.^[In keeping with our notation for simulation, we use $m$
-rather than $t$ to index the "time" steps.]
+to time step.^[In keeping with our notation for simulation, we use $$m$$
+rather than $$t$$ to index the "time" steps.]
 
 The pseudocode for the random walk Metropolis algorithm just follows
 the mathematical definition of the algorithm, using local variables
-for $\epsilon$ and $u$.  As inputs, it takes the number $M$ of steps
-to simulate, the jump scale $\sigma$, and the target density
-$p(\theta)$, and it returns the simulated Markov chain $\theta^{(1)},
-\theta^{(2)}, \ldots, \theta^{(M)}$.
+for $$\epsilon$$ and $$u$$.  As inputs, it takes the number $$M$$ of steps
+to simulate, the jump scale $$\sigma$$, and the target density
+$$p(\theta)$$, and it returns the simulated Markov chain $$\theta^{(1)},
+\theta^{(2)}, \ldots, \theta^{(M)}$$.
 
 ```
 theta(0) = 0
@@ -114,13 +124,13 @@ log of both sides and define
 ```
 
 In practice, we may only know the density up to an additive
-constant.  We'll only be able to compute $\log q(\theta)$, where
+constant.  We'll only be able to compute $$\log q(\theta)$$, where
 
 $$
 \log q(\theta) = \log p(\theta) + \mbox{const}.
 $$
 
-for some unknown constant that doesn't depend on $\theta$.
+for some unknown constant that doesn't depend on $$\theta$$.
 Although unregularized densities may be negative, we don't get in
 trouble with negative logarithms because the constants cancel out,
 
@@ -139,8 +149,8 @@ $$
 
 ## Metropolis example
 
-As an example, we can start with a two-dimensional density $p(\theta)$
-in which the values $\theta = (\theta_1, \theta_2)$ are positively
+As an example, we can start with a two-dimensional density $$p(\theta)$$
+in which the values $$\theta = (\theta_1, \theta_2)$$ are positively
 correlated,^[The distribution is bivariate normal located at the
 origin, with unit scale and 0.9 correlation, i.e., with covariance
 matrix
@@ -182,8 +192,8 @@ $$
 
 
 Let's see what we get when taking draws using the Metropolis
-algorithm.  First, let's try $\sigma \in 0.125, 0.25, 0.5$ and start at
-$\theta(1) = (0, 0).$^[$(0, 0)$ is coincidentally the point at which
+algorithm.  First, let's try $$\sigma \in 0.125, 0.25, 0.5$$ and start at
+$$\theta(1) = (0, 0).$$^[$$(0, 0)$$ is coincidentally the point at which
 the example density is maximized.  This requires escaping from the
 point of maximum log density.]
 

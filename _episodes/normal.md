@@ -1,3 +1,13 @@
+---
+title: "Normal Distribution"
+teaching: 
+exercises:
+questions:
+objectives:
+
+keypoints:
+
+---
 # Normal Distribution
 
 ## Limit of binomials
@@ -9,7 +19,7 @@ summam terminorum binomii*.]  With 10 trials and a probability of
 success of 0.9 in each trial, the distribution is clearly asymmetric
 (i.e., skewed).
 
-```{r fig.cap = 'Probability of number of successes in $N = 10$ independent trials, each with a 90 percent chance of success.  The result is $\\mbox{binomial}(y \\mid 10, 0.9)$ by construction. With only ten trials, the distribution is highly asymmetric, with skew (longer tails) to the left.'}
+```{r fig.cap = 'Probability of number of successes in $$N = 10$$ independent trials, each with a 90 percent chance of success.  The result is $$\\mbox{binomial}(y \\mid 10, 0.9)$$ by construction. With only ten trials, the distribution is highly asymmetric, with skew (longer tails) to the left.'}
 
 N <- 10
 x <- 0:10
@@ -25,9 +35,9 @@ binomial_limit_plot
 ```
 
 But when we increase the number of trials by a factor of 100 to
-$N = 1\,000$ without changing the 0.9 probability of success, the result is a nearly symmetric bell shape.
+$$N = 1\,000$$ without changing the 0.9 probability of success, the result is a nearly symmetric bell shape.
 
-```{r fig.cap = 'Probability of number of successes in $N = 1000$ independent trials, each with a 90 percent chance of success. The familiar bell-shaped curve arises as $N$ grows.'}
+```{r fig.cap = 'Probability of number of successes in $$N = 1000$$ independent trials, each with a 90 percent chance of success. The familiar bell-shaped curve arises as $$N$$ grows.'}
 
 x <- 860:940
 y <- dbinom(x, 1000, 0.9)
@@ -42,7 +52,7 @@ binomial_limit_plot
 
 de Moivre found that the normal density function (to be developed
 below), despite coming from a continuous distribution, provided a
-tight approximation to the binomial probability mass function as $N$
+tight approximation to the binomial probability mass function as $$N$$
 becomes large.^[This is because the interval between integers is 1, so
 that
 $$\begin{array}{rcl}
@@ -60,18 +70,18 @@ of least squares.^[Gauss, Carolo Friderico, 1809. *Theoria Motus
 Corporum Coelestium in sectionibus conicis solem ambientium.* Sumtibus
 Frid. Perthes et IH Besser, Hamburgi. English translation: Theory of
 Motion of the Celestial Bodies Moving in Conic Sections Around the
-Sun.] Gauss was faced with a sequence of noisy measurements $y_1,
-\ldots, y_N$ from some distribution and wanted to combine them by
+Sun.] Gauss was faced with a sequence of noisy measurements $$y_1,
+\ldots, y_N$$ from some distribution and wanted to combine them by
 taking their average,
 
 $$
 \bar{y} = \frac{1}{N} \sum_{n=1}^N y_n.
 $$
 
-Gauss realized that the average $\bar{y}$ minimizes the sum of
+Gauss realized that the average $$\bar{y}$$ minimizes the sum of
 square differences from the observed values,^[The expression
-$\mbox{arg min}_y \, f(y)$ returns the value of $y$ that minimizes
-$f(y)$, e.g., $$\mbox{arg min}_y \ (y - 3)^2 = 3$$.]
+$$\mbox{arg min}_y \, f(y)$$ returns the value of $$y$$ that minimizes
+$$f(y)$$, e.g., $$\mbox{arg min}_y \ (y - 3)^2 = 3$$.]
 
 $$
 \bar{y} = \mbox{arg min}_y \, \sum_{n=1}^N \left( y_n - y \right)^2.
@@ -79,7 +89,7 @@ $$
 
 Gauss reasoned backward to the normal distribution, reasoning that for
 the average to be a good estimator, the distribution of the errors
-$y_n - y$ must have this same quadratic property. Working on the log
+$$y_n - y$$ must have this same quadratic property. Working on the log
 scale, Gauss was looking for a distribution whose density functions
 would have roughly the property that 
 
@@ -107,14 +117,14 @@ to be finite.]
 In order for the standard deviation and variance to work out to unity,
 it is convenient to work with half the squared error. Therefore, the
 standard normal distribution is defined on the log scale up to an
-additive constant that doesn't depend on $y$ by
+additive constant that doesn't depend on $$y$$ by
 
 $$
 \log \mbox{normal}(y) = -\frac{1}{2} y^2 + \mbox{const.}
 $$
 
-This ensures that if $Z \sim \mbox{normal}()$, then $\mathbb{E}[Z] =
-0$ and $\mbox{var}[Z] = \mbox{sd}[Z] = 1$.
+This ensures that if $$Z \sim \mbox{normal}()$$, then $$\mathbb{E}[Z] =
+0$$ and $$\mbox{var}[Z] = \mbox{sd}[Z] = 1$$.
 
 Converting back the linear scale gives us the kernel of the normal
 distribution,
@@ -140,8 +150,8 @@ $$
 \frac{1}{\sqrt{2 \pi}} \exp \left( -\frac{1}{2} y^2 \right).
 $$
 
-Now we have a distribution where the value $y$ that maximizes the
-density of the independent error terms $y - y_n$ is the one that
+Now we have a distribution where the value $$y$$ that maximizes the
+density of the independent error terms $$y - y_n$$ is the one that
 minimizes square error,
 
 $$
@@ -167,10 +177,10 @@ $$
 ## Adding location and scale parameters
 
 The standard normal distribution has an expectation of zero and standard
-deviation one.  We can add a scale parameter $\sigma > 0$ to multiply
-the standard deviation and a location parameter $\mu$ so that if $Y
-\sim \mbox{normal}(\mu, \sigma)$, then $\mathbb{E}[Y] = \mu$ and
-$\mbox{sd}[Y] = \sigma$.
+deviation one.  We can add a scale parameter $$\sigma > 0$$ to multiply
+the standard deviation and a location parameter $$\mu$$ so that if $$Y
+\sim \mbox{normal}(\mu, \sigma)$$, then $$\mathbb{E}[Y] = \mu$$ and
+$$\mbox{sd}[Y] = \sigma$$.
 
 Starting with a standard normal variate,
 
@@ -178,7 +188,7 @@ $$
 Z \sim \mbox{normal}(),
 $$
 
-we can scale it by $\sigma$ and shift by $\mu$ to get a new variable
+we can scale it by $$\sigma$$ and shift by $$\mu$$ to get a new variable
 
 $$
 Y = \mu + \sigma \times Z,
@@ -194,8 +204,8 @@ Dealing with the required change of variables for the inverse
 transform^[This inverse transform has its own name, the *z-transform*,
 and in general may be written as $$Z = \frac{Y -
 \mathbb{E}[Y]}{\mbox{sd}[Y]}.$$ and used to standardize any random
-variable $Y$ with a finite expectation and variance. The resulting
-variable $Z$ has $\mathbb{E}[Z] = 0$ and $\mbox{sd}[Z] = 1$ by
+variable $$Y$$ with a finite expectation and variance. The resulting
+variable $$Z$$ has $$\mathbb{E}[Z] = 0$$ and $$\mbox{sd}[Z] = 1$$ by
 construction.]
 
 $$
@@ -205,7 +215,7 @@ Z
 $$
 
 lets us derive the general normal density function for location
-parameter $\mu$ and scale parameter $\sigma > 0$ as^[It's a standard
+parameter $$\mu$$ and scale parameter $$\sigma > 0$$ as^[It's a standard
 Jacobian calculation for transform
 $$
 Y = f(Z) = \mu + \sigma \times Z,
@@ -254,11 +264,11 @@ Presented this way, the formula makes clear that the normal density
 function is a product of three factors, 
 
 * a factor deriving from the standard normal distribution,
-$\mbox{normal}(z) = \exp(-\frac{1}{2} z^2)$, applied to the inverse of
-the location-scale transform, $\frac{y - \mu}{\sigma}$.
-* a normalizing factor of $\frac{1}{\sigma}$ that depends on the
+$$\mbox{normal}(z) = \exp(-\frac{1}{2} z^2)$$, applied to the inverse of
+the location-scale transform, $$\frac{y - \mu}{\sigma}$$.
+* a normalizing factor of $$\frac{1}{\sigma}$$ that depends on the
 scale,
-* a constant normalizing factor of $\frac{1}{\sqrt{2 \pi}}$, and
+* a constant normalizing factor of $$\frac{1}{\sqrt{2 \pi}}$$, and
 
 
 ## Central limit theorem
@@ -291,15 +301,15 @@ $$
 \mbox{sd}[Y_n] = \sigma.
 $$
 
-Define the average of $Y$ as a new random variable
+Define the average of $$Y$$ as a new random variable
 
 $$
 Z = \frac{1}{N} \sum_{n=1}^N Y_n.
 $$
 
-As $N \rightarrow \infty$, the average has a normal distribution with
-the same location as the $Y_n$ and a scale reduced by a factor of
-$\sqrt{\frac{1}{\sqrt{N}}}$.
+As $$N \rightarrow \infty$$, the average has a normal distribution with
+the same location as the $$Y_n$$ and a scale reduced by a factor of
+$$\sqrt{\frac{1}{\sqrt{N}}}$$.
 
 $$
 \textstyle
@@ -335,20 +345,20 @@ $$
 Y = V_1 \times \cdots \times V_N
 $$
 
-of positive effects $V_n > 0$. Because the effects $V_n$ are positive,
+of positive effects $$V_n > 0$$. Because the effects $$V_n$$ are positive,
 we can work on the log scale, where
 
 $$
 \log Y = \log V_1 + \cdots \log V_N.
 $$
 
-In this case, $\log Y$ should have a roughly normal distribution,
-being the sum of $N$ additive terms. If $\log Y \sim
-\mbox{normal}(\mu, \sigma)$, then $Y$ has what is called a *lognormal
+In this case, $$\log Y$$ should have a roughly normal distribution,
+being the sum of $$N$$ additive terms. If $$\log Y \sim
+\mbox{normal}(\mu, \sigma)$$, then $$Y$$ has what is called a *lognormal
 distribution*. The lognormal density function can be calculated by
 accounting for the change of variables,^[To calculate the Jacobian for
-the change of variables, note that if $Z \sim \mbox{normal}(\mu,
-\sigma)$ and $Y = \exp(Z)$, then
+the change of variables, note that if $$Z \sim \mbox{normal}(\mu,
+\sigma)$$ and $$Y = \exp(Z)$$, then
 $$
 \begin{array}{rcl}
 p_Y(y \mid \mu, \sigma)
@@ -443,8 +453,8 @@ is increased.]
 A clever and efficient way to generate standard normal variates relies
 on solving a seemingly harder problem, generating two independent
 standard normal variates. By working with two independent normal
-variates $(X, Y)$, we can work in polar coordinates and generate an
-angle and radius $(\Theta, R)$, where
+variates $$(X, Y)$$, we can work in polar coordinates and generate an
+angle and radius $$(\Theta, R)$$, where
 
 $$
 X = R \times \cos \Theta
@@ -468,8 +478,8 @@ $$
 \Theta = \arctan \left( \frac{Y}{X} \right).
 $$
 
-Our strategy is to generate the polar coordinates $(\Theta, R)$ and
-transform them to $(X, Y)$ with independent standard normal
+Our strategy is to generate the polar coordinates $$(\Theta, R)$$ and
+transform them to $$(X, Y)$$ with independent standard normal
 distributions. We can generate a random angle uniformly in radians
 with
 

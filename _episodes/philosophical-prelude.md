@@ -1,5 +1,15 @@
+---
+title: "Philosophical Prelude"
+teaching: 
+exercises:
+questions:
+objectives:
 
+keypoints:
 
+---
+
+## Philosophical Prelude
 The fundamental nature of probability as used in applied statistical
 inference was described succinctly by John Stuart Mill as part of his
 larger program of characterizing inductive reasoning,^[Mill, John
@@ -9,7 +19,7 @@ Chapter 18.]
 
 > We must remember that the probability of an event is not a quality
 of the event itself, but a mere name for the degree of ground which
-we, or some one else, have for expecting it. <br /> $\ldots$ Every event is
+we, or some one else, have for expecting it. <br /> $$\ldots$$ Every event is
 in itself certain, not probable; if we knew all, we should either know
 positively that it will happen, or positively that it will not. But
 its probability to us means the degree of expectation of its

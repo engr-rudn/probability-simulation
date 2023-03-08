@@ -1,3 +1,13 @@
+
+---
+title: "Continuous Random Variables"
+teaching: 
+exercises:
+questions:
+objectives:
+
+keypoints:
+
 # Continuous Random Variables
 
 So far, we have only considered discrete random variables, i.e.,
@@ -23,9 +33,9 @@ density function.
 
 ## Spinners and uniform continuous variables
 
-Suppose $\Theta$ is a random variable representing the angle at which
+Suppose $$\Theta$$ is a random variable representing the angle at which
 a fair spin of a spinner lands.  We will use degrees and thus suppose
-the value of $\Theta$ is between 0 and 360^[The end points are the
+the value of $$\Theta$$ is between 0 and 360^[The end points are the
 same, representing a complete rotation of 360 degrees; they are
 labeled as such in the plot.]
 
@@ -79,15 +89,15 @@ $$
 \frac{1}{10}.
 $$
 
-We are not talking about the probability of $\Theta$ taking on a
+We are not talking about the probability of $$\Theta$$ taking on a
 particular value, but rather of it falling in a particular interval.^[
-In general, the probability of a fair spinner $\Theta$ falling in
+In general, the probability of a fair spinner $$\Theta$$ falling in
 interval is the fraction of the circle represented by the interval, i.e.,
 $$
 \mbox{Pr}[\theta_1 \leq \Theta \leq \theta_2]
 = \frac{\theta_2 - \theta_1}{360}.
 $$
-for $0 \leq \theta_1 \leq \theta_2 \leq 360.$]
+for $$0 \leq \theta_1 \leq \theta_2 \leq 360.$$]
 For continuous random variables, outcomes do not have probability
 mass.  Instead, probability mass is assigned continuously based on the
 probability of a variable falling in a region.
@@ -96,9 +106,9 @@ probability of a variable falling in a region.
 
 In our first example, we took a fair spinner to land at exactly 36
 degrees; it could've been 36.0376531 degrees or even an irrational
-number such as $0.3333\cdots.$^[When I learned decimal
-representations, we wrote $0.\bar{3}$ for the decimal
-representation of $\frac{1}{3}.$] What's the probability the spinner
+number such as $$0.3333\cdots.$$^[When I learned decimal
+representations, we wrote $$0.\bar{3}$$ for the decimal
+representation of $$\frac{1}{3}.$$] What's the probability the spinner
 landed on exactly 36 degrees? Paradoxically, the answer is zero.
 
 $$
@@ -118,7 +128,7 @@ has zero probability.
 
 We will assume that our programming language comes equipped with a
 function `uniform_rng(L, H)` that generates numbers uniformly in the
-interval $[L, H]$.
+interval $$[L, H]$$.
 
 For instance, the following program simulates from the uniform
 interval.
@@ -129,7 +139,7 @@ for (m in 1:M)
   y[m] = uniform_rng(0, 1)
 print 'y = ' y
 ```
-Let's simulate $M = 10$ draws and look at the result,
+Let's simulate $$M = 10$$ draws and look at the result,
 
 ```{r}
 set.seed(1234)
@@ -144,7 +154,7 @@ to get a sense for the sequence of values as raw numbers.  The most
 popular way to summarize one-dimensional data is with a *histogram*,
 as shown in the following plot.
 
-```{r fig.cap="Histogram of 10 draws from a $\\mbox{uniform}(0, 1)$ distribution."}
+```{r fig.cap="Histogram of 10 draws from a $$\\mbox{uniform}(0, 1)$$ distribution."}
 df_unif_10 <- data.frame(y = y)
 unif_10_plot <-
   ggplot(df_unif_10, aes(y)) +
@@ -202,24 +212,24 @@ plot
 ```
 
 
-## Calculating $\pi$ via simulation
+## Calculating $$\pi$$ via simulation
 
 Now that we have a continuous random number generator, there are all
 kinds of values we can compute. Here, we show how to calculuate the
-first few digits of $\pi$. We'll carry this out by formulating an
+first few digits of $$\pi$$. We'll carry this out by formulating an
 event probability over some continuous random variables whose
-probability is a fraction of $\pi$.
+probability is a fraction of $$\pi$$.
 
-We start with the basic fact of algebra that that $\pi$ is the area of
-a unit radius circle.^[The area of a circle of radius $r$ is $\pi
-\times r^2$, so when $r = 1$, the area is $\pi$.] We then assume there
-are two independent, uniform random variables $X$ and $Y$,
+We start with the basic fact of algebra that that $$\pi$$ is the area of
+a unit radius circle.^[The area of a circle of radius $$r$$ is $$\pi
+\times r^2$$, so when $$r = 1$$, the area is $$\pi$$.] We then assume there
+are two independent, uniform random variables $$X$$ and $$Y$$,
 
 $$
 X, Y \sim \mbox{uniform}(-1, 1).
 $$
 
-Simulations $x^{(m)}, y^{(m)}$ of these variables pick out a point on
+Simulations $$x^{(m)}, y^{(m)}$$ of these variables pick out a point on
 the plane within a square bounded by -1 and 1 in both dimensions. Here
 is a plot of the square in which the draws will fall. Also shown is a
 circle of unit radius inscribed within that square.  Draws may or may
@@ -243,18 +253,18 @@ bullseye_target_plot <-
 bullseye_target_plot
 ```
 
-A point $(x, y)$ will fall within the unit circle if^[A point falls on
-a circle of radius $r$ if $x^2 + y^2 = r^2$.]
+A point $$(x, y)$$ will fall within the unit circle if^[A point falls on
+a circle of radius $$r$$ if $$x^2 + y^2 = r^2$$.]
 
 $$
 x^2 + y^2 \leq 1.
 $$
 
-Let's see what this looks like with $M = 250$ draws.  The resulting
-plot is known as a *scatterplot*---it places values at their $(x, y)$
+Let's see what this looks like with $$M = 250$$ draws.  The resulting
+plot is known as a *scatterplot*---it places values at their $$(x, y)$$
 coordinates, resulting in them being "scattered."
 
-```{r out.width="80%", fig.cap='$M = 250$ simulated draws of $(x^{(m)}, y^{(m)})$ from a $\\mbox{uniform}(-1, 1)$ distribution.  Points within the circle are plotted using $+$ and those outside it with $\\circ$.'}
+```{r out.width="80%", fig.cap='$$M = 250$$ simulated draws of $$(x^{(m)}, y^{(m)})$$ from a $$\\mbox{uniform}(-1, 1)$$ distribution.  Points within the circle are plotted using $$+$$ and those outside it with $$\\circ$$.'}
 
 set.seed(1234)
 M <- 250
@@ -282,11 +292,11 @@ bullseye_plot <-
 bullseye_plot
 ```
 
-For random variables $X, Y \sim \mbox{uniform}(-1, 1)$, the event of
-their falling within the unit circle is $X^2 + Y^2 \leq 1$. Because
-$X$ and $Y$ are drawn uniformly from within the square, the
+For random variables $$X, Y \sim \mbox{uniform}(-1, 1)$$, the event of
+their falling within the unit circle is $$X^2 + Y^2 \leq 1$$. Because
+$$X$$ and $$Y$$ are drawn uniformly from within the square, the
 probability of their being within the circle is proportional to the
-circle's area. The circle's area is $\pi$, whereas the overall area of
+circle's area. The circle's area is $$\pi$$, whereas the overall area of
 the square is 4. So the probability of a random draw within the square
 being within the circle is
 
@@ -306,10 +316,10 @@ print 'Pr[in circle] = ' sum(inside) / M
 print 'estimated pi = ' 4 * sum(inside) / M
 ```
 
-We recover the simulation-based estimate of $\pi$ by multiplying the
-event probability of $X^2 + Y^2 \leq 1$ by four.
+We recover the simulation-based estimate of $$\pi$$ by multiplying the
+event probability of $$X^2 + Y^2 \leq 1$$ by four.
 
-Let's run this with $M = 1\,000\,000$ and see what we get,
+Let's run this with $$M = 1\,000\,000$$ and see what we get,
 
 ```{r}
 set.seed(1234)
@@ -321,16 +331,16 @@ printf('Pr[in circle] = %4.3f', Pr_target)
 printf('estimated pi = %4.3f', 4 * Pr_target)
 ```
 
-We actually knew the answer ahead of time here, $\pi \approx 3.14159$.
+We actually knew the answer ahead of time here, $$\pi \approx 3.14159$$.
 The simulation-based estimate is on the right track.^[But not going to
-win any $\pi$ digit-generating contests, either. Remember, we need one
+win any $$\pi$$ digit-generating contests, either. Remember, we need one
 hundred *times* as many draws for each subsequent digit of precision
 using i.i.d. simulation.] At least the first couple of digits are
 correct.
 
 If you want to do this all the old-fashioned way with calculus, note
-that the top half of the circle is given by the function $y = \sqrt{1
-- x^2}$.  Integrating this from $-1$ to $1$ and doubling it thus
+that the top half of the circle is given by the function $$y = \sqrt{1
+- x^2}$$.  Integrating this from $$-1$$ to $$1$$ and doubling it thus
 produces the required value,
 
 $$
@@ -351,8 +361,8 @@ higher dimensions.  This section attempts to explain why, and along
 the way, introduce the key notion for sampling of the typical set.
 
 Working by example, let's start with the base case of a single random
-variable $X_1$ with a uniform distribution over the line in the
-interval $(0, 1)$,
+variable $$X_1$$ with a uniform distribution over the line in the
+interval $$(0, 1)$$,
 
 $$
 X_1 \sim \mbox{uniform}(0, 1).
@@ -364,40 +374,40 @@ interval's length.^[This also explains why a point has probability
 zero---it has length zero.]
 
 Now extend this to two dimensions, letting the pair of random
-variables $(X_1, X_2)$ be uniformly distributed in the unit
-square, $(0, 1) \times (0, 1)$,
+variables $$(X_1, X_2)$$ be uniformly distributed in the unit
+square, $$(0, 1) \times (0, 1)$$,
 
 $$
 X_1, X_2 \sim \mbox{uniform}(0, 1).
 $$
 
-The area of a $1 x 1$ square is one, so that the probability of
+The area of a $$1 x 1$$ square is one, so that the probability of
 falling in a region within that square is proportional to the area of
 the region.^[Thus a point or a line has zero probability in a square.]
 
-Going one dimension further, let $(X_1, X_2, X_3)$ be random variables
-uniformly distributed in a unit cube, $(0, 1)^3 = (0, 1) \times (0, 1)
-\times (0, 1)$,
+Going one dimension further, let $$(X_1, X_2, X_3)$$ be random variables
+uniformly distributed in a unit cube, $$(0, 1)^3 = (0, 1) \times (0, 1)
+\times (0, 1)$$,
 
 $$
 X_1, X_2, X_3 \sim \mbox{uniform}(0, 1).
 $$
 
-The unit cube has unit volume, $1 \times 1 \times 1 = 1$. Thus
+The unit cube has unit volume, $$1 \times 1 \times 1 = 1$$. Thus
 the probability of falling in a region within that cube is
 proportional to the volume of the region.^[Thus a plane has zero
 probability in a cube. This generalizes in the obvious way, so this
 will be the last note.]
 
-Now we can just go all the way, and let $X = (X_1, \ldots, X_N)$ be an
-$N$-dimensional random variable generated uniformly in an
-$N$-dimensional unit hypercube, $(0, 1)^N$,
+Now we can just go all the way, and let $$X = (X_1, \ldots, X_N)$$ be an
+$$N$$-dimensional random variable generated uniformly in an
+$$N$$-dimensional unit hypercube, $$(0, 1)^N$$,
 
 $$
 X_n \sim \mbox{uniform}(0, 1) \ \ \mbox{for} \ \ n \in 1:N.
 $$
 
-As before, the hypervolume is $1 \times 1 \times \cdots \times 1 = 1$,
+As before, the hypervolume is $$1 \times 1 \times \cdots \times 1 = 1$$,
 so the probability of lying in a region of the hypercube is
 proportional to the hypervolume of the region.^[The fact that we go
 from line to square to cube and then run out of words should be a
@@ -429,15 +439,15 @@ for (log2_N in 1:max_log2_N)
 ```
 
 We take `x^2` to operate elementwise on the members of `x`, e.g.,
-$(1, 2, 3)^2 = (1, 4, 9)$.  The square root, sum, and other operations
+$$(1, 2, 3)^2 = (1, 4, 9)$$.  The square root, sum, and other operations
 should be self explanatory.  The Euclidean length function is being
 defined with *lambda abstraction*, where the `x.` indicates that the
 argument to the function is `x` and the result is the result of
 plugging the value for `x` into the body, `sqrt(sum(x^2))`.
 
-Let's plot what we get out to $1\,000$ dimensions or so.
+Let's plot what we get out to $$1\,000$$ dimensions or so.
 
-```{r fig.cap='Plot of the average distance (solid line) of a uniform draw from a hypercube to the center of the hypercube as a function of the number of dimensions.  The minimum and maximum distance (dotted lines) are shown based on $M = 10\\,000$ simulations.'}
+```{r fig.cap='Plot of the average distance (solid line) of a uniform draw from a hypercube to the center of the hypercube as a function of the number of dimensions.  The minimum and maximum distance (dotted lines) are shown based on $$M = 10\\,000$$ simulations.'}
 
 euclidean_length = function(x) sqrt(sum(x^2))
 
@@ -496,8 +506,10 @@ $$
 ||x|| = \sqrt{x_1^2 + x_2^2 + \cdots + x_N^2}.
 $$
 
-In this form, it is clear that as $N$ increases, so does $||x||$ as we
-simply keep adding squared terms $x_n^2$ with each additional
+In this form, it is clear that as $$N$$ increases, so does $$
+||x||
+$$ as we
+simply keep adding squared terms $$x_n^2$$ with each additional
 dimension.
 
 Although the draws accumulate in a thin shell of distance from the
@@ -514,7 +526,7 @@ for (m in 1:M)
 print 'min = ' min(d) ';  mean = ' mean(d) '; max = ' max(d)
 ```
 
-Let's run that for $M = 10\,000$ and $N = 100$ and see what we get.
+Let's run that for $$M = 10\,000$$ and $$N = 100$$ and see what we get.
 
 ```{r}
 N <- 100

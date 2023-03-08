@@ -1,30 +1,39 @@
+---
+title: "Continuous Distributions and Densities"
+teaching: 
+exercises:
+questions:
+objectives:
+
+keypoints:
+
 # Continuous Distributions and Densities
 
 ## Continuous cumulative distribution functions
 
-Suppose $\Theta \sim \mbox{uniform}(0, 360)$ is the result of spinning
+Suppose $$\Theta \sim \mbox{uniform}(0, 360)$$ is the result of spinning
 a fair spinner.  The cumulative distribution function is defined
 exactly as for discrete random variables,^[Note that we have moved
 from Roman to Greek letters, but have kept to our capitalization
-convention for random variables---$\Theta$ is the capitalized form of
-$\theta$.]
+convention for random variables---$$\Theta$$ is the capitalized form of
+$$\theta$$.]
 
 $$
 F_{\Theta}(\theta) = \mbox{Pr}[\Theta \leq \theta].
 $$
 
 That is, it's the probability the random variable is less than or
-equal to $\theta$.  In this case, because the spinner is assumed to be
+equal to $$\theta$$.  In this case, because the spinner is assumed to be
 fair, the cumulative distribution function is
 
 $$
 F_{\Theta}(\theta) = \frac{\theta}{360}.
 $$
 
-This is a linear function of $\theta$, i.e., $\frac{1}{360} \times
-\theta$, as is reflected in the following plot.
+This is a linear function of $$\theta$$, i.e., $$\frac{1}{360} \times
+\theta$$, as is reflected in the following plot.
 
-```{r echo=FALSE, fig.cap="Cumulative distribution function for the angle $\\theta$ (in degrees) resulting from a fair spin of a spinner.  The dotted line shows the value at 180 degrees, which is a probability of one half and the dashed line at 270 degrees, which is a probability of three quarters."}
+```{r echo=FALSE, fig.cap="Cumulative distribution function for the angle $$\\theta$$ (in degrees) resulting from a fair spin of a spinner.  The dotted line shows the value at 180 degrees, which is a probability of one half and the dashed line at 270 degrees, which is a probability of three quarters."}
 
 library(ggplot2)
 df_cdf_spinner <- data.frame(x = c(-90, 0, 360, 450), y = c(0, 0, 1, 1))
@@ -49,7 +58,7 @@ cdf_spinner_plot
 ```
 
 We can verify this result using simulation.  To estimate cumulative
-distribution functions, we take $M$ simulated values $\theta^{(m)}$ and
+distribution functions, we take $$M$$ simulated values $$\theta^{(m)}$$ and
 then sort them in ascending order.
 
 ```
@@ -59,13 +68,13 @@ theta_ascending <- sort(theta)
 prob <- (1:M) / M
 ```
 
-The expression `(1:M)` denotes the sequence $1, 2, \ldots, M$, so that
-`(1:M) / M` denotes $\frac{1}{M}, \frac{2}{M}, \ldots, \frac{M}{M}$.
-The trick is to put the sorted random variable the $x$-axis and the
-probability values on the $y$ axis. Here's a run with $M = 1\,000$
+The expression `(1:M)` denotes the sequence $$1, 2, \ldots, M$$, so that
+`(1:M) / M` denotes $$\frac{1}{M}, \frac{2}{M}, \ldots, \frac{M}{M}$$.
+The trick is to put the sorted random variable the $$x$$-axis and the
+probability values on the $$y$$ axis. Here's a run with $$M = 1\,000$$
 simulated values.
 
-```{r fig.cap="Plot of the cumulative distribution function of a random variable $\\Theta$ representing the result of a fair spin of a spinner from 0 to 360 degrees.  As expected, it is a simple linear function because the underlying variable $\\Theta$ has a uniform distribution."}
+```{r fig.cap="Plot of the cumulative distribution function of a random variable $$\\Theta$$ representing the result of a fair spin of a spinner from 0 to 360 degrees.  As expected, it is a simple linear function because the underlying variable $$\\Theta$$ has a uniform distribution."}
 
 M <- 1000
 theta <- runif(M, 0, 360)
@@ -84,15 +93,15 @@ unif_cdf_plot <-
 unif_cdf_plot
 ```
 
-Even with $M = 1\,000$, this is pretty much indistinguishable from the
+Even with $$M = 1\,000$$, this is pretty much indistinguishable from the
 one plotted analytically.
 
 As with discrete parameters, the cumulative distribution function may
 be used to calculate interval probabilities, e.g.,^[With continuous
-variables, the interval probabilities are open below ($180 < \Theta$)
-and closed above ($\Theta \leq 270$), due to the definition of the
+variables, the interval probabilities are open below ($$180 < \Theta$$)
+and closed above ($$\Theta \leq 270$$), due to the definition of the
 cumulative distribution function as a closed upper bound
-($F_{\Theta}(\theta) = \mbox{Pr}[\Theta \leq \theta]$).]
+($$F_{\Theta}(\theta) = \mbox{Pr}[\Theta \leq \theta]$$).]
 
 $$
 \begin{array}{rcl}
@@ -112,27 +121,27 @@ $$
 
 Now that we have seen how to generate uniform random numbers from 0 to
 360, it is time to consider generating standard uniform variates from
-0 to 1. Suppose $\Theta$ is a random variable with a standard uniform
-distribution, i.e., $\Theta \sim \mbox{uniform}(0, 1)$.  Because
-probabilities are scaled from zero to one, we can think of $\Theta$ as
+0 to 1. Suppose $$\Theta$$ is a random variable with a standard uniform
+distribution, i.e., $$\Theta \sim \mbox{uniform}(0, 1)$$.  Because
+probabilities are scaled from zero to one, we can think of $$\Theta$$ as
 denoting a random probability.
 
-Given a probability value $\theta \in (0, 1)$, we can define its *log odds* by
+Given a probability value $$\theta \in (0, 1)$$, we can define its *log odds* by
 
 $$
 \mbox{logit}(\theta) = \log \frac{\theta}{1 - \theta}.
 $$
 
-This is just the natural logarithm of the odds, $\frac{\theta}{1 -
-\theta}$.  Now let
+This is just the natural logarithm of the odds, $$\frac{\theta}{1 -
+\theta}$$.  Now let
 
 $$
 \Phi = \mbox{logit}(\Theta)
 $$
 
-be the random variable representing the log odds. We say that $\Phi$
-is a transform of $\Theta$, because its value is determined by the
-value of $\Theta$.
+be the random variable representing the log odds. We say that $$\Phi$$
+is a transform of $$\Theta$$, because its value is determined by the
+value of $$\Theta$$.
 
 Simulating transformed variables is straightforward.
 
@@ -156,9 +165,9 @@ for (m in 1:10)
 printf(' ... \n')
 ```
 
-To understand the distribution of values of $\Phi$, let's look at histograms.  First, we have the uniform draws of $\Theta$,
+To understand the distribution of values of $$\Phi$$, let's look at histograms.  First, we have the uniform draws of $$\Theta$$,
 
-```{r fig.cap='Histogram of $10\\,000$ simulated draws of $\\Theta \\sim \\mbox{uniform}(0, 1)$. '}
+```{r fig.cap='Histogram of $$10\\,000$$ simulated draws of $$\\Theta \\sim \\mbox{uniform}(0, 1)$$. '}
 
 df_prob_unif <- data.frame(theta = theta)
 unif_prob_plot <-
@@ -172,9 +181,9 @@ unif_prob_plot <-
 unif_prob_plot
 ```
 
-and then the transform to log odds $\Phi = \mathrm{logit}(\Theta)$,
+and then the transform to log odds $$\Phi = \mathrm{logit}(\Theta)$$,
 
-```{r fig.cap='Histogram of $10\\,000$ simulated draws of $\\Theta \\sim \\mbox{uniform}(0, 1)$ transformed to the log odds scale by $\\Phi = \\mbox{logit}(\\Theta).$'}
+```{r fig.cap='Histogram of $$10\\,000$$ simulated draws of $$\\Theta \\sim \\mbox{uniform}(0, 1)$$ transformed to the log odds scale by $$\\Phi = \\mbox{logit}(\\Theta).$$'}
 
 df_log_odds <- data.frame(alpha = alpha)
 log_odds_plot <-
@@ -188,17 +197,17 @@ log_odds_plot <-
 log_odds_plot
 ```
 
-Even though the probability variable $\Theta \sim \mbox{uniform}(0,
-1)$ is uniform by construction, the log odds variable $\Phi =
-\mbox{logit}(\Theta)$ is not distributed uniformly.
+Even though the probability variable $$\Theta \sim \mbox{uniform}(0,
+1)$$ is uniform by construction, the log odds variable $$\Phi =
+\mbox{logit}(\Theta)$$ is not distributed uniformly.
 
 A further feature of the log odds plot is that the distribution of
 values is symmetric around zero. Zero on the log odds scale
 corresponds to 0.5 on the probability scale,^[Recall that the inverse
 log odds function is defined by $$\mbox{logit}^{-1}(u) = \frac{1}{1 +
 \exp(-u)}.$$ This function is called the *logistic sigmoid* in
-engineering circles. Inverses satisfy for $u \in \mathbb{R}$,
-$$\mbox{logit}(\mbox{logit}^{-1}(u)) = u$$ and $v \in (0, 1)$,
+engineering circles. Inverses satisfy for $$u \in \mathbb{R}$$,
+$$\mbox{logit}(\mbox{logit}^{-1}(u)) = u$$ and $$v \in (0, 1)$$,
 $$\mbox{logit}^{-1}(\mbox{logit}(v)) = v.$$] i.e.,
 
 $$
@@ -215,8 +224,8 @@ Unboundedness and symmetry around zero make log odds quite convenient
 statistically and will resurface in categorical regressions.
 
 The third relevant feature of the log odds plot is that almost all of
-the values are within $\pm 6$ of the origin. This is not surprising
-given that we took $10\,000$ draws and
+the values are within $$\pm 6$$ of the origin. This is not surprising
+given that we took $$10\,000$$ draws and
 
 $$
 \mbox{logit}^{-1}(-6) = 0.0025
@@ -241,9 +250,9 @@ theta_ascending <- sort(theta)
 prob <- (1:M) / M
 ```
 
-We again plot with $M = 1\,000$ simulated values.
+We again plot with $$M = 1\,000$$ simulated values.
 
-```{r fig.cap="Plot of the cumulative distribution function of a random variable $\\Phi = \\mbox{logit}(\\Theta)$ representing the log odds transform of a uniformly distributed random variable $\\Theta \\sim \\mbox{uniform}(0, 1)$.  The curve it picks out is S-shaped.  The asymptotes at 0 and 1 are indicated with dashed lines; the symmetries around 0 on the $x$-axis and 0.5 on the $y$-axis are picked out with dotted lines."}
+```{r fig.cap="Plot of the cumulative distribution function of a random variable $$\\Phi = \\mbox{logit}(\\Theta)$$ representing the log odds transform of a uniformly distributed random variable $$\\Theta \\sim \\mbox{uniform}(0, 1)$$.  The curve it picks out is S-shaped.  The asymptotes at 0 and 1 are indicated with dashed lines; the symmetries around 0 on the $$x$$-axis and 0.5 on the $$y$$-axis are picked out with dotted lines."}
 
 logit <- function(u) log(u / (1 - u))
 
@@ -274,8 +283,8 @@ logistic_cdf_plot
 ```
 
 The result is an S-shaped function whose values lie between 0 and 1,
-with asymptotes at one as $\theta$ approaches $\infty$ and at zero as
-$\theta$ approaches $-\infty$.  The argument of 0 has a value of 0.5.
+with asymptotes at one as $$\theta$$ approaches $$\infty$$ and at zero as
+$$\theta$$ approaches $$-\infty$$.  The argument of 0 has a value of 0.5.
 
 The cumulative distribution function of this distribution is well
 known and has a closed analytic form based on the inverse of the log
@@ -292,16 +301,16 @@ $$
 The inverse log odds function is itself known as the
 *logistic sigmoid* function.^[A name presumably derived from its shape
 and the propensity of mathematicians, like doctors, to prefer Greek
-terminology---the Greek letter "$\sigma$" (sigma) corresponds to the
+terminology---the Greek letter "$$\sigma$$" (sigma) corresponds to the
 Roman letter "S".]
 
 ## Expectation and variance of continuous random variables
 
 Just as with discrete random variables, the expectation of a
-continuous random variable $Y$ is defined as a weighted average of its
+continuous random variable $$Y$$ is defined as a weighted average of its
 values.  Only this time, the weights are defined by the probability
 density function rather than by the probability mass function.
-Because $Y$ takes on continuous values, we'll need calculus to compute
+Because $$Y$$ takes on continuous values, we'll need calculus to compute
 the weighted average.
 
 $$
@@ -309,8 +318,8 @@ $$
 $$
 
 Integrals of this general form should be read as a weighted average.
-It averages the value of $y$ with weights equal to the density
-$p_Y(y)$ of $y$.^[Sometimes physicists will rearrange integral
+It averages the value of $$y$$ with weights equal to the density
+$$p_Y(y)$$ of $$y$$.^[Sometimes physicists will rearrange integral
 notation to reflect this and write $$\mathbb{E}[f(y)] = \int
 \mathrm{d}y \ p_Y(y) \times f(y)$$ or even $$\mathbb{E}[f(y)] = \int
 p_Y(\mathrm{d}y) \times f(y).$$]
@@ -327,8 +336,8 @@ $$
 
 Let's check this with some simulation by estimating the mean and
 variance of our running example. Suppose we have a a random variable
-$\Phi = \mbox{logit}(\Theta)$, where $\Theta \sim \mbox{uniform}(0,
-1)$. We can estimate the expectation and variance of $\Phi$ by
+$$\Phi = \mbox{logit}(\Theta)$$, where $$\Theta \sim \mbox{uniform}(0,
+1)$$. We can estimate the expectation and variance of $$\Phi$$ by
 simulating and calculating means and variances of the simulated values,
 
 ```
@@ -343,7 +352,7 @@ print 'Estimated E[Phi] = ' E_Phi
       '; sd[Phi] = ' sqrt(var_Phi)
 ```
 
-Let's run that for $M = 1\,000\,000$ and see what we get.
+Let's run that for $$M = 1\,000\,000$$ and see what we get.
 
 ```{r}
 M <- 1e6
@@ -354,8 +363,8 @@ printf('Estimated  E[Phi] = %3.2f;  var[Phi] = %3.2f;  sd[Phi] = %3.2f',
        E_Phi, var_Phi, sqrt(var_Phi))
 ```
 
-The true value of the expectation $\mathbb{E}[Y]$ is zero, and the
-true value of the variance is $\frac{\pi^2}{3} \approx 3.29$.^[The
+The true value of the expectation $$\mathbb{E}[Y]$$ is zero, and the
+true value of the variance is $$\frac{\pi^2}{3} \approx 3.29$$.^[The
 true mean and variance for the logistic distribution can be calculated
 analytically. See the final section on this chapter for the analytic
 derivativation of the probability density function.  The density must
@@ -368,10 +377,10 @@ There is no equivalent of a probability mass function for continuous
 random variables. Instead, there is a probability density function,
 which in simulation terms may usefully be thought of as a limit of a
 histogram as the number of draws increases and the width of bins
-shrinks.  Letting the number of simulations grow from $10$ to
-$1\,000\,000$, we see the limiting behavior of the histograms.
+shrinks.  Letting the number of simulations grow from $$10$$ to
+$$1\,000\,000$$, we see the limiting behavior of the histograms.
 
-```{r out.width="100%", fig.cap='Histograms of $M$ simulated draws of $\\Theta \\sim \\mbox{uniform}(0, 1)$ transformed to the log odds scale by $\\Phi = \\mbox{logit}(\\Theta).$ The limiting behavior is shown in the bell-shaped curve in the lower right based on $1\\,000\\,000$ draws.'}
+```{r out.width="100%", fig.cap='Histograms of $$M$$ simulated draws of $$\\Theta \\sim \\mbox{uniform}(0, 1)$$ transformed to the log odds scale by $$\\Phi = \\mbox{logit}(\\Theta).$$ The limiting behavior is shown in the bell-shaped curve in the lower right based on $$1\\,000\\,000$$ draws.'}
 set.seed(1234)
 df_log_odds_growth <- data.frame()
 for (log10M in 1:6) {
@@ -413,24 +422,24 @@ sum of their areas. This notion extends to intervals, where the
 estimated probability of the random variable falling between -2 and 2
 is just the proportion of area between those two values in the
 histogram of simulations. Similarly, we can take a simulation-based
-estimate of $\mbox{Pr}[\Theta \leq \theta]$ for any $\theta$ as the
+estimate of $$\mbox{Pr}[\Theta \leq \theta]$$ for any $$\theta$$ as the
 proportion of simulated values that are less than or equal to
-$\theta$. This is just the area to the left of the $\theta$.
+$$\theta$$. This is just the area to the left of the $$\theta$$.
 
-As the number of draws $M$ increases, the estimated bin probabilities
+As the number of draws $$M$$ increases, the estimated bin probabilities
 become closer and closer to the true values. Now we are going to look
 at the limiting continuous behavior. Put a point in the middle of the
 top of each histogram bar and connect them with lines. With a finite
 number of bins, that makes a jagged pointwise linear function. As the
 number of bins increases and the number of draws per bin increases,
-the function gets smoother and smoother. In the limit as $M
-\rightarrow \infty$, it approaches a smooth function. That smooth
+the function gets smoother and smoother. In the limit as $$M
+\rightarrow \infty$$, it approaches a smooth function. That smooth
 function is called the *probability density function* of the random
-variable.  Let's see what that limiting function looks like with $M =
-1\,000\,000$ draws.
+variable.  Let's see what that limiting function looks like with $$M =
+1\,000\,000$$ draws.
 
 
-```{r out.width="100%", fig.cap='Histogram of $M = 1\\,000\\,000$ simulations of $\\Theta \\sim \\mbox{uniform}(0,1)$ transformed to $\\Phi = \\mbox{logit}(\\Theta)$. The black line connects the tops of the histogram bins.  In the limit, as the number of draws and bins approach infinity, the connecting line approaches the probability density function for the variable being simulated.'}
+```{r out.width="100%", fig.cap='Histogram of $$M = 1\\,000\\,000$$ simulations of $$\\Theta \\sim \\mbox{uniform}(0,1)$$ transformed to $$\\Phi = \\mbox{logit}(\\Theta)$$. The black line connects the tops of the histogram bins.  In the limit, as the number of draws and bins approach infinity, the connecting line approaches the probability density function for the variable being simulated.'}
 
 set.seed(1234)
 M <- 1e6
@@ -465,10 +474,10 @@ continue to increase to get ever better approximations.  When we let
 the number of bins increase toward infinity, we have a familiar limit
 from integral calculus.
 
-If $p_Y(y)$ is the continuous density function we get as the limit of
-the histogram, then the probability that $Y$ falls between $a$ and $b$
-is given by the proportion of area between $a$ and $b$ in the function
-$p_Y(y)$. This is the key insight for understanding density functions
+If $$p_Y(y)$$ is the continuous density function we get as the limit of
+the histogram, then the probability that $$Y$$ falls between $$a$$ and $$b$$
+is given by the proportion of area between $$a$$ and $$b$$ in the function
+$$p_Y(y)$$. This is the key insight for understanding density functions
 and continuous random variables.  For bounded intervals, we have
 
 $$
@@ -478,8 +487,8 @@ $$
 $$
 
 To make our lives easier and avoid writing the proportional-to symbol
-($\propto$) everywhere, we will make the conventional assumption that
-our density functions like $p_Y$ are *normalized*.  This means that
+($$\propto$$) everywhere, we will make the conventional assumption that
+our density functions like $$p_Y$$ are *normalized*.  This means that
 the total area under their curve is one,
 
 $$
@@ -488,7 +497,7 @@ $$
 
 Because they are based on the limits of histograms, which are counts,
 we will also meet the standard requirement placed on density functions
-that they be positive, so that for all $y \in \mathbb{R}$,
+that they be positive, so that for all $$y \in \mathbb{R}$$,
 
 $$
 p_Y(y) \geq 0.
@@ -512,7 +521,7 @@ $$
 $$
 
 This reveals the relation between the cumulative distribution function
-$F_Y) = \mbox{Pr}[Y \leq b]$ and the probability density function $p_Y$
+$$F_Y) = \mbox{Pr}[Y \leq b]$$ and the probability density function $$p_Y$$
 
 $$
 F_Y(b) \ = \ \int_{-\infty}^b \ p_Y(y) \, \mathrm{d}y.
@@ -533,8 +542,8 @@ integrated to get back to units of probability.
 
 ## The uniform density function
 
-We've already seen the histograms for variables $\Theta \sim
-\mbox{uniform}(0, 1)$ distributed uniformly from zero to one. With an
+We've already seen the histograms for variables $$\Theta \sim
+\mbox{uniform}(0, 1)$$ distributed uniformly from zero to one. With an
 increasing numbers of draws, the histograms flatten out. With more
 draws the histograms will level out even more until the density
 becomes a straight line. This means that the probability density
@@ -544,9 +553,9 @@ worked out from first principles that the cumulative distribution
 function is linear if uniformity means equal probability of landing in
 any interval of the same size. The derivative of a linear function is
 constant, so the density for a uniform distribution must be constant.]
- That is, if $\Theta \sim \mbox{uniform}(a, b)$, then
- $p_{\Theta}(\theta) = c$ for some constant $c$. Let's see what that
-looks like so the solution for $c$ becomes evident.
+ That is, if $$\Theta \sim \mbox{uniform}(a, b)$$, then
+ $$p_{\Theta}(\theta) = c$$ for some constant $$c$$. Let's see what that
+looks like so the solution for $$c$$ becomes evident.
 
 ```{r}
 uniform_pdf_df <- data.frame(y = c(0, 1), p_y = c(1, 1))
@@ -570,16 +579,16 @@ uniform_pdf_plot <-
 uniform_pdf_plot
 ```
 
-The plot shows the area from $a$ to $b$ under $c$ to be $(b - a)
-\times c$. Given that we require the area to be one, that is, $(b - a)
-\times c = 1$, we can work out $c$ by dividing both sides by $b - a$,
+The plot shows the area from $$a$$ to $$b$$ under $$c$$ to be $$(b - a)
+\times c$$. Given that we require the area to be one, that is, $$(b - a)
+\times c = 1$$, we can work out $$c$$ by dividing both sides by $$b - a$$,
 
 $$
 c  = \frac{\displaystyle{1}}{\displaystyle b - a}.
 $$
 
-Putting this into density notation, if $\Theta \sim \mbox{uniform}(a,
-b)$, then
+Putting this into density notation, if $$\Theta \sim \mbox{uniform}(a,
+b)$$, then
 
 $$
 p_{\Theta}(\theta) = \mbox{uniform}(\theta \mid a, b),
@@ -591,9 +600,9 @@ $$
 \mbox{uniform}(\theta \mid a, b) = \frac{1}{b - a}.
 $$
 
-That is, the density does not depend on $y$---it is constant and the
-same for every possible value of $\theta$.^[For convenience, we can
-assume the impossible values of $\theta$ have density zero.]
+That is, the density does not depend on $$y$$---it is constant and the
+same for every possible value of $$\theta$$.^[For convenience, we can
+assume the impossible values of $$\theta$$ have density zero.]
 
 
 ## Back to simulation
@@ -618,7 +627,7 @@ for (m in 1:M)
 print 'Pr[-2 < Phi < 2] = ' success / M
 ```
 
-Let's run that for $M = 100\,000$ simulation draws and see what we get,
+Let's run that for $$M = 100\,000$$ simulation draws and see what we get,
 
 ```{r}
 set.seed(1234)
@@ -631,34 +640,34 @@ printf('Pr[-2 < Phi < 2] = %3.2f\n', success / M)
 ```
 
 What is perhaps more remarkable than not requiring calculus is that we
-don't even require the formula for the density function $p_{\Phi}$---we
+don't even require the formula for the density function $$p_{\Phi}$$---we
 only need to be able to simulate random instantiations of the random
 variable in question.
 
 ## Laws of probability for densities
 
-Whether a random variable $Y$ is continuous or discrete, its
-cumulative distribution function $F_Y$ is defined by
+Whether a random variable $$Y$$ is continuous or discrete, its
+cumulative distribution function $$F_Y$$ is defined by
 
 $$
 F_Y(y) = \mbox{Pr}[Y \leq y].
 $$
 
-Using simulation, if $Y$ is a continuous random variable, its
-probability density function $p_Y$ is the limit of the histogram of
-simulation draws.  Using calculus, the density $p_Y$ of a continuous
-random variable $Y$ is defined as the derivative of the cumulative
-distribution function $F_Y$,^[Differential notation avoids the fiddly
+Using simulation, if $$Y$$ is a continuous random variable, its
+probability density function $$p_Y$$ is the limit of the histogram of
+simulation draws.  Using calculus, the density $$p_Y$$ of a continuous
+random variable $$Y$$ is defined as the derivative of the cumulative
+distribution function $$F_Y$$,^[Differential notation avoids the fiddly
 notation arising from bound variables, e.g., $$p_Y(y) \ = \
 \frac{\mathrm{d}}{\mathrm{d}y} F_Y(y).$$ With multivariate functions,
-the derivative operator is replaced with the gradient operator $\nabla.$]
+the derivative operator is replaced with the gradient operator $$\nabla.$$]
 
 $$
 p_Y = \mathrm{d} F_Y.
 $$
 
 Joint cumulative distribution functions for a pair of continuous random
-variables $X, Y$ are defined as expected,
+variables $$X, Y$$ are defined as expected,
 
 $$
 F_{X, Y}(x, y) = \mbox{Pr}[X \leq x \ \mbox{and} \ Y \leq y],
@@ -668,7 +677,7 @@ and may be easily extended to more variables.  With simulation,
 cumulative distribution functions may be recreated by sorting the
 simulated values and normalizing.
 
-Joint densities for a pair $X, Y$ of continuous random variables are
+Joint densities for a pair $$X, Y$$ of continuous random variables are
 defined by differentiating the joint cumulative distribution
 twice,^[With bound variables, $$p_{X, Y}(x, y) =
 \frac{\partial^2}{\partial x \partial y} F_{X, Y}(x, y).$$]
@@ -677,22 +686,22 @@ $$
 p_{X, Y} = \mathrm{\partial^2} F_{X, Y}.
 $$
 
-Marginal densities $p_X$ may now be defined in terms of the joint
-density $p_{X, Y}$ by integration,^[If we had a convenient integral
+Marginal densities $$p_X$$ may now be defined in terms of the joint
+density $$p_{X, Y}$$ by integration,^[If we had a convenient integral
 operator, we could avoid the bound variable fiddling.  As written, in
 the traditional style, it is muddied that the integral just averages
-over $y$ treating $x$ as a variable bound by the function definition
+over $$y$$ treating $$x$$ as a variable bound by the function definition
 notation.]
 
 $$
 p_X(x) = \int_{-\infty}^{\infty} p_{X, Y}(x, y) \, \mathrm{d}y.
 $$
 
-With simulation, if we can simulate $x^{(m)}, y^{(m)}$ jointly, then
-we can simulate $x^{(m)}$ by simply dropping $y^{(m)}$.
+With simulation, if we can simulate $$x^{(m)}, y^{(m)}$$ jointly, then
+we can simulate $$x^{(m)}$$ by simply dropping $$y^{(m)}$$.
 
-If we can simulate from $Y$, we can compute $p_X(x)$ for a given value
-of $x$ by averaging,
+If we can simulate from $$Y$$, we can compute $$p_X(x)$$ for a given value
+of $$x$$ by averaging,
 
 $$
 p_X(x)
@@ -700,8 +709,8 @@ p_X(x)
 \frac{1}{M} \sum_{m \in 1:M} p_{X,Y}(x, y^{(m)}).
 $$
 
-Conditional densities $p_{X \mid Y}$ are defined by dividing the joint
-density $p_{X, Y}$ by the marginal density $p_{X}$,
+Conditional densities $$p_{X \mid Y}$$ are defined by dividing the joint
+density $$p_{X, Y}$$ by the marginal density $$p_{X}$$,
 
 $$
 p_{X \mid Y}(x \mid y)
@@ -710,8 +719,8 @@ p_{X \mid Y}(x \mid y)
      {p_Y(y)}.
 $$
 
-Conditional densities $p_{X \mid Y}(x \mid y)$ may be handled by
-simulation for specific values of $y$.
+Conditional densities $$p_{X \mid Y}(x \mid y)$$ may be handled by
+simulation for specific values of $$y$$.
 
 Equivalently, we can see this as a definition of the joint density in
 terms of the conditional and marginal,
@@ -723,8 +732,8 @@ p_{X \mid Y}(x \mid y) \times p_Y(y).
 $$
 
 With simulation, this is often the strategy to generate simulations
-from the joint distribution---first simulate from $Y$, then simulate
-$X$ given $Y$.
+from the joint distribution---first simulate from $$Y$$, then simulate
+$$X$$ given $$Y$$.
 
 A convenient form of marginalization uses this definition,
 
@@ -735,8 +744,8 @@ p_{X \mid Y}(x, y) \times p_Y(y)
 \, \mathrm{d} y.
 $$
 
-Continuous random variables $X$ and $Y$ are independent if their
-densities factor, so that for all $x, y$,
+Continuous random variables $$X$$ and $$Y$$ are independent if their
+densities factor, so that for all $$x, y$$,
 
 $$
 p_{X, Y}(x, y)
@@ -753,8 +762,8 @@ p_X(x).
 $$
 
 Expectations for continuous random variables are defined using
-integration to calculate the average of $y$ weighted by the density
-$p_Y(y)$,
+integration to calculate the average of $$y$$ weighted by the density
+$$p_Y(y)$$,
 
 $$
 \mathbb{E}[Y]
@@ -766,7 +775,7 @@ In moving from discrete to continuous variables, we have merely
 switched the definition from summation to integration.  Luckily,
 calculation by simulation need not change---we will still be
 calculating expectations by averaging over simulated values.  If we
-can simulate $y^{(m)}$ according to $p_Y(y)$ for $m \in 1:M$, our
+can simulate $$y^{(m)}$$ according to $$p_Y(y)$$ for $$m \in 1:M$$, our
 simulation-based estimate is
 
 $$
@@ -776,7 +785,7 @@ $$
 f \! \left( y^{(m)} \right).
 $$
 
-This estimate becomes exact as $M \rightarrow \infty$.
+This estimate becomes exact as $$M \rightarrow \infty$$.
 
 Variances are defined in terms of expectation, just as before,
 
@@ -795,26 +804,26 @@ $$
 
 Variances can be estimated through simulation like any other
 expectation.^[The sample variance computed by standard software
-divides by $M - 1$ to correct for the bias introduced by using the
+divides by $$M - 1$$ to correct for the bias introduced by using the
 sample mean to estimate variance.  The maximum likelihood estimate
-resulting from dividing by $M$ is biased to underestimate variance
+resulting from dividing by $$M$$ is biased to underestimate variance
 with finite samples; asymptotically, it provides the correct
-result, because the $\frac{M}{M-1}$ correction factor approaches one
-as $M$ increases.]
+result, because the $$\frac{M}{M-1}$$ correction factor approaches one
+as $$M$$ increases.]
 
 
 
 ## Jacobians and changes of variables
 
-When we moved from a random variable $\Theta \sim \mbox{uniform}(0,
-1)$ to a variable $\Phi = \mbox{logit}(\Theta)$, we made a
+When we moved from a random variable $$\Theta \sim \mbox{uniform}(0,
+1)$$ to a variable $$\Phi = \mbox{logit}(\Theta)$$, we made a
 class *change of variables*. That means we can use calculus to compute
 the probability density function.  But let's do it in full generality.
 
-We'll start by assuming we have a random variable $X$ with a known
-density function $p_X(x)$. Assume further we have a smooth and
-invertible function $f$ and define a new random variable $Y = f(X)$.
-The density of $Y$ is then given by the rather daunting formula
+We'll start by assuming we have a random variable $$X$$ with a known
+density function $$p_X(x)$$. Assume further we have a smooth and
+invertible function $$f$$ and define a new random variable $$Y = f(X)$$.
+The density of $$Y$$ is then given by the rather daunting formula
 
 $$
 p_Y(y)
@@ -832,25 +841,25 @@ $$
 
 
 We're going to work through this in pieces using our running example.
-To keep the puzzle pieces straight, let $X = \Theta \sim
-\mbox{uniform}(0, 1)$ be our uniform probability variable and $Y =
-\Phi = \mbox{logit}(\Theta)$ be the transformed variable on the log
-odds scale.  Our goal is to calculate the density of $\Phi$ given that
-we know the density of $\Theta$ and the transform from
-$\Theta$ to $\Phi$.  We begin by noting that
+To keep the puzzle pieces straight, let $$X = \Theta \sim
+\mbox{uniform}(0, 1)$$ be our uniform probability variable and $$Y =
+\Phi = \mbox{logit}(\Theta)$$ be the transformed variable on the log
+odds scale.  Our goal is to calculate the density of $$\Phi$$ given that
+we know the density of $$\Theta$$ and the transform from
+$$\Theta$$ to $$\Phi$$.  We begin by noting that
 
 $$
 \mbox{logit}^{-1}(y) = \frac{1}{1 + \exp(-y)}.
 $$
 
-So to evaluate $p_{\Phi}(\phi)$, we first need to evaluate
-$p_{\Theta}(\mbox{logit}^{-1}(\phi))$. We know this term will evaluate
-to 1, because $p_{\Theta}(\theta) = 1$ for every $\theta$.  So clearly
+So to evaluate $$p_{\Phi}(\phi)$$, we first need to evaluate
+$$p_{\Theta}(\mbox{logit}^{-1}(\phi))$$. We know this term will evaluate
+to 1, because $$p_{\Theta}(\theta) = 1$$ for every $$\theta$$.  So clearly
 just inverting and plugging in isn't enough.
 
-We also need to account for the change in variables from $\Theta$ to
-$\Phi$.  This is where the Jacobian term comes into the
-equation---that's everything past the $\times$ sign.  The Jacobian is
+We also need to account for the change in variables from $$\Theta$$ to
+$$\Phi$$.  This is where the Jacobian term comes into the
+equation---that's everything past the $$\times$$ sign.  The Jacobian is
 the absolute value of the derivative of the inverse transform
 evaluated at the value in question.  For our running example, we can
 work out through the chain rule that
@@ -863,7 +872,7 @@ $$
 \times \left(1 - \mbox{logit}^{-1}(u)\right).
 $$
 
-So if we plug in $u = \phi$ here, and put all the pieces back
+So if we plug in $$u = \phi$$ here, and put all the pieces back
 together, we get
 
 $$
@@ -884,9 +893,9 @@ $$
 \left( 1 - \mbox{logit}^{-1}(\phi) \right).
 $$
 
-Thus after all the dust has settled, we know that if $\Theta \sim
-\mbox{uniform}(0, 1)$ and $\Phi = \mbox{logit}(\Theta)$, then $\Phi
-\sim \mbox{logistic}(0, 1)$.^[The meaning of the parameters 0 and
+Thus after all the dust has settled, we know that if $$\Theta \sim
+\mbox{uniform}(0, 1)$$ and $$\Phi = \mbox{logit}(\Theta)$$, then $$\Phi
+\sim \mbox{logistic}(0, 1)$$.^[The meaning of the parameters 0 and
 1 will be explained in the next section.]
 
 ## Exponential distributions
@@ -909,19 +918,19 @@ In this section, we consider a negative log transform,
 $$
 Y = -\log U,
 $$
-We know that if $U \in (0, 1)$, then $\log U \in (-\infty, 0)$, and hence
+We know that if $$U \in (0, 1)$$, then $$\log U \in (-\infty, 0)$$, and hence
 $$
 Y = -\log U \in (0, \infty).
 $$
 
-Let's plot a histogram of simulated values of $Y$ to see what its
+Let's plot a histogram of simulated values of $$Y$$ to see what its
 density looks like.  The simulation is trivial.
 ```
 u = uniform_rng(0, 1)
 y = -log(u)
 ```
 
-We'll generate $M = 10^6$ draws and calculate some summary statistics.
+We'll generate $$M = 10^6$$ draws and calculate some summary statistics.
 
 ```{r}
 printf("mean(y) = %3.2f\n", mean(y))
@@ -934,7 +943,7 @@ printf("min = %3.2f;  max = %3.2f", min(y), max(y))
 It's clear that the variable has a mean and standard deviation of one,
 but is highly right skewed.
 
-```{r fig.cap="Histogram of $M = 10^6$ draws from $U \\sim \\textrm{uniform}(0, 1)$ transformed to $Y = -\\log U.$  The mean and standard deviation are 1, but the distribution is highly right skewed."}
+```{r fig.cap="Histogram of $$M = 10^6$$ draws from $$U \\sim \\textrm{uniform}(0, 1)$$ transformed to $$Y = -\\log U.$$  The mean and standard deviation are 1, but the distribution is highly right skewed."}
 
 y = -log(runif(1e6))
 exp_df <- data.frame(y = y)
@@ -951,7 +960,7 @@ exp_hist_plot
 ```
 
 While the histogram plot lets us visualize the density, we can also
-derive the density $p_Y$ from the uniform density $p_U$ given the
+derive the density $$p_Y$$ from the uniform density $$p_U$$ given the
 transform
 $$
 Y \ = \ f(U) \ = \ -\log U.
@@ -977,7 +986,7 @@ $$
  \cdot
 \left( \frac{\textrm{d}}{\textrm{d}{x}} b(x) \right),
 $$
-with $a(u) = \exp(u)$ and $b(x) = -x.$
+with $$a(u) = \exp(u)$$ and $$b(x) = -x.$$
 ]
 $$
 \begin{array}{rcl}
@@ -987,8 +996,8 @@ $$
 & = & -\exp(-y).
 \end{array}
 $$
-We can now derive the density of $Y = f(U) = -\log U$, where $U \sim
- \textrm{uniform}(0, 1),$
+We can now derive the density of $$Y = f(U) = -\log U$$, where $$U \sim
+ \textrm{uniform}(0, 1),$$
 $$
 \begin{array}{rcl}
 p_Y(y)
@@ -1024,7 +1033,7 @@ $$
 & = & -\exp(-b) + \exp(-a).
 \end{array}
 $$
-Plugging in $a = 0$ and $b = \infty$ (the latter is really taking a
+Plugging in $$a = 0$$ and $$b = \infty$$ (the latter is really taking a
 limit), gives us $$-\exp(-\infty) + \exp(-0) = 0 + 1 = 1.$$]
 
 This distribution is popular enough to get its own name, the
@@ -1033,19 +1042,19 @@ conventionally defined by
 $$
 \textrm{exponential}(y \mid 1) = \exp(-y).
 $$
-As for other distributions, we will write $Y \sim
-\textrm{exponential}(1)$ if $p_Y(y) = \textrm{exponential}(y) =
-\exp(-y).$
+As for other distributions, we will write $$Y \sim
+\textrm{exponential}(1)$$ if $$p_Y(y) = \textrm{exponential}(y) =
+\exp(-y).$$
 
 We will generalize the standard exponential by allowing it to be
 scaled.  Unlike the normal distribution, which scales a standard
 normal by multiplying it by a scale parameter, it is conventional to
 divide a standard exponential variate by a rate parameter to get a
-general exponential variate.  Suppose $V \sim \textrm{exponential}(1)$
-and we define a new variable $Y = V / \lambda$ for some rate $\lambda
-> 0.$^[A rate parameter divides a variable in contrast to a rate
+general exponential variate.  Suppose $$V \sim \textrm{exponential}(1)$$
+and we define a new variable $$Y = V / \lambda$$ for some rate $$\lambda
+> 0.$$^[A rate parameter divides a variable in contrast to a rate
 parameter, which multiplies a parameter.]  This gives us a general
-exponential variate, $Y \sim \textrm{exponential}(\lambda).$
+exponential variate, $$Y \sim \textrm{exponential}(\lambda).$$
 
 To define the general exponential density, we just apply the Jacobian
 formula again, keeping in mind that our transform is
@@ -1086,9 +1095,9 @@ $$
 $$
 
 By construction, we know that if the standard distribution has a mean
-of 1, then the transformed version has a mean of $1 / \lambda.$
-Similarly, the transformed version also has a standard deviation of $1
-/ \lambda$.^[The inverse cumulative distribution function for the
-standard exponential is just the function $-\log u$ used to construct
+of 1, then the transformed version has a mean of $$1 / \lambda.$$
+Similarly, the transformed version also has a standard deviation of $$1
+/ \lambda$$.^[The inverse cumulative distribution function for the
+standard exponential is just the function $$-\log u$$ used to construct
 the variable.  It is thus simple symbolically to derive the cumulative
 distribution function and the generalized version with a non-unit rate.]

@@ -1,3 +1,12 @@
+---
+title: "Cross Entropy and Divergence"
+teaching: 
+exercises:
+questions:
+objectives:
+
+keypoints:
+
 # Cross Entropy and Divergence
 
 Entropy is a property of random variables that quantifies the amount
@@ -15,13 +24,13 @@ motivating the definitions from entropy and random variables.
 
 ## Cross entropy
 
-If $Y$ is a random variable, its entropy is defined as the expected value of its negative log density,
+If $$Y$$ is a random variable, its entropy is defined as the expected value of its negative log density,
 $$
 \textrm{H}[Y]
 \ = \ \mathbb{E}[- \log p_Y(Y)].
 $$
 
-But what if we use a density function $q(y)$ other than $p_Y(y)$?  The
+But what if we use a density function $$q(y)$$ other than $$p_Y(y)$$?  The
 quantity
 $$
 \mathrm{X}[Y, q]
@@ -31,11 +40,11 @@ $$
 is known as the *cross entropy*.^[Cross-entropy is not a widely used
 notion among information theory, which takes divergence as primitive.
 As such, there's not a conventional unambiguous notation for it.  We
-use $\mathrm{X}[Y, q]$ here, which is unconventional in being defined
-in terms of a random variable $Y$ and probability function $q$.]
+use $$\mathrm{X}[Y, q]$$ here, which is unconventional in being defined
+in terms of a random variable $$Y$$ and probability function $$q$$.]
 
 Cross entropy has the same units as entropy.  It reduces to entropy
-when $q = p_Y,$
+when $$q = p_Y,$$
 $$
 \begin{array}{rcl}
 \mathrm{H}[Y]
@@ -52,16 +61,16 @@ states that
 $$
 \textrm{H}[Y] \leq \mathrm{X}[Y, q],
 $$
-with equality holding only if $q = p_Y.$
+with equality holding only if $$q = p_Y.$$
 
-If we have a vector quantity $Y = Y_1, \ldots, Y_N$, we can scale the
-cross entropy to a *cross-entropy rate* by dividing by $N$.  This lets
-us more easily compare results across data-set sizes $N.$
+If we have a vector quantity $$Y = Y_1, \ldots, Y_N$$, we can scale the
+cross entropy to a *cross-entropy rate* by dividing by $$N$$.  This lets
+us more easily compare results across data-set sizes $$N.$$
 
 ## Estimating cross-entropy with simulation
 
-If we can sample $y^{(1)}, \ldots, y^{(M)}$ according to $p_Y(y)$ and
-we can evaluate $\log q(y),$ then we can estimate cross-entropy as
+If we can sample $$y^{(1)}, \ldots, y^{(M)}$$ according to $$p_Y(y)$$ and
+we can evaluate $$\log q(y),$$ then we can estimate cross-entropy as
 $$
 \textrm{X}[Y, q]
 \ \approx \
@@ -72,35 +81,35 @@ $$
 
 Cross-entropy is an appealing evaluation tool in practice for both
 practical and theoretical reasons.  Assume we have observed some data
-$y_1, \ldots, y_N$ which we are modeling
-with a distribution $q(y).$^[The modeling distribution $q(y)$ often has some
+$$y_1, \ldots, y_N$$ which we are modeling
+with a distribution $$q(y).$$^[The modeling distribution $$q(y)$$ often has some
 parametric form involving unknown parameters, such as a linear or
-logistic regression.  It may also involve predictors $x_n.$]
+logistic regression.  It may also involve predictors $$x_n.$$]
 
-If we assume the $y_n$ are drawn from the distribution of interest at
-random, we can use them to estimate the cross entropy of a model $q(y)$ as
+If we assume the $$y_n$$ are drawn from the distribution of interest at
+random, we can use them to estimate the cross entropy of a model $$q(y)$$ as
 $$
 \textrm{X}[Y, q]
 \ \approx \
 \frac{1}{N} \sum_{n=1}^N - \log q(y_n).
 $$
-For example, $q$ might be the posterior predictive distribution of a
+For example, $$q$$ might be the posterior predictive distribution of a
 parametric model estimated using observed data and prior knowledge.
 
 We generally assume the lower the cross cross entropy, the better the
-model $q(y)$ approximates the true data generating process $p_Y(y).$
+model $$q(y)$$ approximates the true data generating process $$p_Y(y).$$
 
 ## Divergence
 
-Having defined cross-entropy, the divergence of a random variable $Y$
-to a distribution with probability function $q(y)$ can be defined as
+Having defined cross-entropy, the divergence of a random variable $$Y$$
+to a distribution with probability function $$q(y)$$ can be defined as
 the difference between the cross-entropy and the entropy.  Because of
 Gibbs inequality, this value must be non-negative, and is only zero when
-$q(y)$ is the true generating probability function $p_Y(y).$
+$$q(y)$$ is the true generating probability function $$p_Y(y).$$
 
 Divergence is typically defined in terms of two probability functions
-$p$ and $q$ rather than between a random variable and a probability
-function.  The *Kullback-Leibler divergence* from $p$ to $q$ is defined by
+$$p$$ and $$q$$ rather than between a random variable and a probability
+function.  The *Kullback-Leibler divergence* from $$p$$ to $$q$$ is defined by
 $$
 \begin{array}{rcl}
 \mathrm{D}_{\mathrm{KL}}[p \, || \, q]
@@ -119,7 +128,7 @@ p(y) \cdot \left( \log p(y) - \log q(y) \right)
 \end{array}
 $$
 
-If $p$ and $q$ are continuous, then
+If $$p$$ and $$q$$ are continuous, then
 $$
 \begin{array}{rcl}
 \mathrm{D}_{\mathrm{KL}}[p \, || \, q]
@@ -138,8 +147,8 @@ p(y) \cdot \left( \log p(y) - \log q(y) \right) \ \textrm{d}y
 \end{array}
 $$
 
-Suppose $Y$ is a random variable such that $p_Y(y) = p(y).$  Then
-whether $Y$ is discrete or continuous (or a mixture), we can
+Suppose $$Y$$ is a random variable such that $$p_Y(y) = p(y).$$  Then
+whether $$Y$$ is discrete or continuous (or a mixture), we can
 express the KL-divergence as an expectation,
 $$
 \begin{array}{rcl}
@@ -160,14 +169,14 @@ $$
 \textrm{X}[Y, q] - \textrm{H}[Y].
 \end{array}
 $$
-The final form is revealed as the difference between the cross entropy of $Y$ to $q$ and the entropy of $Y.
+The final form is revealed as the difference between the cross entropy of $$Y$$ to $$q$$ and the entropy of $$Y.
 
 
 ## Computing divergence with simulation
 
-If we can draw a sample $y^{(1)}, \ldots, y^{(M)}$ according to
-$p_Y(y),$ and we can compute $\log p_Y(y)$ and $\log q(y)$, then we
-can compute the KL-divergence from $p_Y$ to $q$ via simulation as
+If we can draw a sample $$y^{(1)}, \ldots, y^{(M)}$$ according to
+$$p_Y(y),$$ and we can compute $$\log p_Y(y)$$ and $$\log q(y)$$, then we
+can compute the KL-divergence from $$p_Y$$ to $$q$$ via simulation as
 $$
 \textrm{D}_{\textrm{KL}}[p_Y \, || \, q]
 \ \approx \
@@ -179,7 +188,7 @@ $$
 ## Divergence and cross-entropy with probability functions
 
 The standard way to present divergence takes two arbitrary probability
-functions $p$ and $q$ and defines the discrete case as
+functions $$p$$ and $$q$$ and defines the discrete case as
 $$
 \textrm{D}_{\textrm{KL}}[p \, || \, q]
 \ = \
@@ -194,10 +203,10 @@ $$
 
 ## Asymmetry of divergence
 
-Divergence is an asymmetric notion.  $\textrm{D}_{\textrm{KL}}[p
-\, || \, q]$ is the divergence from $p$ to $q$, whereas
-$\textrm{D}_{\textrm{KL}}[q \, || \, p]$ is the divergence from $q$ to
-$p$.  These are not usually equal.
+Divergence is an asymmetric notion.  $$\textrm{D}_{\textrm{KL}}[p
+\, || \, q]$$ is the divergence from $$p$$ to $$q$$, whereas
+$$\textrm{D}_{\textrm{KL}}[q \, || \, p]$$ is the divergence from $$q$$ to
+$$p$$.  These are not usually equal.
 
 The directionality of the definition can be visualized by considering
 a bivariate normal distribution with unit scale and 0.9 correlation,
@@ -212,8 +221,8 @@ p(y)
 \end{bmatrix}
 \right),
 $$
-along with another distribution $q(y \mid \sigma)$ that has diagonal
-covariance with scale $\sigma,$^[This second distribution can be
+along with another distribution $$q(y \mid \sigma)$$ that has diagonal
+covariance with scale $$\sigma,$$^[This second distribution can be
 defined as the product of two standard normals,
 $$
 q(y \mid \sigma)

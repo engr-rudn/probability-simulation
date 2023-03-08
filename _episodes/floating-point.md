@@ -1,3 +1,13 @@
+---
+title: "Floating Point Arithmetic"
+teaching: 
+exercises:
+questions:
+objectives:
+
+keypoints:
+
+---
 # Floating Point Arithmetic
 
 Contemporary^[Contemporary being 2019 as of this writing.] computers
@@ -20,8 +30,8 @@ or more.]
 ## Finite, not-a-number, and infinite values
 
 A floating point number consists of a fixed number of bits for a
-*significand* $a$ and a fixed number of bits for the *exponent* $b$ to
-represent the real number $a \times 2^b$.  The significand
+*significand* $$a$$ and a fixed number of bits for the *exponent* $$b$$ to
+represent the real number $$a \times 2^b$$.  The significand
 determines the precision of results and the exponent the range of
 possible results.^[This exponent causes the decimal place to float,
 giving the representation its name.]  The significand may be negative
@@ -53,11 +63,11 @@ Floating point numbers are written in computer programs using
 *literals*, which can be integers such as `314`, floating point
 numbers such as `3.14`, and scientific notation such as `0.314e+1`.
 Scientific notation uses decimal notation, where `e+n` denotes
-multiplication by $10^n$ and `e-n` by $10^{-n}$.  Multiplication by
-$10^n$ shifts the decimal place $n$ places to the right;
-multiplication by $10^{-n}$ shifts left by $n$ places.  For example,
+multiplication by $$10^n$$ and `e-n` by $$10^{-n}$$.  Multiplication by
+$$10^n$$ shifts the decimal place $$n$$ places to the right;
+multiplication by $$10^{-n}$$ shifts left by $$n$$ places.  For example,
 `0.00314e+3`, `314e+2`, and `3.14` are just different literals
-representing the same real number, $3.14$.
+representing the same real number, $$3.14$$.
 
 ## Machine precision and rounding
 
@@ -73,7 +83,7 @@ produces the surprising result
 printf("%s", 1 == 1 + 10^-16)
 ```
 
-When we add 1 and $10^{-16}$, we get 1.  This is not how arithmetic is
+When we add 1 and $$10^{-16}$$, we get 1.  This is not how arithmetic is
 supposed to work.  We should get 1.0000000000000001.
 
 The problem turns out to be that there's only so close to 1 we can get
@@ -81,7 +91,7 @@ with a floating point number.  Unlike with actual real numbers, where
 there is always another number between any two non-identical numbers,
 floating point numbers come with discrete granularity.  The closest we
 can get to one is determined by the number of non-sign sigificand
-bits, or $2^{-52} \approx 2.2 \times 10^{-16}$.  This is known as the
+bits, or $$2^{-52} \approx 2.2 \times 10^{-16}$$.  This is known as the
 *machine precision* of the representation.  Writing out in decimal
 rather than binary, the largest number smaller than one is
 
@@ -105,7 +115,7 @@ of our simulation code.
 The most common problem we run into with statistical computing with
 floating point is underflow.  If we try to represent something like a
 probability, we quickly run out of representational power.  Simply
-consider evaluating $N = 2\,000$ Bernoulli draws with a 50% chance of
+consider evaluating $$N = 2\,000$$ Bernoulli draws with a 50% chance of
 success, 
 
 ```
@@ -115,7 +125,7 @@ for (n in 1:N)
 print 'prob = ' p
 ```
 
-The result should be $0.5^{2000}$.  What do we get?
+The result should be $$0.5^{2000}$$.  What do we get?
 
 ```{r}
 N <- 2000
@@ -134,8 +144,8 @@ number greater than zero.  That's the smallest positive floating point
 number.  This number is defined by taking the largest magnitude negative
 number for the exponent and the smallest number available for the
 significand.  For the double-precision floating point in common use,
-the number is about $10^{-300}$.^[$10^{-322}$ can be represented, but
-$10^{-323}$ underflows to zero.]
+the number is about $$10^{-300}$$.^[$$10^{-322}$$ can be represented, but
+$$10^{-323}$$ underflows to zero.]
 
 ## Working on the log scale
 
@@ -184,10 +194,10 @@ print 'prob = ' log_p
 
 We have replaced the variable `p` representing the probability with
 a variable `log_p` representing the log probability.  Where `p` was
-initialized to $1$, `log_p` is initialized to $\log 1 = 0$.  Where
+initialized to $$1$$, `log_p` is initialized to $$\log 1 = 0$$.  Where
 the probability of each case was multiplied into the total, the log
-probability is added to the total.  Let's see what happens with $N =
-2000$.  
+probability is added to the total.  Let's see what happens with $$N =
+2000$$.  
 
 ```{r}
 N <- 2000
@@ -198,9 +208,9 @@ for (n in 1:N)
 printf('prob = %5.1f\n', log_p)
 ```
 
-The result is indeed $2000 \times \log 0.5 \approx -1386.29$, as
+The result is indeed $$2000 \times \log 0.5 \approx -1386.29$$, as
 expected.  Now we're in no danger of overflow even with a very large
-$N$.  
+$$N$$.  
 
 
 
@@ -214,8 +224,8 @@ $$
 \ = \log u + \log v.
 $$
 
-But what if we have $\log u$ and $\log v$ and want to produce $\log (u
-+ v)$?  It works out to
+But what if we have $$\log u$$ and $$\log v$$ and want to produce $$\log (u
++ v)$$?  It works out to
 
 $$
 \log \left( u + v  \right)
@@ -244,8 +254,8 @@ log_sum_exp(u, v)
   return c + log(exp(u - c) + exp(v - c))
 ```
 
-Because $c$ is computed as the maximum of $u$ and $v$, we know that $u
-- c \leq 0$ and $v - c \leq 0$.  As a result, the exponentiations will
+Because $$c$$ is computed as the maximum of $$u$$ and $$v$$, we know that $$u
+- c \leq 0$$ and $$v - c \leq 0$$.  As a result, the exponentiations will
 not overflow.  They might underflow to zero, but that doesn't cause a
 problem, because the maximum is preserved by being brought out front,
 with all of its precision intact.
@@ -278,10 +288,10 @@ laws of arithmetic.^[In general, we cannot rely on any of $$u + (v +
 w) = (u + v) + w,$$ $$u \times (v \times w) = (u \times v) \times w, \
 \mbox{or}$$, $$u \times (v + w) = u \times v = u \times w.$$]
 
-One surprising artifact of this is rounding, where we can have $u + v
-= u$, even for strictly positive values of $u$ and $v$.  For example,
-$u = 1$ and $v = 10^{-20}$ have this property, as do $u = 0$ and $v =
-10^{-350}.$
+One surprising artifact of this is rounding, where we can have $$u + v
+= u$$, even for strictly positive values of $$u$$ and $$v$$.  For example,
+$$u = 1$$ and $$v = 10^{-20}$$ have this property, as do $$u = 0$$ and $$v =
+10^{-350}.$$
 
 The upshot is that we have to be very careful when comparing two
 floating point numbers, because even though pure mathematics might
@@ -291,13 +301,13 @@ compare floating-point numbers within tolerances.
 
 With absolute tolerances, we replace exact comparisons with
 comparisons such as `abs(u - v) < 1e-10`.  This tests that `u` and `v`
-have values within $10^{-10}$ of each other.  This isn't much use if
-the numbers are themselves much larger or much smaller than $10^{-10}$.
+have values within $$10^{-10}$$ of each other.  This isn't much use if
+the numbers are themselves much larger or much smaller than $$10^{-10}$$.
 
 There are many ways to code relative tolerances.  One common approach
 is to use `2 * abs(u - v) / (abs(u) + abs(v)) < 1e-10`.  For example,
-the numers $10^{-11}$ and $10^{-12}$ are within an absolute tolerance
-of $10^{-10}$ of each other,
+the numers $$10^{-11}$$ and $$10^{-12}$$ are within an absolute tolerance
+of $$10^{-10}$$ of each other,
 
 $$
 \begin{array}{rcl}
@@ -308,7 +318,7 @@ $$
 \end{array}
 $$
 
-but they are not within a relative tolerance of $10^{-10}$,
+but they are not within a relative tolerance of $$10^{-10}$$,
 
 $$
 \begin{array}{rcl}

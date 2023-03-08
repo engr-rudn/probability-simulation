@@ -1,3 +1,13 @@
+---
+title: "Finite-State Markov Chains"
+teaching: 
+exercises:
+questions:
+objectives:
+
+keypoints:
+
+---
 # Finite-State Markov Chains
 
 
@@ -12,25 +22,25 @@ $$
 
 of random variables is said to be a *random process*.^[We consider
 only discrete random processes where the set of indexes is the
-counting numbers $1, 2, 3, \ldots$.  Nevertheless, the set of indexes
+counting numbers $$1, 2, 3, \ldots$$.  Nevertheless, the set of indexes
 is infinite, so much of the approach to finite vectors has to be
 reworked.]  A trivial example is a sequence of independent Bernoulli
-trials in which each $Y_t$ is drawn independently according to $Y_t
-\sim \mbox{bernoulli}(\theta)$.  A sequence of independent Bernoulli
+trials in which each $$Y_t$$ is drawn independently according to $$Y_t
+\sim \mbox{bernoulli}(\theta)$$.  A sequence of independent Bernoulli
 trials is called a *Bernoulli process.*
 
-In this chapter, we will restrict attention to processes $Y$ whose
-elements take on values $Y_t \in 0:N$ or $Y_t \in 1:N$ for some fixed
-$N$.^[The choice of starting at 0 or 1 is a convention that varies by
+In this chapter, we will restrict attention to processes $$Y$$ whose
+elements take on values $$Y_t \in 0:N$$ or $$Y_t \in 1:N$$ for some fixed
+$$N$$.^[The choice of starting at 0 or 1 is a convention that varies by
 distribution.  For example, Bernoulli and binomial variates may take
-on value zero, but categorical values take on values in $1:N$.]  The
-Bernoulli process is finite in this sense because each $Y_t$ takes on
-boolean values, so that $Y_t \in 0:1$.
+on value zero, but categorical values take on values in $$1:N$$.]  The
+Bernoulli process is finite in this sense because each $$Y_t$$ takes on
+boolean values, so that $$Y_t \in 0:1$$.
 
 
 ## Finite-State Markov chains
 
-A random process $Y$ is said to be a *Markov chain* if each element is
+A random process $$Y$$ is said to be a *Markov chain* if each element is
 generated conditioned on only the previous element, so that
 
 $$
@@ -39,16 +49,16 @@ p_{Y_{t + 1} \mid Y_1, \ldots, Y_t}(y_{t + 1} \mid y_1, \ldots, y_t)
 p_{Y_{t + 1} \mid Y_t}(y_{t + 1} \mid y_t)
 $$
 
-holds for all $y_1, \ldots, y_{t + 1}$.  In this chapter, we only
-consider Markov chains in which the $Y_t$ are finite random variables
-taking on values $Y_t \in 0:N$ or $Y_t \in 1:N$, the range depending
+holds for all $$y_1, \ldots, y_{t + 1}$$.  In this chapter, we only
+consider Markov chains in which the $$Y_t$$ are finite random variables
+taking on values $$Y_t \in 0:N$$ or $$Y_t \in 1:N$$, the range depending
 on the type of variable.^[We generalize in two later chapters, first
 to Markov chains taking on countably infinite values and then to ones
 with continuous values.]
 
 The Bernoulli process discussed in the previous section is a trivial
 example of a finite Markov chain.  Each value is generated
-independently, so that for all $y_1, \ldots, y_{t+1}$, we have
+independently, so that for all $$y_1, \ldots, y_{t+1}$$, we have
 
 $$
 \begin{array}{rcl}
@@ -69,18 +79,18 @@ they catch is a pike.^[This is a thinly reskinned version of the
 classic exercise involving cars and trucks from Ross, S.M.,
 2014. *Introduction to Probability Models.* Tenth edition. Academic
 Press. Exercise 30, page 279.] We'll treat the sequence of fish types
-as a random process $Y = Y_1, Y_2, \ldots$ with values
+as a random process $$Y = Y_1, Y_2, \ldots$$ with values
 
 $$
 Y_t \ = \
 \begin{cases}
-1 & \mbox{if fish $t$ is a pike, and}
+1 & \mbox{if fish $$t$$ is a pike, and}
 \\[4pt]
-2 & \mbox{if fish $t$ is a perch.}
+2 & \mbox{if fish $$t$$ is a perch.}
 \end{cases}
 $$
 
-The sequence $Y$ forms a Markov chain with transition probabilities
+The sequence $$Y$$ forms a Markov chain with transition probabilities
 
 $$
 \begin{array}{rcl}
@@ -113,7 +123,7 @@ each fish in the sequence, then report the overall proportion of
 pike.^[With some sleight of hand here for compatibility with Bernoulli
 variates and to facilitate computing proportions, we have recoded
 perch as having value 0 rather than 2.] We will start with a random
-fish drawn according to $\mbox{bernoulli(1/2)}$.
+fish drawn according to $$\mbox{bernoulli(1/2)}$$.
 
 ```
 y[1] = bernoulli_rng(0.5)
@@ -123,7 +133,7 @@ print 'simulated proportion of pike = ' sum(y) / M
 ```
 
 Now let's assume the fish are really running, and run a few simulated
-chains until $T = 10\,000$.
+chains until $$T = 10\,000$$.
 
 ```{r}
 set.seed(1234)
@@ -144,7 +154,7 @@ The proportion of pike is roughly 0.06.
 
 ## Ehrenfest's Urns
 
-Suppose we have two urns, with a total of $N$ balls distributed
+Suppose we have two urns, with a total of $$N$$ balls distributed
 between them. At each time step, a ball is chosen uniformly at random
 from among the balls in both urns and moved to the other urn.^[This
 model was originally introduced as an example of entropy and
@@ -153,7 +163,7 @@ aus der Wahrscheinlichkeitsrechnung, die mit der kinetischen Deutung
 der Entropievermehrung zusammenhängt.
 *Mathematisch-Naturwissenschaftliche Blätter* No. 11 and 12.]
 
-The process defines a Markov chain $Y$ where transitions are governed
+The process defines a Markov chain $$Y$$ where transitions are governed
 by
 
 $$
@@ -168,23 +178,23 @@ p_{Y_{t+1} \mid Y_t}(y_{t+1} \mid y_t)
 \end{cases}
 $$
 
-The transition probabilities make sure that the value of $Y_t$ remains
-between 0 and $N$.  For example,
+The transition probabilities make sure that the value of $$Y_t$$ remains
+between 0 and $$N$$.  For example,
 
 $$
 \mbox{Pr}[Y_{t + 1} = 1 \mid Y_t = 0] = 1
 $$
 
-because $1 - \frac{y_t}{N} = 1$. Similarly, if $Y_t = N$, then
-$Y_{t+1} = N - 1$.
+because $$1 - \frac{y_t}{N} = 1$$. Similarly, if $$Y_t = N$$, then
+$$Y_{t+1} = N - 1$$.
 
-What happens to the distribution of $Y_t$ long term? It's easy to
+What happens to the distribution of $$Y_t$$ long term? It's easy to
 compute by simulation of a single long chain:^[We've used a function
 borrowed from R here called `table`, defined by $$\mbox{table}(y, A,
-B)[n] = \sum_{t=1}^T \mbox{I}[y_t = n]$$ for $n \in A:B$. For example, if $$y =
+B)[n] = \sum_{t=1}^T \mbox{I}[y_t = n]$$ for $$n \in A:B$$. For example, if $$y =
 (0, 1, 2, 1, 1, 3, 2, 2, 1),$$ then $$\mbox{table}(y, 0, 4) = (1, 4,
 3, 1, 0),$$ because there is one 0, four 1s, three 2s, a single 3, and
-no 4s among the values of $y$.]
+no 4s among the values of $$y$$.]
 
 ```
 y[1] = floor(N / 2)
@@ -194,10 +204,10 @@ for (t in 2:T)
 p_Y_t_hat = table(y, 0, N) / T
 ```
 
-Let's run that with $N = 10$ and $T = 100\,000$ and display the
+Let's run that with $$N = 10$$ and $$T = 100\,000$$ and display the
 results as a bar plot.
 
-```{r fig.cap = 'Long-term distribution of number of balls in the first urn of the Ehrenfest model in which $N$ balls are distributed between two urns, then at each time step, a ball is chosen uniformly at random move to the other urn.  The simulation is based on total of $T = 100\\,000$ steps with $N = 10$ balls, starting with 5 balls in the first urn. The points on the top of the bars are positioned at the mass defined by the binomial distribution, $\\mbox{binomial}(Y_t \\mid 10, 0.5)$.'}
+```{r fig.cap = 'Long-term distribution of number of balls in the first urn of the Ehrenfest model in which $$N$$ balls are distributed between two urns, then at each time step, a ball is chosen uniformly at random move to the other urn.  The simulation is based on total of $$T = 100\\,000$$ steps with $$N = 10$$ balls, starting with 5 balls in the first urn. The points on the top of the bars are positioned at the mass defined by the binomial distribution, $$\\mbox{binomial}(Y_t \\mid 10, 0.5)$$.'}
 
 set.seed(1234)
 N <- 10
@@ -226,9 +236,9 @@ ehrenfest_plot <-
 ehrenfest_plot
 ```
 
-The distribution of $Y_t$ values is the binomial distribution, as
+The distribution of $$Y_t$$ values is the binomial distribution, as
 shown by the agreement between the points (the binomial probability
-mass function) and the bars (the empirical proportion $Y_t$ spent in
+mass function) and the bars (the empirical proportion $$Y_t$$ spent in
 each state).^[In the Markov chain Monte Carlo chapter later in the
 book, we will see how to construct a Markov chain whose long-term
 frequency distribution matches any given target distribution.]
@@ -246,39 +256,39 @@ a set of outgoing links to other pages.  When viewing a particular
 page, our random surfer chooses the next page to visit by
 
 * if the current page has outgoing links, then with probability
-$\lambda$, choose the next page uniformly at random among the outgoing
+$$\lambda$$, choose the next page uniformly at random among the outgoing
 links,
 
-* otherwise (with probability $1 - \lambda$), choose the next page to
+* otherwise (with probability $$1 - \lambda$$), choose the next page to
 visit uniformly at random among all web pages.
 
-Translating this into the language of random variables, let $Y = Y_1,
-Y_2, \ldots$ be the sequence of web pages visited. Our goal now is to
+Translating this into the language of random variables, let $$Y = Y_1,
+Y_2, \ldots$$ be the sequence of web pages visited. Our goal now is to
 define the transition function probabilistically so that we may
-simulate the random surfer. Let $L_i \subseteq 1:N$ be the set of
-outgoing links from page $i$; each page may have any number of
-outgoing links from $0$ to $N$.
+simulate the random surfer. Let $$L_i \subseteq 1:N$$ be the set of
+outgoing links from page $$i$$; each page may have any number of
+outgoing links from $$0$$ to $$N$$.
 
-The process $Y$ is most easily described in terms of an auxiliary
-process $Z = Z_1, Z_2, \ldots$ where $Z_t$ represents
+The process $$Y$$ is most easily described in terms of an auxiliary
+process $$Z = Z_1, Z_2, \ldots$$ where $$Z_t$$ represents
 
 the decision whether to jump to a link from the current page. We
-define $Z$ by setting $Z_t = 0$ if the page $Y_t$ has no
+define $$Z$$ by setting $$Z_t = 0$$ if the page $$Y_t$$ has no
 outgoing links, and otherwise setting
 
 $$
 Z_t \sim \mbox{bernoulli}(\lambda).
 $$
 
-If $Z_t = 1$, we can generate $Y_{t+1}$ uniformly from the links
-$L_{Y_t}$ from page $Y_t$,
+If $$Z_t = 1$$, we can generate $$Y_{t+1}$$ uniformly from the links
+$$L_{Y_t}$$ from page $$Y_t$$,
 
 $$
 Y_{t + 1} \sim \mbox{uniform}\left( L_{Y_t} \right).
 $$
 
-If $Z_t = 0$, we simply choose a web page uniformly at random from
-among all $N$ pages,
+If $$Z_t = 0$$, we simply choose a web page uniformly at random from
+among all $$N$$ pages,
 
 $$
 Y_{t+1} \sim \mbox{uniform}(1:N).
@@ -329,10 +339,10 @@ Suppose we have the following graph.
 \end{tikzpicture}
 ```
 
-We can simulate $T = 100\,000$ page visits using the algorithm shown
+We can simulate $$T = 100\,000$$ page visits using the algorithm shown
 above and display the proportion of time spent on each page.
 
-```{r fig.cap = "Proportion of time spent on each page by a random surfer taking $T = 100\\,000$ page views starting from a random page with a web structured as in the previous diagram."}
+```{r fig.cap = "Proportion of time spent on each page by a random surfer taking $$T = 100\\,000$$ page views starting from a random page with a web structured as in the previous diagram."}
 L = matrix(0, 12, 12)
 L[1, c(2, 4)] = 1
 L[2, c(1)] = 1

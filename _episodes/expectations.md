@@ -1,3 +1,12 @@
+---
+title: "Expectations and Variance"
+teaching: 
+exercises:
+questions:
+objectives:
+
+keypoints:
+
 # Expectations and Variance
 
 Almost all quantities of interest in statistics, ranging from
@@ -14,7 +23,7 @@ variation and how it relates to expectations.
 
 ## The expectation of a random variable
 
-Suppose we have a discrete random variable $Y$.  Its *expectation* is
+Suppose we have a discrete random variable $$Y$$.  Its *expectation* is
 defined as its average value, which is a weighted average of its
 values, where the weights are the probabilities.
 
@@ -24,10 +33,10 @@ $$
 \sum_{y \in Y} \, y \times p_Y(y).
 $$
 
-The notation $y \in Y$ is meant to indicate the summation is over all
-possible values $y$ that the random variable $Y$ may take on.
+The notation $$y \in Y$$ is meant to indicate the summation is over all
+possible values $$y$$ that the random variable $$Y$$ may take on.
 
-For example, if $Y$ is the result of a fair coin flip, then
+For example, if $$Y$$ is the result of a fair coin flip, then
 
 $$
 \mathbb{E}\left[ Y \right]
@@ -37,8 +46,8 @@ $$
 \frac{1}{2}.
 $$
 
-Now suppose $Y$ is the result of a fair six-sided die roll.  The
-expected value of $Y$ is
+Now suppose $$Y$$ is the result of a fair six-sided die roll.  The
+expected value of $$Y$$ is
 
 $$
 \mathbb{E} \left[ Y \right]
@@ -53,9 +62,9 @@ $$
 3.5.
 $$
 
-Now suppose $U$ is the result of a fair twenty-sided die roll.  Using
+Now suppose $$U$$ is the result of a fair twenty-sided die roll.  Using
 the same formula as above, the expectation works out to
-$\frac{210}{20} = 10.5$.^[In general, the expectation of a die roll is
+$$\frac{210}{20} = 10.5$$.^[In general, the expectation of a die roll is
 half the number of faces plus 0.5, because $$\sum_{n=1}^N n \times
 \frac{1}{N} \ = \ \frac{1}{N} \sum_{n=1}^N n \ = \ \frac{1}{N}\frac{N \times (N +
 1)}{2} \ = \frac{N + 1}{2}.$$]
@@ -73,9 +82,9 @@ $$
 \lim_{M \rightarrow \infty} \frac{1}{M} \sum_{m = 1}^M y^{(m)},
 $$
 
-where the $y^{(m)}$ are individual simulations of $Y$.
+where the $$y^{(m)}$$ are individual simulations of $$Y$$.
 
-For any finite $M$, we get an estimate of the expectation defined as
+For any finite $$M$$, we get an estimate of the expectation defined as
 
 $$
 \mathbb{E}\left[ Y \right]
@@ -89,7 +98,7 @@ $$
 The event probability estimates from sampling can be viewed as
 calculating the expectation of the value of an indicator function.
 For example,^[The expectation is implicitly the expectation of
-a new random variable defined as $Z = \mathrm{I}[Y = 1].$]
+a new random variable defined as $$Z = \mathrm{I}[Y = 1].$$]
 
 $$
 \begin{array}{rcl}
@@ -105,15 +114,15 @@ $$
 The indicator function converts an event to a numerical 1 or 0, then
 the expectation does the averaging.  The second line provides an
 estimate of the expectation based on a finite number of simulations
-of the random variable $y^{(m)}$ used to define the event.
+of the random variable $$y^{(m)}$$ used to define the event.
 
 
 ## The variance of a random variable
 
 Variance is a measure of how much a random variable can be expected to
 vary around its expected value.  For example, consider a random
-variable $Y$ representing a fair throw of a six-sided die.  The
-expected value is $\mathbb{E}[Y] = 3.5$, but the result may vary
+variable $$Y$$ representing a fair throw of a six-sided die.  The
+expected value is $$\mathbb{E}[Y] = 3.5$$, but the result may vary
 between 1 and 6.
 
 Variance measures the expected square difference between a random
@@ -127,19 +136,19 @@ $$
 \right].
 $$
 
-The nested expectation, $\mathbb{E}[Y]$, is just the expectation
-of $Y$, and as such it's a constant.  The expectation operator
-$\mathbb{E}[\, \cdot \,]$ captures its random variables.  Thus we
+The nested expectation, $$\mathbb{E}[Y]$$, is just the expectation
+of $$Y$$, and as such it's a constant.  The expectation operator
+$$\mathbb{E}[\, \cdot \,]$$ captures its random variables.  Thus we
 could have written this as
 
 $$
 \mathbb{E}\!\left[ \left(Y - c\right)^2 \right],
 $$
 
-where the constant $c = \mathbb{E}[Y]$.
+where the constant $$c = \mathbb{E}[Y]$$.
 
 In our example of the six-sided die, the expectation is the average
-roll, $\mathrm{E}[Y] = 3.5$.  As is often the case with averages of
+roll, $$\mathrm{E}[Y] = 3.5$$.  As is often the case with averages of
 discrete random variables, 3.5 is not itself a possible value of the
 variable.  That is, it's not possible to roll a 3.5 on a six-sided
 die.
@@ -187,7 +196,7 @@ for (m in 1:M) {
 print 'estimated var[Y] = ' sum_sq_diffs / M
 ```
 
-And running that for $M = 1\,000\,000$ iterations gives us
+And running that for $$M = 1\,000\,000$$ iterations gives us
 
 ```{r}
 M <- 1e6
@@ -197,8 +206,8 @@ printf('estimated var[Y] = %3.2f\n',
 
 We see that the extreme values have an outsized influence on the sum
 of squared errors.  That's because we're dealing with squared error,
-which reduces small errors (e.g., $0.5^2 = 0.25$) and magnifies large
-errors (e.g., $5^2 = 25$).  We can see a plot of the squared
+which reduces small errors (e.g., $$0.5^2 = 0.25$$) and magnifies large
+errors (e.g., $$5^2 = 25$$).  We can see a plot of the squared
 differences from the mean that would be involved in calculating
 the variance of a 20-sided die.
 
@@ -220,7 +229,7 @@ d20_var_plot
 
 Why are we calculating average squared difference from the expectation
 rather than, say, average absolute difference?  The answer has to do
-with the nature of averages.   It turns out the average is the $x$
+with the nature of averages.   It turns out the average is the $$x$$
 that minimizes the sum of squared differences,
 
 $$
@@ -243,10 +252,10 @@ $$
 \mathrm{argmin}_x \ \mathrm{msqe}(x, y)
 $$
 
-The notation $\mathrm{argmin}_x \ f(x)$ is meant to return the $x$
-at which $f(x)$ takes on its minimum value.  For example,
-$\mathrm{argmin}_u (u - 1)^2 + 7 = 1$, whereas the minimum value
-is given by $\mathrm{min}_u (u - 1)^2 + 7 = 7$.
+The notation $$\mathrm{argmin}_x \ f(x)$$ is meant to return the $$x$$
+at which $$f(x)$$ takes on its minimum value.  For example,
+$$\mathrm{argmin}_u (u - 1)^2 + 7 = 1$$, whereas the minimum value
+is given by $$\mathrm{min}_u (u - 1)^2 + 7 = 7$$.
 
 Averages themselves are important because expectations are defined in
 terms of averages, and event probabilities are defined in terms of
@@ -259,14 +268,14 @@ terms of squared error.
 
 The difficulty in managing variance is that it has different units
 than the variable it is measuring the variation of.  For example, if
-$Y$ represents the fill of a bottle with units in milliliters, then
-$\mathrm{var}[Y]$ has units of squared milliliters.  Squared
+$$Y$$ represents the fill of a bottle with units in milliliters, then
+$$\mathrm{var}[Y]$$ has units of squared milliliters.  Squared
 milliliters are not natural.  As we saw even with the calculation for
 a single six-sided die, values of 1 and 6 had 6.25 squared difference
 from the expected value of 3.5, whereas 3 and 4 had only 0.25 squared
 difference from the expected value.  Small values (below one) get
-smaller ($0.5^2 = 0.25$) and large values are amplified ($2.5^2 =
-6.25$).
+smaller ($$0.5^2 = 0.25$$) and large values are amplified ($$2.5^2 =
+6.25$$).
 
 Instead of dealing with variance, with its quadratic scale and
 mismatched units, it is common to convert back at the end to ordinary
@@ -283,6 +292,6 @@ theory of evolution. *Philosophical Transactions of the Royal Society
 of London, Series A*. Nov 16: 329--333, which on page 330 coins the
 term stating only, "standard deviations---a term used in the memoir
 for what corresponds in frequency curves to the error of mean
-square."] the key consideration here is that $\mathrm{sd}[Y]$ has the
-same units as the variable $Y$ itself and is thus much easier to
+square."] the key consideration here is that $$\mathrm{sd}[Y]$$ has the
+same units as the variable $$Y$$ itself and is thus much easier to
 interpret.

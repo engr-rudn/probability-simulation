@@ -1,10 +1,20 @@
+---
+title: "Random Variables and Event Probabilities"
+teaching: 
+exercises:
+questions:
+objectives:
+
+keypoints:
+
+---
 # Random Variables and Event Probabilities
 
 ## Random variables
 
-Let $Y$ be the result of a fair coin flip.  Not a general coin flip,
+Let $$Y$$ be the result of a fair coin flip.  Not a general coin flip,
 but a specific instance of flipping a specific coin at a specific
-time.  Defined this way, $Y$ is what's known as a *random variable*,
+time.  Defined this way, $$Y$$ is what's known as a *random variable*,
 meaning a variable that takes on different values with different
 probabilities.^[Random variables are conventionally written using
 upper-case letters to distinguish them from ordinary mathematical
@@ -16,7 +26,7 @@ If a coin flip is fair, there is a 50% chance the coin lands face up
 ("heads") and a 50% chance it lands face down ("tails").  For
 concreteness and ease of analysis, random variables will be restricted
 to numerical values.  For the specific coin flip in question, the
-random variable $Y$ will take on the value 1 if the coin lands heads
+random variable $$Y$$ will take on the value 1 if the coin lands heads
 and the value 0 if it lands tails.
 
 
@@ -24,9 +34,9 @@ and the value 0 if it lands tails.
 
 An outcome such as the coin landing heads is called an *event* in
 probability theory.  For our purposes, events will be defined as
-conditions on random variables.  For example, $Y = 1$ denotes the
-event in which our coin flip lands heads. The functional $\mbox{Pr}[\,
-\cdot \,]$ defines the probability of an event.  For example, for our
+conditions on random variables.  For example, $$Y = 1$$ denotes the
+event in which our coin flip lands heads. The functional $$\mbox{Pr}[\,
+\cdot \,]$$ defines the probability of an event.  For example, for our
 fair coin toss, the probability of the event of the coin landing heads
 is written as
 
@@ -34,8 +44,8 @@ $$
 \mbox{Pr}[Y = 1] = 0.5.
 $$
 
-In order for the flip to be fair, we must have $\mbox{Pr}[Y = 0] =
-0.5$, too.  The two events $Y = 1$ and $Y = 0$ are mutually exclusive
+In order for the flip to be fair, we must have $$\mbox{Pr}[Y = 0] =
+0.5$$, too.  The two events $$Y = 1$$ and $$Y = 0$$ are mutually exclusive
 in the sense that both of them cannot occur at the same time.  In
 probabilistic notation,
 
@@ -43,7 +53,7 @@ $$
 \mbox{Pr}[Y = 1 \ \mbox{and} \ Y = 0] = 0.
 $$
 
-The events $Y = 1$ and $Y = 0$ are also exhaustive, in the sense that
+The events $$Y = 1$$ and $$Y = 0$$ are also exhaustive, in the sense that
 at least one of them must occur.  In probabilistic notation,
 
 $$
@@ -63,29 +73,29 @@ $$
 
 Even though the coin flip will have a specific outcome in the real
 world, we consider alternative ways the world could have been.  Thus
-even if the coin lands heads $(Y = 1)$, we entertain the possibility
-that it could've landed tails $(Y = 0)$.  Such counterfactual
+even if the coin lands heads $$(Y = 1)$$, we entertain the possibility
+that it could've landed tails $$(Y = 0)$$.  Such counterfactual
 reasoning is the key to understanding probability theory and applied
 statistical inference.
 
 An alternative way the world could be, that is, a *possible world*,
 will determine the value of every random variable. The collection of
 all such possible worlds is called the *sample space*.^[The sample
-space conventionally written as $\Omega$, the capitalized form of the
+space conventionally written as $$\Omega$$, the capitalized form of the
 last letter in the Greek alphabet.]  The sample space may be
 conceptualized as an urn containing a ball for each possible way the
 world can be.  On each ball is written the value of every random
-variable.^[Formally, a random variable $X$ can be represented as a
-function from the sample space to a real value, i.e., $X:\Omega
-\rightarrow \mathbb{R}$. For each possible world $\omega \in \Omega$,
-the variable $X$ takes on a specific value $X(\omega) \in
-\mathbb{R}$.]
+variable.^[Formally, a random variable $$X$$ can be represented as a
+function from the sample space to a real value, i.e., $$X:\Omega
+\rightarrow \mathbb{R}$$. For each possible world $$\omega \in \Omega$$,
+the variable $$X$$ takes on a specific value $$X(\omega) \in
+\mathbb{R}$$.]
 
-Now consider the event $Y = 0$, in which our coin flip lands tails. In
-some worlds, the event occurs (i.e., $0$ is the value recorded for
-$Y$) and in others it doesn't.  An event picks out the subset of
+Now consider the event $$Y = 0$$, in which our coin flip lands tails. In
+some worlds, the event occurs (i.e., $$0$$ is the value recorded for
+$$Y$$) and in others it doesn't.  An event picks out the subset of
 worlds in which it occurs.^[Formally, an event is defined by a subset
-of the sample space, $E \subseteq \Omega$.]
+of the sample space, $$E \subseteq \Omega$$.]
 
 
 
@@ -110,7 +120,7 @@ a 50% chance of returning 1 and a 50% chance of returning 0.^[The name
 arises because random variables in which every possible outcome is
 equally likely are said to be *uniform*.]
 
-Suppose we want to simulate our random variable $Y$.  We can do so by
+Suppose we want to simulate our random variable $$Y$$.  We can do so by
 calling `uniform_01_rng` and noting the answer.
 
 
@@ -130,11 +140,11 @@ print 'y = ' y
 
 The variable `y` is declared to be an integer and assigned to the
 result of calling the `uniform_01_rng()` function.^[The use of a
-lower-case $y$ was not accidental.  The variable $y$ represents an
-integer, which is the type of a realization of a random $Y$
+lower-case $$y$$ was not accidental.  The variable $$y$$ represents an
+integer, which is the type of a realization of a random $$Y$$
 representing the outcome of a coin flip.  In code, variables are
 written in typewriter font (e.g., `y`), whereas in text they are
-written in italics like other mathematical variables (e.g., $y$).]
+written in italics like other mathematical variables (e.g., $$y$$).]
 The print statement outputs the quoted string `y = ` &nbsp; followed
 by the value of the variable `y`.  Executing the program might produce
 the following output.
@@ -207,7 +217,7 @@ desirable, but stricter condition.]
 
 ## Using simulation to estimate event probabilities
 
-We know that $\mbox{Pr}[Y = 1]$ is 0.5 because it represents the flip
+We know that $$\mbox{Pr}[Y = 1]$$ is 0.5 because it represents the flip
 of a fair coin.  Simulation based methods allow us to estimate event
 probabilities straightforwardly if we can generate random realizations
 of the random variables involved in the event definitions.
@@ -223,9 +233,9 @@ change as we move through this book.  We simply simulate a sequence of
 values and return the proportion in which the event occurs as our
 estimate.
 
-For example, let's simulate 10 values of $Y$ again and record the
+For example, let's simulate 10 values of $$Y$$ again and record the
 proportion of the simulated values that are 1.  That is, we count the
-number of time the event occurs in that the simulated value $y^{(m)}$
+number of time the event occurs in that the simulated value $$y^{(m)}$$
 is equal to 1.
 
 ```
@@ -310,7 +320,7 @@ for (k in 1:10) {
 }
 ```
 
-What happens if we let $M = 10,000$ simulations?
+What happens if we let $$M = 10,000$$ simulations?
 
 ```{r}
 for (k in 1:10) {
@@ -334,10 +344,10 @@ confident our estimates are close to the values being estimated.
 
 Visualization in the form of simple plots goes a long way toward
 understanding concepts in statistics and probability.  A traditional
-way to plot what happens as the number of simulation draws $M$
+way to plot what happens as the number of simulation draws $$M$$
 increases is to keep a running tally of the estimate as each draw is
-made and plot the estimated event probability $\mbox{Pr}[Y = 1]$ for
-each $m \in 1:M$.^[See, for example, the quite wonderful little book,
+made and plot the estimated event probability $$\mbox{Pr}[Y = 1]$$ for
+each $$m \in 1:M$$.^[See, for example, the quite wonderful little book,
 Bulmer, M.G., 1965. *Principles of Statistics*. Oliver and Boyd,
 Edinburgh.]
 
@@ -353,7 +363,7 @@ for (m in 1:M)
 
 Recall that the expression `(y[m] == 1)` evaluates to 1 if the
 condition holds and 0 otherwise. The result of running the program is
-that `estimate[m]` will hold the estimate $\mbox{Pr}[Y = 1]$ after $m$
+that `estimate[m]` will hold the estimate $$\mbox{Pr}[Y = 1]$$ after $$m$$
 simulations.  We can then plot the estimates as a function
 of the number of draws using a line plot to display the trend.
 
@@ -387,9 +397,9 @@ plot <- ggplot(df, aes(x = M, y = hat_E_Y)) +
 plot
 ```
 
-The linear scale of the previous plot obscures the behavior of the estimates.  Consider instead a plot with the $x$-axis on the logarithmic scale.
+The linear scale of the previous plot obscures the behavior of the estimates.  Consider instead a plot with the $$x$$-axis on the logarithmic scale.
 
-```{r fig.cap="Monte Carlo estimate of probability that a coin lands head as a function of the number of simulation draws.  The line at 0.5 marks the true probability being estimated.  The log-scaled $x$-axis makes the early rate of convergence more evident."}
+```{r fig.cap="Monte Carlo estimate of probability that a coin lands head as a function of the number of simulation draws.  The line at 0.5 marks the true probability being estimated.  The log-scaled $$x$$-axis makes the early rate of convergence more evident."}
 plot <- ggplot(df, aes(x = M, y = hat_E_Y)) +
   geom_hline(yintercept = 0.5, color = "red") +
   geom_line() +
@@ -404,17 +414,17 @@ plot <- ggplot(df, aes(x = M, y = hat_E_Y)) +
 plot
 ```
 
-With a log-scaled $x$-axis, the values between 1 and 10 are plotted
-with the same width as the values between $10\,000$ and $100\,000$;
+With a log-scaled $$x$$-axis, the values between 1 and 10 are plotted
+with the same width as the values between $$10\,000$$ and $$100\,000$$;
 both take up 20% of the width of the plot. On the linear scale, the
-values between 1 and 10 take up only $\frac{10}{100\,000}$, or 0.01%,
-of the plot, whereas values between $10\,000$ and $100\,000$ take up
+values between 1 and 10 take up only $$\frac{10}{100\,000}$$, or 0.01%,
+of the plot, whereas values between $$10\,000$$ and $$100\,000$$ take up
 90% of the plot.
 
 Plotting the progression of multiple simulations demonstrates the
 trend in errors.
 
-```{r fig.cap="Each of the one hundred grey lines represents the ratio of heads observed in a sequence of coin flips, the size of which indicated on the $x$-axis.  The line at 0.5 indicates the probability a coin lands heads in a fair coin toss.  The convergence of the ratio of heads to 0.5 in all of the sequences is clearly visible."}
+```{r fig.cap="Each of the one hundred grey lines represents the ratio of heads observed in a sequence of coin flips, the size of which indicated on the $$x$$-axis.  The line at 0.5 indicates the probability a coin lands heads in a fair coin toss.  The convergence of the ratio of heads to 0.5 in all of the sequences is clearly visible."}
 
 library(ggplot2)
 set.seed(0)
@@ -448,7 +458,7 @@ pr_Y_eq_1_plot <- ggplot(df2, aes(x = M, y = hat_E_Y, group=r)) +
 pr_Y_eq_1_plot
 ```
 
-```{r fig.cap="Continuing where the previous plot left off, each of the one hundred grey lines represents the ratio of heads observed in a sequence of coin flips.  The values on the $x$ axis is one hundred times larger than in the previous plot, and the scale of the $y$-axis is one tenth as large.  The trend in error reduction appears the same at the larger scale."}
+```{r fig.cap="Continuing where the previous plot left off, each of the one hundred grey lines represents the ratio of heads observed in a sequence of coin flips.  The values on the $$x$$ axis is one hundred times larger than in the previous plot, and the scale of the $$y$$-axis is one tenth as large.  The trend in error reduction appears the same at the larger scale."}
 
 library(ggplot2)
 set.seed(0)
@@ -485,10 +495,10 @@ pr_Y_eq_1_plot
 The *law of large numbers*^[Which technically comes in a strong and
 weak form.] says roughly that as the number of simulated values grows,
 the average will converge to the expected value.  In this case, our
-estimate of $\mbox{Pr}[Y = 1]$ can be seen to converge to the true
-value of 0.5 as the number of simulations $M$ increases.
+estimate of $$\mbox{Pr}[Y = 1]$$ can be seen to converge to the true
+value of 0.5 as the number of simulations $$M$$ increases.
 Because the quantities involved are probabilistic, the exact specification is a
-little more subtle than the $\epsilon$-$\delta$ proofs in calculus.
+little more subtle than the $$\epsilon$$-$$\delta$$ proofs in calculus.
 
 
 
@@ -502,11 +512,11 @@ $$
 y^{(1)}, y^{(2)}, \ldots, y^{(M)}
 $$
 
-will be used for $M$ simulations of a single random variable
-$Y$.^[Each $y^{(m)}$ is a possible realization of $Y$, which is why
+will be used for $$M$$ simulations of a single random variable
+$$Y$$.^[Each $$y^{(m)}$$ is a possible realization of $$Y$$, which is why
 they are written using lowercase.]  It's important to keep in mind
-that this is $M$ simulations of a single random variable, not a single
-simulation of $M$ different random variables.
+that this is $$M$$ simulations of a single random variable, not a single
+simulation of $$M$$ different random variables.
 
 Before we get going, we'll need to introduce *indicator function*
 notation.  For example, we write
@@ -521,16 +531,16 @@ $$
 \end{cases}
 $$
 
-The indicator function maps a condition, such as $y^{(m)} = 1$ into
+The indicator function maps a condition, such as $$y^{(m)} = 1$$ into
 the value 1 if the condition is true and 0 if it is false.^[Square
 bracket notation is used for functions when the argument is itself a
-function.  For example, we write $\mbox{Pr}[Y > 0]$ because $Y$ is a
+function.  For example, we write $$\mbox{Pr}[Y > 0]$$ because $$Y$$ is a
 random variable, which is modeled as a function.  We also write
-$\mathrm{I}[x^2 + y^2 = 1]$ because the standard bound variables $x$
-and $y$ are functions from contexts defining variable values.]
+$$\mathrm{I}[x^2 + y^2 = 1]$$ because the standard bound variables $$x$$
+and $$y$$ are functions from contexts defining variable values.]
 
-Now we can write out the formula for our estimate of $\mbox{Pr}[Y =
-1]$ after $M$ draws,
+Now we can write out the formula for our estimate of $$\mbox{Pr}[Y =
+1]$$ after $$M$$ draws,
 
 $$
 \begin{array}{rcl}
@@ -558,7 +568,7 @@ $$
 $$
 
 Thus we can write our simulation-based estimate of the probability
-that a fair coin flip lands heads as^[In general, the way to estimate an event probability $\phi(Y)$ where $\phi$ defines some condition, given simulations $y^{(1)}, \ldots, y^{(M)}$ of $Y$, is as $$\mbox{Pr}[\phi(Y)] = \frac{1}{M} \sum_{m = 1}^M \mathrm{I}[\phi(y^{(m)})].$$]
+that a fair coin flip lands heads as^[In general, the way to estimate an event probability $$\phi(Y)$$ where $$\phi$$ defines some condition, given simulations $$y^{(1)}, \ldots, y^{(M)}$$ of $$Y$$, is as $$\mbox{Pr}[\phi(Y)] = \frac{1}{M} \sum_{m = 1}^M \mathrm{I}[\phi(y^{(m)})].$$]
 
 $$
 \mbox{Pr}[Y = 1]
@@ -568,9 +578,9 @@ $$
 \sum_{m=1}^M \mathrm{I}[y^{(m)} = 1]
 $$
 
-The form $\frac{1}{M} \sum_{m=1}^M$ will recur repeatedly in
-simulation --- it just says to average over values indexed by $m \in
-1:M$.^[We are finally in a position to state the *strong law of large numbers* as the event probability of a limit, $$\mbox{Pr}\!\left\lbrack \lim_{M \rightarrow \infty} \frac{1}{M} \sum_{m = 1}^M \mathrm{I}\!\left\lbrack y^{(m)} = 1 \right\rbrack \ = \ 0.5 \right\rbrack,$$  where each $y^{(m)}$ is a separate fair coin toss. ]
+The form $$\frac{1}{M} \sum_{m=1}^M$$ will recur repeatedly in
+simulation --- it just says to average over values indexed by $$m \in
+1:M$$.^[We are finally in a position to state the *strong law of large numbers* as the event probability of a limit, $$\mbox{Pr}\!\left\lbrack \lim_{M \rightarrow \infty} \frac{1}{M} \sum_{m = 1}^M \mathrm{I}\!\left\lbrack y^{(m)} = 1 \right\rbrack \ = \ 0.5 \right\rbrack,$$  where each $$y^{(m)}$$ is a separate fair coin toss. ]
 
 
 ## Central limit theorem
@@ -589,8 +599,8 @@ $$
 $$
 
 The *absolute error* is just the absolute value^[In general, the
-absolute value function applied to a real number $x$ is written as
-$|x|$ and defined to be $x$ if $x$ is non-negative and $-x$ if $x$ is
+absolute value function applied to a real number $$x$$ is written as
+$$|x|$$ and defined to be $$x$$ if $$x$$ is non-negative and $$-x$$ if $$x$$ is
 negative.] of this,
 
 $$
@@ -668,7 +678,7 @@ Plotting both the number of simulations and the absolute error on the
 log scale reveals the rate at which the error decreases with more
 draws.
 
-```{r fig.cap="Absolute error versus number of simulation draws for 100 simulated sequences of $M = 1\\,000\\,000$ draws. The blue line is at the 68 percent quantile and the red line at the 95 percent quantile of these draws.  The relationship between the log number of draws and log error is revealed to be linear."}
+```{r fig.cap="Absolute error versus number of simulation draws for 100 simulated sequences of $$M = 1\\,000\\,000$$ draws. The blue line is at the 68 percent quantile and the red line at the 95 percent quantile of these draws.  The relationship between the log number of draws and log error is revealed to be linear."}
 #   commented out bits plot the clt version
 #   geom_line(data = data.frame(x = c(1e4, 1e6),
 #                               y = 2 * c(.5 / sqrt(1e4), .5 / sqrt(1e6))),
@@ -701,7 +711,7 @@ log_abs_err_plot <- ggplot(df2, aes(x = M, y = err_hat_E_Y + fudge, group=r)) +
 log_abs_err_plot
 ```
 
-We can read two points $(x_1, y_1)$ and $(x_2, y_2)$ off of the graph for $x_1 = 10\,000$ and $x_2 = 100\,000$ as
+We can read two points $$(x_1, y_1)$$ and $$(x_2, y_2)$$ off of the graph for $$x_1 = 10\,000$$ and $$x_2 = 100\,000$$ as
 
 ```{r}
 printf("x[1], y[1] = %7.f, %6.5f\nx[2], y[2] = %7.f, %6.5f",
@@ -724,9 +734,9 @@ printf("estimated slope\n(log y[2] - log y[1])\n / (log x[2] - log x[1])  =  %3.
        (log(quant_68[5]) - log(quant_68[3])) / (log(Ms[5]) - log(Ms[3])) )
 ```
 
-If we let $\epsilon_M$ be the value of one of the quantile lines at
-$M$ simulation draws, the linear relationship plotted in the figures
-have the form^[A line through the points $(x_1, y_1)$ and $(x_2, y_2)$ has
+If we let $$\epsilon_M$$ be the value of one of the quantile lines at
+$$M$$ simulation draws, the linear relationship plotted in the figures
+have the form^[A line through the points $$(x_1, y_1)$$ and $$(x_2, y_2)$$ has
 $$
 \mbox{slope} = \frac{y_2 - y_1}{x_2 - x_1}.
 $$]
@@ -737,7 +747,7 @@ $$
 
 When writing "const" in a mathematical expression, the presumption is
 that it refers to a constant that does not depend on the free
-variables of interest (here, $M$, the number of simulation draws).
+variables of interest (here, $$M$$, the number of simulation draws).
 Ignoring constants lets us focus on the order of the dependency.  The
 red line and blue line have the same slope, but different constants.
 
@@ -771,11 +781,11 @@ $$
 $$
 
 Dropping the constant, this relationship between the expected absolute
-error $\epsilon_M$ after $M$ simulation draws may be succinctly
+error $$\epsilon_M$$ after $$M$$ simulation draws may be succinctly
 summarized using proportionality notation,^[In general, we write $$f(x)
-\propto g(x)$$ if there is a positive constant $c$ that does not depend
-on $x$ such that $$f(x) = c \times g(x).$$ For example, $$3x^2 \propto
-9x^2,$$ with $c = \frac{1}{3}$.]
+\propto g(x)$$ if there is a positive constant $$c$$ that does not depend
+on $$x$$ such that $$f(x) = c \times g(x).$$ For example, $$3x^2 \propto
+9x^2,$$ with $$c = \frac{1}{3}$$.]
 
 $$
 \displaystyle
@@ -793,11 +803,11 @@ the pesky constant term.
 In practice, what does this mean? It means that if we want to get an
 extra decimal place of accuracy in our estimates, we need one hundred
 (100) times as many draws. For example, the plot shows error rates
-bounded by roughly 0.01 with $10\,000$ draws, yielding estimates that
-are very likely to be within $(0.49, 0.51).$ To reduce that likely
+bounded by roughly 0.01 with $$10\,000$$ draws, yielding estimates that
+are very likely to be within $$(0.49, 0.51).$$ To reduce that likely
 error bound to 0.001, that is, ensuring estimates are very likely in
-$(0.0499, 0.501),$ requires 100 times as many draws (i.e., a whopping
-$1\,000\,000$ draws).^[For some perspective, $10\,000$ is the number
+$$(0.0499, 0.501),$$ requires 100 times as many draws (i.e., a whopping
+$$1\,000\,000$$ draws).^[For some perspective, $$10\,000$$ is the number
 of at bats in an entire twenty-year career for a baseball player,
 the number of field goal attempts in an entire career of most basketball
 players, and the size of a very large disease study or meta-analysis in

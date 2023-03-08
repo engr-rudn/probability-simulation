@@ -1,3 +1,13 @@
+---
+title: "Monitoring Approximate Convergence"
+teaching: 
+exercises:
+questions:
+objectives:
+
+keypoints:
+
+---
 # Monitoring Approximate Convergence
 
 We know that if we run an ergodic Markov chain long enough, it will
@@ -26,7 +36,7 @@ chains.  As an example, consider the two-dimensional Metropolis
 example.  Starting four chains in the corners and running for various
 number of time steps shows how the chains approach stationarity.
 
-```{r fig.width = 9, fig.asp = 0.4, out.width = "100%", fig.cap = "The evolution of four random walk Metropolis Markov chains, each started in a different corner of the plot.  The target density is bivariate normal with correlation 0.9 and unit variance;  the random walk step size is 0.2.  After $M = 50$ iterations, the chains have not arrived at the typical set.  After $M = 500$ iterations, the chains have each arrived in the typical set, but they have not had time to mix.  After $M = 5000$ iterations, the chains are mixing well and have visited most of the target density."}
+```{r fig.width = 9, fig.asp = 0.4, out.width = "100%", fig.cap = "The evolution of four random walk Metropolis Markov chains, each started in a different corner of the plot.  The target density is bivariate normal with correlation 0.9 and unit variance;  the random walk step size is 0.2.  After $$M = 50$$ iterations, the chains have not arrived at the typical set.  After $$M = 500$$ iterations, the chains have each arrived in the typical set, but they have not had time to mix.  After $$M = 5000$$ iterations, the chains are mixing well and have visited most of the target density."}
 sigma <- 0.2
 theta0s <- list(c(4, 4), c(4, -4), c(-4, 4), c(-4, -4))
 conv_df <- data.frame(t = c(), theta1 = c(), theta2 = c(), id = c())

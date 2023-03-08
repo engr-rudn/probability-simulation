@@ -1,12 +1,22 @@
+---
+title: "Conjugate Posteriors"
+teaching: 
+exercises:
+questions:
+objectives:
+
+keypoints:
+
+---
 # Stationary Distributions and Markov Chains
 
 ## Stationary Markov chains
 
-A random process $Y = Y_1, Y_2, \ldots$ is said to be *stationary* if
+A random process $$Y = Y_1, Y_2, \ldots$$ is said to be *stationary* if
 the marginal probability of a sequence of elements does not depend on
 where it starts in the chain.  In symbols, a discrete-time random
-process $Y$ is stationary if for any $t \geq 1$ and any sequence
-$u_1, \ldots, u_N \in \mathbb{R}^N$ of size $N$, we have
+process $$Y$$ is stationary if for any $$t \geq 1$$ and any sequence
+$$u_1, \ldots, u_N \in \mathbb{R}^N$$ of size $$N$$, we have
 
 $$
 p_{Y_1, \ldots, Y_N}(u_1, \ldots, u_N)
@@ -15,7 +25,7 @@ $$
 
 None of the chains we will construct for practical applications will
 be stationary in this sense, because we would need to know the
-appropriate initial distribution $p_{Y_1}(y_1)$.  For example,
+appropriate initial distribution $$p_{Y_1}(y_1)$$.  For example,
 consider the fishes example in which we know the transition
 probabilities, but not the stationary distribution.  If we run long
 enough, the proportion of pike stabilizes
@@ -24,17 +34,17 @@ enough, the proportion of pike stabilizes
 ## Stationary distributions
 
 Although we will not, in practice, have Markov chains that are
-stationary from $t = 1$, we will use Markov chains that have
-stationary distributions in the limit as $t \rightarrow \infty$.  For
-a Markov chain to be stationary, there must be some $q$ such that
+stationary from $$t = 1$$, we will use Markov chains that have
+stationary distributions in the limit as $$t \rightarrow \infty$$.  For
+a Markov chain to be stationary, there must be some $$q$$ such that
 
 $$
 p_{Y_t}(u) = q(u)
 $$
 
-for all $t$, starting from $t = 0$.  Instead, we will have an
-equilibrium distribution $q$ that the chain approaches in the limit as
-$t$ grows.  In symbols,
+for all $$t$$, starting from $$t = 0$$.  Instead, we will have an
+equilibrium distribution $$q$$ that the chain approaches in the limit as
+$$t$$ grows.  In symbols,
 
 $$
 \lim_{t \rightarrow \infty}
@@ -42,20 +52,20 @@ $$
 p_{Y_t}(u) = q(u).
 $$
 
-Very confusingly, this equilibrium distribution $q$ is also called a
+Very confusingly, this equilibrium distribution $$q$$ is also called a
 *stationary distribution* in the Markov chain literature, so we will
-stick to that nomenclature.  We never truly arrive at $q(u)$ for a
-finite $t$ because of the bias introduced by the initial distribution
-$p_{Y_1}(u) \neq q(u)$.  Nevertheless, as with our earlier
+stick to that nomenclature.  We never truly arrive at $$q(u)$$ for a
+finite $$t$$ because of the bias introduced by the initial distribution
+$$p_{Y_1}(u) \neq q(u)$$.  Nevertheless, as with our earlier
 simulation-based estimates, we can get arbitrarily close after
 suitably many iterations.^[The last section of this chapter
 illustrates rates of convergence to the stationary distribution, but
 the general discussion is in the later chapter on continuous-state
 Markov chains.]
 
-Reconsider the example of a process $Y = Y_1, Y_2, \ldots$ of fishes,
+Reconsider the example of a process $$Y = Y_1, Y_2, \ldots$$ of fishes,
 where 1 represents a pike and 0 a perch.  We assumed the Markov process
-$Y$ was governed by
+$$Y$$ was governed by
 
 $$
 \begin{array}{rcl}
@@ -71,9 +81,9 @@ $$
 p_{Y_{t + 1} \mid Y_t}(j \mid i) = \theta_{i, j},
 $$
 
-where $\theta_{i, j}$ is the probabiltiy of a transition to state $j$
-given that the process is in state $i$.  For the pike and perch
-example, $\theta$ is fully defined by
+where $$\theta_{i, j}$$ is the probabiltiy of a transition to state $$j$$
+given that the process is in state $$i$$.  For the pike and perch
+example, $$\theta$$ is fully defined by
 
 $$
 \begin{array}{rcl}
@@ -99,8 +109,8 @@ $$
 \end{bmatrix}.
 $$
 
-The first row of this transition matrix is $(0.20, 0.80)$ and the
-second row is $(0.05, 0.95)$. Rows of transition matrices will always
+The first row of this transition matrix is $$(0.20, 0.80)$$ and the
+second row is $$(0.05, 0.95)$$. Rows of transition matrices will always
 have non-negative entries and sum to one, because they are the
 parameters to categorical distributions.^[Vectors with non-negative
 values that sum to one are known as *unit simplexes* and matrices in
@@ -108,7 +118,7 @@ which every row is a unit simplex is said to be a *stochastic matrix.*
 Transition matrices for finite-state Markov chains are always
 stochastic matrices.]
 
-Now let's take a really long run of the chain with $T = 1\,000\,000$
+Now let's take a really long run of the chain with $$T = 1\,000\,000$$
 fish to get a precise estimate of the long-run proportion of pike.
 
 ```{r}
@@ -127,18 +137,18 @@ for (k in 0:1) {
 
 The initial state doesn't seem to matter. That's because the rate of
 5.9% pike is the stationary distribution. More
-formally, let $\pi = (0.059, 1 - 0.059)$ and note that^[In matrix
-notation, if $\pi$ is considered a row vector, then $$\pi = \theta \, \pi.$$]
+formally, let $$\pi = (0.059, 1 - 0.059)$$ and note that^[In matrix
+notation, if $$\pi$$ is considered a row vector, then $$\pi = \theta \, \pi.$$]
 
 $$
 \pi_i = \sum_{j = 1}^2 \pi_j \times \theta_{j, i}.
 $$
 
-If $\pi$ satisfies this formula, then it is said to be the *stationary
-distribution* for $\theta.$
+If $$\pi$$ satisfies this formula, then it is said to be the *stationary
+distribution* for $$\theta.$$
 
-If a Markov chain has a stationary distribution $\pi$ and the initial
-distribution of $Y_1$ is also $\pi$, then it is stationary.
+If a Markov chain has a stationary distribution $$\pi$$ and the initial
+distribution of $$Y_1$$ is also $$\pi$$, then it is stationary.
 
 ## Reducible chains
 
@@ -194,7 +204,7 @@ A Markov chain can be constructed to cycle through states in a regular
 (probabilistic) pattern.  For example, consider the following Markov
 chain transitions.
 
-```{r, engine="tikz", fig.ext="pdf", out.width="35%", fig.cap='State diagram for finite Markov chain generating periodic state sequences $\\ldots, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, \\ldots$.'}
+```{r, engine="tikz", fig.ext="pdf", out.width="35%", fig.cap='State diagram for finite Markov chain generating periodic state sequences $$\\ldots, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, \\ldots$$.'}
 \begin{tikzpicture}[->, auto, node distance=2cm, font=\footnotesize]
 \node[circle,draw,semithick] (A) {1};
 \node[circle,draw,semithick] (B) [below left of=A] {2};
@@ -206,20 +216,20 @@ chain transitions.
 ```
 
 Regular cycles like this defeat the existence of a stationary
-distribution.  If $Y_1 = 2$, the entire chain is deterministically
+distribution.  If $$Y_1 = 2$$, the entire chain is deterministically
 defined to be
 
 $$
 Y = 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, \ldots.
 $$
 
-Clearly $p_{Y_t} \neq p_{Y_{t+1}}$, as each concentrates all of its
+Clearly $$p_{Y_t} \neq p_{Y_{t+1}}$$, as each concentrates all of its
 probability mass on a different value.
 
 On the other hand, this chain is what is known as wide-state
 stationary in that using long-running frequency estimates are stable.
-The expected value is $\frac{1 + 2 + 3}{3} = 2$ and the standard
-deviation is $\sqrt{\frac{1^2 + 0^2 + 1^2}{3}} \approx 0.47$. More
+The expected value is $$\frac{1 + 2 + 3}{3} = 2$$ and the standard
+deviation is $$\sqrt{\frac{1^2 + 0^2 + 1^2}{3}} \approx 0.47$$. More
 formally, the wide-state expectation is calculated as
 
 $$
@@ -264,7 +274,7 @@ each of states 2 and 3.
 In applied statistics, we proceed by simulation, running chains long
 enough that they provide stable long-term frequency estimates. These
 stable long-term frequency estimates are of the stationary
-distribution $\mbox{categorical}(\pi)$.  All of the Markov chains we
+distribution $$\mbox{categorical}(\pi)$$.  All of the Markov chains we
 construct to sample from target distributions of interest (e.g.,
 Bayesian posterior predictive distributions) will be well-behaved in
 that these long-term frequency estimates will be stable, in
@@ -274,35 +284,35 @@ with approximate numerical algorithms.]
 
 In practice, none of the Markov chains we employ in calculations will
 be stationary for the simple technical reason that we don't know the
-stationary distribution ahead of time and thus cannot draw $Y_1$ from
+stationary distribution ahead of time and thus cannot draw $$Y_1$$ from
 it.^[In the finite case, we actually can calculate it either through
 simulation or as the eigenvector of the transition matrix with
 eigenvalue one (which is guaranteed to exist). An eigenvector of a
-matrix is a row vector $\pi$ such that $$c \times \pi = \theta \,
-\pi,$$ where $c$ is the eigenvalue. This is why Google's PageRank
+matrix is a row vector $$\pi$$ such that $$c \times \pi = \theta \,
+\pi,$$ where $$c$$ is the eigenvalue. This is why Google's PageRank
 algorithm is known to computational statisticians as the "billion
 dollar eigenvector." One way to calculate the relevant eigenvector of
 a stochastic matrix is by raising it to a power, starting from any
-non-degenerate initial simplex vector $\lambda$, $$\lim_{n \rightarrow
+non-degenerate initial simplex vector $$\lambda$$, $$\lim_{n \rightarrow
 \infty} \lambda \, \theta^n = \pi.$$ Each $$\theta^n =
 \underbrace{\theta \times \theta \times \cdots \times
 \theta}_{\textstyle n \ \mbox{times}}$$ is a transition matrix
-corresponding to taking $n$ steps in the original transition matrix
-$\theta$.] What we need to know is conditions under which a Markov
+corresponding to taking $$n$$ steps in the original transition matrix
+$$\theta$$.] What we need to know is conditions under which a Markov
 chain will "forget" its initial state after many steps and converge to
 the stationary distribution.
 
 All of the Markov chains we will employ for applied statistics
 applications will be well behaved in the sense that when run long
 enough, the distribution of each element in the chain will approach
-the stationary distribution. Roughly, when $t$ is large enough, the
-marginal distribution $p_{Y_t}$ stabilizes to the stationary
+the stationary distribution. Roughly, when $$t$$ is large enough, the
+marginal distribution $$p_{Y_t}$$ stabilizes to the stationary
 distribution.  The well-behavedness conditions required for this to
 hold may be stated as follows
 
-**Fundamental Convergence Theorem.** If a Markov chain $Y = Y_1,
-Y_2, \ldots$ is (a) irreducible, (b) aperiodic, and (c) has a
-stationary distribution $\mbox{categorical}(\pi)$, then
+**Fundamental Convergence Theorem.** If a Markov chain $$Y = Y_1,
+Y_2, \ldots$$ is (a) irreducible, (b) aperiodic, and (c) has a
+stationary distribution $$\mbox{categorical}(\pi)$$, then
 
 $$
 \lim_{t \rightarrow \infty}
@@ -319,7 +329,7 @@ y^{(1)}_1, y^{(1)}_2, \ldots, y^{(1)}_T
 $$
 
 to estimate the parameters for the stationary distribution.  More
-specifically, if we define $\pi$ by
+specifically, if we define $$\pi$$ by
 
 $$
 \widehat{\pi}_i
@@ -328,10 +338,10 @@ $$
 $$
 
 then we can estimate the stationary distribution as
-$\mbox{categorical}(\widehat{\pi}).$
+$$\mbox{categorical}(\widehat{\pi}).$$
 
-As a coherence check, we often run a total of $M$ simulations of the
-first $T$ values of the Markov chain $Y$.
+As a coherence check, we often run a total of $$M$$ simulations of the
+first $$T$$ values of the Markov chain $$Y$$.
 
 $$
 \begin{array}{rcl}
@@ -345,21 +355,21 @@ y^{(M)} & = & y_1^{(M)}, y_2^{(M)}, \ldots, y_T^{(M)}
 \end{array}
 $$
 
-We should get the same estimate from using $y^{(m)}$ from a single
-simulation $m$ as we get from using all of the simulated chains
-$y^{(1)}, \ldots, y^{(M)}$.^[We'd expect lower error from using all of
+We should get the same estimate from using $$y^{(m)}$$ from a single
+simulation $$m$$ as we get from using all of the simulated chains
+$$y^{(1)}, \ldots, y^{(M)}$$.^[We'd expect lower error from using all of
 the chains as we have a larger sample with which to estimate.]
 
 ## How fast is convergence?
 
-The fundamental theorem tells us that if a Markov chain $Y = Y_1, Y_2,
-\ldots$ is ergodic (aperiodic and irreducible) and has a stationary
-distribution, then the distribution of $Y_t$ converges to the
+The fundamental theorem tells us that if a Markov chain $$Y = Y_1, Y_2,
+\ldots$$ is ergodic (aperiodic and irreducible) and has a stationary
+distribution, then the distribution of $$Y_t$$ converges to the
 stationary distribution in the limit. But it doesn't tell us how fast.
 
 As with everything else, we'll go at this by simulation to establish
 intuitions. In particular, we'll consider three chains that have
-$\mbox{bernoulli}(0.5)$ as their stationary distribution (a fair coin
+$$\mbox{bernoulli}(0.5)$$ as their stationary distribution (a fair coin
 toss).
 
 First, we will consider a Markov chain producing independent Bernoulli
@@ -384,7 +394,7 @@ $$
 Y_t \sim \mbox{bernoulli}(0.5).
 $$
 
-Therefore, the stationary distribution must also be $\pi = (0.5, 0.5)$,
+Therefore, the stationary distribution must also be $$\pi = (0.5, 0.5)$$,
 because
 
 $$
@@ -450,11 +460,11 @@ y <- sample_chain(M, 1, matrix(c(0.5, 0.5,
 print_3_rows_of_33(y)
 ```
 
-An initial segment of a Markov chain $Y = Y_1, Y_2, \ldots, Y_T$ can
+An initial segment of a Markov chain $$Y = Y_1, Y_2, \ldots, Y_T$$ can
 be visualized as a traceplot, a line plot of the value at each
 iteration.
 
-```{r out.width = "40%", fig.cap = "Traceplot of chain producing independent draws, simulated for 100 time steps.  The horizontal axis is time ($t$) and the vertical axis the value of e iteration number and the value is the value ($Y_t$)."}
+```{r out.width = "40%", fig.cap = "Traceplot of chain producing independent draws, simulated for 100 time steps.  The horizontal axis is time ($$t$$) and the vertical axis the value of e iteration number and the value is the value ($$Y_t$$)."}
 traceplot_bool <- function (y) {
   df <- data.frame(iteration = 1:length(y), draw = y)
   plot <- ggplot(df, aes(x = iteration, y = draw)) +
@@ -473,12 +483,12 @@ occasionally has runs of the same value, but otherwise mixes quite
 well between the values.
 
 So how fast do estimates of the stationary distribution based on an
-initial segment $Y_1, \ldots, Y_T$ converge to $\frac{1}{2}$? Because
-each $Y_t$ is independent and identically distributed, the central
+initial segment $$Y_1, \ldots, Y_T$$ converge to $$\frac{1}{2}$$? Because
+each $$Y_t$$ is independent and identically distributed, the central
 limit theorem tells us that the rate of convergence, as measured by
 standard deviation of the distribution of estimates, goes down as
-$\frac{1}{\sqrt{T}}$ with an initial segment $Y_1, \ldots, Y_T$ of the
-chain goes down in error as $\sqrt{T}$
+$$\frac{1}{\sqrt{T}}$$ with an initial segment $$Y_1, \ldots, Y_T$$ of the
+chain goes down in error as $$\sqrt{T}$$
 
 Now consider a Markov chain which is still symmetric in the states,
 but with a tendency to stay in the same state.
@@ -494,9 +504,9 @@ but with a tendency to stay in the same state.
 \end{tikzpicture}
 ```
 
-It has the same stationary distribution of 0.5.  Letting $\theta =
-\begin{bmatrix}0.9 & 0.1 \\ 0.1 & 0.9 \end{bmatrix}$ be the transition
-matrix and $\pi = (0.5, 0.5)$ be the probabilities of the stationary
+It has the same stationary distribution of 0.5.  Letting $$\theta =
+\begin{bmatrix}0.9 & 0.1 \\ 0.1 & 0.9 \end{bmatrix}$$ be the transition
+matrix and $$\pi = (0.5, 0.5)$$ be the probabilities of the stationary
 distribution we see that the general formula is satisfied by this
 Markov chain,
 
@@ -508,7 +518,7 @@ $$
 \end{array}
 $$
 
-The same relation holds for $\pi_2$,
+The same relation holds for $$\pi_2$$,
 
 $$
 \begin{array}{rcl}
@@ -599,7 +609,7 @@ df_compare_discrete_mcmc <-
         build_discrete_mcmc_df(anti_trans, 'anticorrelated', J, M))
 ```
 
-```{r out.height = "150%", fig.cap = 'Estimate of the stationary probability $\\pi_1$ of state 1 as a function of $t$ under three conditions, correlated, independent, and anticorrelated transitions.  For each condition, 25 simulations of a chain of size $T = 10\\,000$ are generated and overplotted.'}
+```{r out.height = "150%", fig.cap = 'Estimate of the stationary probability $$\\pi_1$$ of state 1 as a function of $$t$$ under three conditions, correlated, independent, and anticorrelated transitions.  For each condition, 25 simulations of a chain of size $$T = 10\\,000$$ are generated and overplotted.'}
 
 compare_discrete_mcmc_plot <-
   ggplot(df_compare_discrete_mcmc, aes(x = x, y = y, group = id)) +
@@ -621,10 +631,10 @@ compare_discrete_mcmc_plot
 ## Reversibility
 
 These simple Markov chains wind up being reversible, in that the
-probability of being in a state $i$ and then transitioning to state
-$j$ is the same as that of being in state $j$ and transitioning to
-state $i$. In symbols, a discrete-valued Markov chain $Y = Y_1, Y_2,
-\ldots$ is *reversible* with respect to $\pi$ if
+probability of being in a state $$i$$ and then transitioning to state
+$$j$$ is the same as that of being in state $$j$$ and transitioning to
+state $$i$$. In symbols, a discrete-valued Markov chain $$Y = Y_1, Y_2,
+\ldots$$ is *reversible* with respect to $$\pi$$ if
 
 $$
 \pi_i \times \theta_{i, j}
@@ -634,7 +644,7 @@ $$
 
 Reversibility is sufficient for establishing the existence of a
 stationary distribution.^[If a discrete Markov chain is reversible
-with respect to $\pi$, then $\pi$ is also the unique stationary
+with respect to $$\pi$$, then $$\pi$$ is also the unique stationary
 distribution of the Markov chain.]  Markov chains can have stationary
 distributions without being reversible.^[The reducible chains with we
 saw earlier are examples with stationary distributions that are not
