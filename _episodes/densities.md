@@ -112,11 +112,11 @@ $$
 \begin{array}{rcl}
 \mbox{Pr}[180 < \Theta \leq 270]
 & = & \mbox{Pr}[\Theta \leq 270] \ - \ \mbox{Pr}[\Theta \leq 180]
-\\[2pt]
+\[2pt]
 & = & F_{\Theta}(270) - F_{\Theta}(180)
-\\[2pt]
+\[2pt]
 & = & \frac{3}{4} - \frac{1}{2}
-\\[2pt]
+\[2pt]
 & = & \frac{1}{4}.
 \end{array}
 $$
@@ -171,7 +171,7 @@ printf(' ... \n')
 ```
 
 To understand the distribution of values of $$\Phi$$, let's look at histograms.  First, we have the uniform draws of $$\Theta$$, and then the transform to log odds $$\Phi = \mathrm{logit}(\Theta)$$,
-Histogram of 10,000 simulated draws of $$\theta \\sim \\mbox{uniform}(0, 1)$$.
+Histogram of 10,000 simulated draws of $$\theta \sim \mbox{uniform}(0, 1)$$.
 
 ```
 df_prob_unif <- data.frame(theta = theta)
@@ -186,7 +186,7 @@ unif_prob_plot <-
 unif_prob_plot
 ```
 
-Histogram of 10,000 simulated draws of $$\theta \\sim \\mbox{uniform}(0, 1)$$ transformed to the log odds scale by $$\\Phi = \\mbox{logit}(\theta).$$
+Histogram of 10,000 simulated draws of $$\theta \sim \mbox{uniform}(0, 1)$$ transformed to the log odds scale by $$\Phi = \mbox{logit}(\theta).$$
 ```
 df_log_odds <- data.frame(alpha = alpha)
 log_odds_plot <-
@@ -255,7 +255,7 @@ prob <- (1:M) / M
 
 We again plot with $$M = 1\,000$$ simulated values.
 
-Plot of the cumulative distribution function of a random variable $$\\Phi = \\mbox{logit}(\theta)$$ representing the log odds transform of a uniformly distributed random variable $$\theta \\sim \\mbox{uniform}(0, 1)$$.  The curve it picks out is S-shaped.  The asymptotes at 0 and 1 are indicated with dashed lines; the symmetries around 0 on the $$x$$-axis and 0.5 on the $$y$$-axis are picked out with dotted lines.
+Plot of the cumulative distribution function of a random variable $$\Phi = \mbox{logit}(\theta)$$ representing the log odds transform of a uniformly distributed random variable $$\theta \sim \mbox{uniform}(0, 1)$$.  The curve it picks out is S-shaped.  The asymptotes at 0 and 1 are indicated with dashed lines; the symmetries around 0 on the $$x$$-axis and 0.5 on the $$y$$-axis are picked out with dotted lines.
 
 ```
 
@@ -385,7 +385,7 @@ histogram as the number of draws increases and the width of bins
 shrinks.  Letting the number of simulations grow from $$10$$ to
 $$1\,000\,000$$, we see the limiting behavior of the histograms.
 
-Histograms of $$M$$ simulated draws of $$\theta \\sim \\mbox{uniform}(0, 1)$$ transformed to the log odds scale by $$\\Phi = \\mbox{logit}(\theta).$$ The limiting behavior is shown in the bell-shaped curve in the lower right based on $$1\\,000\\,000$$ draws.
+Histograms of $$M$$ simulated draws of $$\theta \sim \mbox{uniform}(0, 1)$$ transformed to the log odds scale by $$\Phi = \mbox{logit}(\theta).$$ The limiting behavior is shown in the bell-shaped curve in the lower right based on $$1\,000\,000$$ draws.
 
 ```
 set.seed(1234)
@@ -445,7 +445,7 @@ function is called the *probability density function* of the random
 variable.  Let's see what that limiting function looks like with $$M =
 1\,000\,000$$ draws.
 
-Histogram of $$M = 1\\,000\\,000$$ simulations of $$\theta \\sim \\mbox{uniform}(0,1)$$ transformed to $$\\Phi = \\mbox{logit}(\theta)$$. The black line connects the tops of the histogram bins.  In the limit, as the number of draws and bins approach infinity, the connecting line approaches the probability density function for the variable being simulated.
+Histogram of $$M = 1\,000\,000$$ simulations of $$\theta \sim \mbox{uniform}(0,1)$$ transformed to $$\Phi = \mbox{logit}(\theta)$$. The black line connects the tops of the histogram bins.  In the limit, as the number of draws and bins approach infinity, the connecting line approaches the probability density function for the variable being simulated.
 
 ```
 set.seed(1234)
@@ -950,7 +950,7 @@ printf("min = %3.2f;  max = %3.2f", min(y), max(y))
 It's clear that the variable has a mean and standard deviation of one,
 but is highly right skewed.
 
-```{r fig.cap="Histogram of $$M = 10^6$$ draws from $$U \\sim \\textrm{uniform}(0, 1)$$ transformed to $$Y = -\\log U.$$  The mean and standard deviation are 1, but the distribution is highly right skewed."}
+```{r fig.cap="Histogram of $$M = 10^6$$ draws from $$U \sim \textrm{uniform}(0, 1)$$ transformed to $$Y = -\log U.$$  The mean and standard deviation are 1, but the distribution is highly right skewed."}
 
 y = -log(runif(1e6))
 exp_df <- data.frame(y = y)
@@ -975,8 +975,8 @@ $$
 First, we calculate the inverse transform,
 $$
 \begin{array}{rcl}
-Y & = & -\log U \\[3pt]
--Y & = & \log U \\[3pt]
+Y & = & -\log U \[3pt]
+-Y & = & \log U \[3pt]
 \exp(-Y) & = & U
 \end{array}
 $$
@@ -999,7 +999,7 @@ $$
 \begin{array}{rcl}
 \frac{\textrm{d}}{\textrm{d}y} f^{-1}(y)
 & = & \frac{\textrm{d}}{\textrm{d}y} \exp(-y)
-\\[4pt]
+\[4pt]
 & = & -\exp(-y).
 \end{array}
 $$
@@ -1014,12 +1014,12 @@ p_U(f^{-1}(y))
 \left|
 \frac{\textrm{d}}{\textrm{d}y} \exp(-y)
 \right|
-\\[8pt]
+\[8pt]
 & = &
 \textrm{uniform}(f^{-1}(y) \mid 0, 1)
 \cdot
 \left| -\exp(-y) \right|
-\\[8pt]
+\[8pt]
 & = & \exp(-y).
 \end{array}
 $$
@@ -1034,9 +1034,9 @@ $$
 \int f(x) \, \textrm{d}x \, \Big|_{x = b}
 \ - \
 \int f(x) \, \textrm{d}x \, \Big|_{x = a}
-\\[6pt]
+\[6pt]
 & = & -\exp(-x)\Big|_{x = b} - -\exp(-x)\Big|_{x = a}
-\\[6pt]
+\[6pt]
 & = & -\exp(-b) + \exp(-a).
 \end{array}
 $$
@@ -1082,12 +1082,12 @@ p_V\left(h^{-1}(y)\right)
 \left|
 \frac{\textrm{d}}{\textrm{d}y} h^{-1}(y)
 \right|
-\\[8pt]
+\[8pt]
 & = &
 p_V(\lambda \cdot y)
 \cdot
 \left| \frac{\textrm{d}}{\textrm{d}y} \lambda \cdot y \right|
-\\[8pt]
+\[8pt]
 & = &
 \exp(-\lambda \cdot y)
 \cdot
