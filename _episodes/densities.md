@@ -35,7 +35,7 @@ $$
 This is a linear function of $$\theta$$, i.e., $$\frac{1}{360} \times
 \theta$$, as is reflected in the following plot.
 
-Cumulative distribution function for the angle $$\\theta$$ (in degrees) resulting from a fair spin of a spinner.  The dotted line shows the value at 180 degrees, which is a probability of one half and the dashed line at 270 degrees, which is a probability of three quarters.
+Cumulative distribution function for the angle $$\theta$$ (in degrees) resulting from a fair spin of a spinner.  The dotted line shows the value at 180 degrees, which is a probability of one half and the dashed line at 270 degrees, which is a probability of three quarters.
 
 ```
 library(ggplot2)
@@ -77,7 +77,7 @@ The trick is to put the sorted random variable the $$x$$-axis and the
 probability values on the $$y$$ axis. Here's a run with $$M = 1\,000$$
 simulated values.
 
-Plot of the cumulative distribution function of a random variable $$\\Theta$$ representing the result of a fair spin of a spinner from 0 to 360 degrees.  As expected, it is a simple linear function because the underlying variable $$\\Theta$$ has a uniform distribution.
+Plot of the cumulative distribution function of a random variable $$\theta$$ representing the result of a fair spin of a spinner from 0 to 360 degrees.  As expected, it is a simple linear function because the underlying variable $$\theta$$ has a uniform distribution.
 
 ```
 
@@ -171,7 +171,7 @@ printf(' ... \n')
 ```
 
 To understand the distribution of values of $$\Phi$$, let's look at histograms.  First, we have the uniform draws of $$\Theta$$, and then the transform to log odds $$\Phi = \mathrm{logit}(\Theta)$$,
-{r fig.cap='Histogram of $$10\\,000$$ simulated draws of $$\\Theta \\sim \\mbox{uniform}(0, 1)$$.
+{r fig.cap='Histogram of $$10\\,000$$ simulated draws of $$\theta \\sim \\mbox{uniform}(0, 1)$$.
 
 ```
 df_prob_unif <- data.frame(theta = theta)
@@ -186,7 +186,7 @@ unif_prob_plot <-
 unif_prob_plot
 ```
 
-Histogram of $$10\\,000$$ simulated draws of $$\\Theta \\sim \\mbox{uniform}(0, 1)$$ transformed to the log odds scale by $$\\Phi = \\mbox{logit}(\\Theta).$$
+Histogram of $$10\\,000$$ simulated draws of $$\theta \\sim \\mbox{uniform}(0, 1)$$ transformed to the log odds scale by $$\\Phi = \\mbox{logit}(\theta).$$
 ```
 df_log_odds <- data.frame(alpha = alpha)
 log_odds_plot <-
@@ -255,7 +255,7 @@ prob <- (1:M) / M
 
 We again plot with $$M = 1\,000$$ simulated values.
 
-Plot of the cumulative distribution function of a random variable $$\\Phi = \\mbox{logit}(\\Theta)$$ representing the log odds transform of a uniformly distributed random variable $$\\Theta \\sim \\mbox{uniform}(0, 1)$$.  The curve it picks out is S-shaped.  The asymptotes at 0 and 1 are indicated with dashed lines; the symmetries around 0 on the $$x$$-axis and 0.5 on the $$y$$-axis are picked out with dotted lines.
+Plot of the cumulative distribution function of a random variable $$\\Phi = \\mbox{logit}(\theta)$$ representing the log odds transform of a uniformly distributed random variable $$\theta \\sim \\mbox{uniform}(0, 1)$$.  The curve it picks out is S-shaped.  The asymptotes at 0 and 1 are indicated with dashed lines; the symmetries around 0 on the $$x$$-axis and 0.5 on the $$y$$-axis are picked out with dotted lines.
 
 ```
 
@@ -385,7 +385,7 @@ histogram as the number of draws increases and the width of bins
 shrinks.  Letting the number of simulations grow from $$10$$ to
 $$1\,000\,000$$, we see the limiting behavior of the histograms.
 
-Histograms of $$M$$ simulated draws of $$\\Theta \\sim \\mbox{uniform}(0, 1)$$ transformed to the log odds scale by $$\\Phi = \\mbox{logit}(\\Theta).$$ The limiting behavior is shown in the bell-shaped curve in the lower right based on $$1\\,000\\,000$$ draws.
+Histograms of $$M$$ simulated draws of $$\theta \\sim \\mbox{uniform}(0, 1)$$ transformed to the log odds scale by $$\\Phi = \\mbox{logit}(\theta).$$ The limiting behavior is shown in the bell-shaped curve in the lower right based on $$1\\,000\\,000$$ draws.
 
 ```
 set.seed(1234)
@@ -445,7 +445,7 @@ function is called the *probability density function* of the random
 variable.  Let's see what that limiting function looks like with $$M =
 1\,000\,000$$ draws.
 
-Histogram of $$M = 1\\,000\\,000$$ simulations of $$\\Theta \\sim \\mbox{uniform}(0,1)$$ transformed to $$\\Phi = \\mbox{logit}(\\Theta)$$. The black line connects the tops of the histogram bins.  In the limit, as the number of draws and bins approach infinity, the connecting line approaches the probability density function for the variable being simulated.
+Histogram of $$M = 1\\,000\\,000$$ simulations of $$\theta \\sim \\mbox{uniform}(0,1)$$ transformed to $$\\Phi = \\mbox{logit}(\theta)$$. The black line connects the tops of the histogram bins.  In the limit, as the number of draws and bins approach infinity, the connecting line approaches the probability density function for the variable being simulated.
 
 ```
 set.seed(1234)
