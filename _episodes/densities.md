@@ -171,7 +171,7 @@ printf(' ... \n')
 ```
 
 To understand the distribution of values of $$\Phi$$, let's look at histograms.  First, we have the uniform draws of $$\Theta$$, and then the transform to log odds $$\Phi = \mathrm{logit}(\Theta)$$,
-{r fig.cap='Histogram of $$10\\,000$$ simulated draws of $$\theta \\sim \\mbox{uniform}(0, 1)$$.
+Histogram of 10,000 simulated draws of $$\theta \\sim \\mbox{uniform}(0, 1)$$.
 
 ```
 df_prob_unif <- data.frame(theta = theta)
@@ -186,7 +186,7 @@ unif_prob_plot <-
 unif_prob_plot
 ```
 
-Histogram of $$10\\,000$$ simulated draws of $$\theta \\sim \\mbox{uniform}(0, 1)$$ transformed to the log odds scale by $$\\Phi = \\mbox{logit}(\theta).$$
+Histogram of 10,000 simulated draws of $$\theta \\sim \\mbox{uniform}(0, 1)$$ transformed to the log odds scale by $$\\Phi = \\mbox{logit}(\theta).$$
 ```
 df_log_odds <- data.frame(alpha = alpha)
 log_odds_plot <-
