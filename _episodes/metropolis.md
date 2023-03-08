@@ -163,7 +163,9 @@ $$
 0.9 & 1
 \end{bmatrix}
 $$
+
 and density
+
 $$
 \begin{array}{rcl}
 \log p(\theta)

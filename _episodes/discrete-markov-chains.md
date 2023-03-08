@@ -7,6 +7,9 @@ objectives:
 
 keypoints:
 
+---
+
+
 # Infinite Discrete Markov Chains
 
 All of the Markov chains we have until now have had a finite number
@@ -35,7 +38,7 @@ p_{Y_{t+1} \mid Y_t}(y_{t+1} \mid y_t)
 \ = \
 \begin{cases}
 \theta & \mbox{if } \ y_{t + 1} = y_t + 1, \mbox{and}
-\\[4pt]
+\[4pt]
 1 - \theta & \mbox{if } \ y_{t + 1} = y_t - 1.
 \end{cases}
 $$
@@ -61,7 +64,9 @@ for (m in 2:M)
 
 We'll simulate from both processes for $$M = 1000$$ steps and plot.
 
-```{r fig.cap = "Drunkard's walks of 10,000 steps with equal chance of going left or right (blue) versus a sixty percent chance of going left (red).  The dotted line is drawn at the starting point. As time progresses, the biased random walk drifts further and further from its starting point."}
+Drunkard's walks of 10,000 steps with equal chance of going left or right (blue) versus a sixty percent chance of going left (red).  The dotted line is drawn at the starting point. As time progresses, the biased random walk drifts further and further from its starting point.
+
+```
 
 set.seed(1234)
 M <- 10000
@@ -91,17 +96,17 @@ drunkards_plot
 ```
 
 For the balanced drunkard, the expected drift per step is zero as
-there is equal chance of going in either direction. After 10\,000
+there is equal chance of going in either direction. After 10,000
 steps, the expected position of the balanced drunkard remains the
 origin.^[Contrary to common language usage, the expected position
-being the origin after $$10\,000$$ steps does not imply that we should
+being the origin after $$10,000$$ steps does not imply that we should
 expect the drunkard to be at the origin. It is in fact very unlikely
-that the drunkard is at the origin after $$10\,000$$ steps, as it
-requires exactly $$5\,000$$ upward steps, the probability of which is
-$$\mbox{binomial}(5\,000 \mid 10\,000, 0.5) = 0.008.$$] For the
+that the drunkard is at the origin after 10,000 steps, as it
+requires exactly 5,000 upward steps, the probability of which is
+$$\mbox{binomial}(5,000 \mid 10,000, 0.5) = 0.008.$$] For the
 unbalanced drunkard, the expected drift per step is $$0.6 \times 1 +
-0.4 \times -1 = 0.2$$. Thus after 10\,000 steps, the drunkard's
-expected position is $$0.2 \times 10\,000 = 2\,000.$$
+0.4 \times -1 = 0.2$$. Thus after 10,000 steps, the drunkard's
+expected position is $$0.2 \times 10,000 = 2,000.$$
 
 
 
@@ -142,7 +147,7 @@ Y_{n + 1}
 \ = \
 \begin{cases}
 0 & \mbox{if} \ Y_n = 0, \ \mbox{and}
-\\[4pt]
+\[4pt]
 Y_n + Z_n & \mbox{if} \ Y_n > 0.
 \end{cases}
 $$
@@ -162,7 +167,7 @@ p_{Y_{t + 1} \mid Y_t}(y_{t + 1} \mid y_t)
 \ = \
 \begin{cases}
 \theta & \mbox{if} \ y_{t + 1} = y_t + 1
-\\[4pt]
+\[4pt]
 1 - \theta & \mbox{if} \ y_{t + 1} = y_t - 1.
 \end{cases}
 $$
@@ -202,11 +207,12 @@ for (t in 1:T)
   expected_fortune[t] = mean(y(1:M)[t])
 ```
 
-Let's run $$M = 10\,000$$ simulations for $$T = 50$$ starting with a stake
+Let's run $$M = 10,000$$ simulations for $$T = 50$$ starting with a stake
 of $$N = 5$$ with several values of $$\theta$$ and plot the expected
 fortunes.
 
-```{r fig.cap = "Expected returns for gambler starting with stake $$N$$ and having a $$\\theta$$ chance at each time point of increasing their fortune by 1 and a $$1 - \\theta$$ chance of reducing their fortune by 1.  The horizontal dotted line is at the initial fortune and the dashed line is at zero."}
+Expected returns for gambler starting with stake $$N$$ and having a $$\theta$$ chance at each time point of increasing their fortune by 1 and a $$1 - \theta$$ chance of reducing their fortune by 1.  The horizontal dotted line is at the initial fortune and the dashed line is at zero.
+```
 
 set.seed(1234)
 N <- 5
@@ -261,7 +267,7 @@ $$
 \mbox{Pr}[Y_t = 0]
 & = &
 \mathbb{E}\left[ \mathrm{I}\left[ Y_t = 0 \right] \right].
-\\[6pt]
+\[6pt]
 & \approx &
 \displaystyle
 \frac{1}{M} \sum_{m = 1}^M \, \mathrm{I}\left[ y_t^{(m)} = 0 \right].
@@ -283,11 +289,12 @@ for (t in 1:T)
 ```
 
 So let's run that and plot the probability of ruin for the same three
-choices of $$\theta$$, using $$M = 5\,000$$ simulations.  But this time,
+choices of $$\theta$$, using $$M = 5,000$$ simulations.  But this time,
 we'll run for $$T = 200$$ time steps.
 
-```{r fig.cap = 'Probability of running out of money for a gambler starting with stake $$N$$ and having a $$\\theta$$ chance at each time point of increasing their fortune by 1 and a $$1 - \\theta$$ chance of reducing their fortune by 1.  The horizontal dotted line is at 100 percent.'}
+Probability of running out of money for a gambler starting with stake $$N$$ and having a $$\theta$$ chance at each time point of increasing their fortune by 1 and a $$1 - \theta$$ chance of reducing their fortune by 1.  The horizontal dotted line is at 100 percent.
 
+```
 set.seed(1234)
 N <- 5
 T <- 200
@@ -397,8 +404,9 @@ Let's try different values of $$\phi$$, the average server rate, and
 plot two weeks of service.^[$$24 \mbox{hours/day} \ \times 14 \
 \mbox{days} = 336 \mbox{hours}$$]
 
-```{r fig.cap = 'Multiple simulations of queue size versus time for a queue with $$\\mbox{binomial}(1000, 0.005)$$ customers arriving per hour (an average of 5), and a maximum of $$\\mbox{binomial}(1000, \\phi)$$ customers served per hour, plotted for various $$\\phi$$ (as indicated in the row labels).'}
+Multiple simulations of queue size versus time for a queue with $$\mbox{binomial}(1000, 0.005)$$ customers arriving per hour (an average of 5), and a maximum of $$\mbox{binomial}(1000, \phi)$$ customers served per hour, plotted for various $$\phi$$ (as indicated in the row labels).
 
+```
 queue_df <- data.frame(t = c(), queue = c(), run = c(), phi = c())
 
 set.seed(1234)
