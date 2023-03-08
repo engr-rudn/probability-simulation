@@ -1058,8 +1058,7 @@ scaled.  Unlike the normal distribution, which scales a standard
 normal by multiplying it by a scale parameter, it is conventional to
 divide a standard exponential variate by a rate parameter to get a
 general exponential variate.  Suppose $$V \sim \textrm{exponential}(1)$$
-and we define a new variable $$Y = V / \lambda$$ for some rate $$\lambda
-> 0.$$^[A rate parameter divides a variable in contrast to a rate
+and we define a new variable $$Y = V / \lambda$$ for some rate $$\lambda > 0.$$ [A rate parameter divides a variable in contrast to a rate
 parameter, which multiplies a parameter.]  This gives us a general
 exponential variate, $$Y \sim \textrm{exponential}(\lambda).$$
 
