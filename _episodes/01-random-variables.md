@@ -382,7 +382,8 @@ for (i in 0:50) {
 df <- data.frame(M = Ms, hat_E_Y)
 ```
 
-```{r fig.cap="Monte Carlo estimate of probability that a coin lands head as a function of the number of simulation draws.  The line at 0.5 marks the true probability being estimated.  Plotted on a linear scale, it is clear how quickly the estimates converge to roughly the right value."}
+Monte Carlo estimate of probability that a coin lands head as a function of the number of simulation draws.  The line at 0.5 marks the true probability being estimated.  Plotted on a linear scale, it is clear how quickly the estimates converge to roughly the right value.
+```
 plot <- ggplot(df, aes(x = M, y = hat_E_Y)) +
   geom_hline(yintercept = 0.5, color = "red") +
   geom_line() +
@@ -399,7 +400,8 @@ plot
 
 The linear scale of the previous plot obscures the behavior of the estimates.  Consider instead a plot with the $$x$$-axis on the logarithmic scale.
 
-```{r fig.cap="Monte Carlo estimate of probability that a coin lands head as a function of the number of simulation draws.  The line at 0.5 marks the true probability being estimated.  The log-scaled $$x$$-axis makes the early rate of convergence more evident."}
+Monte Carlo estimate of probability that a coin lands head as a function of the number of simulation draws.  The line at 0.5 marks the true probability being estimated.  The log-scaled $$x$$-axis makes the early rate of convergence more evident.
+```
 plot <- ggplot(df, aes(x = M, y = hat_E_Y)) +
   geom_hline(yintercept = 0.5, color = "red") +
   geom_line() +
@@ -424,8 +426,10 @@ of the plot, whereas values between $$10\,000$$ and $$100\,000$$ take up
 Plotting the progression of multiple simulations demonstrates the
 trend in errors.
 
-```{r fig.cap="Each of the one hundred grey lines represents the ratio of heads observed in a sequence of coin flips, the size of which indicated on the $$x$$-axis.  The line at 0.5 indicates the probability a coin lands heads in a fair coin toss.  The convergence of the ratio of heads to 0.5 in all of the sequences is clearly visible."}
+Each of the one hundred grey lines represents the ratio of heads observed in a sequence of coin flips, the size of which indicated on the $$x$$-axis.  The line at 0.5 indicates the probability a coin lands heads in a fair coin toss.  The convergence of the ratio of heads to 0.5 in all of the sequences is clearly visible.
 
+```
+ 
 library(ggplot2)
 set.seed(0)
 M_max <- 1e4
@@ -457,9 +461,9 @@ pr_Y_eq_1_plot <- ggplot(df2, aes(x = M, y = hat_E_Y, group=r)) +
     ggtheme_tufte()
 pr_Y_eq_1_plot
 ```
+Continuing where the previous plot left off, each of the one hundred grey lines represents the ratio of heads observed in a sequence of coin flips.  The values on the $$x$$ axis is one hundred times larger than in the previous plot, and the scale of the $$y$$-axis is one tenth as large.  The trend in error reduction appears the same at the larger scale.
 
-```{r fig.cap="Continuing where the previous plot left off, each of the one hundred grey lines represents the ratio of heads observed in a sequence of coin flips.  The values on the $$x$$ axis is one hundred times larger than in the previous plot, and the scale of the $$y$$-axis is one tenth as large.  The trend in error reduction appears the same at the larger scale."}
-
+```
 library(ggplot2)
 set.seed(0)
 M_max <- 1e6
@@ -609,9 +613,9 @@ $$
 \, \right|
 $$
 
+The absolute error of the simulation-based probability estimate as a function of the number of simulation draws.  One hundred sequences of one million flips are shown.
 
-```{r fig.cap="The absolute error of the simulation-based probability estimate as a function of the number of simulation draws.  One hundred sequences of one million flips are shown."}
-
+```
 set.seed(1234)
 M_max <- 1e6
 J <- 100
@@ -678,7 +682,9 @@ Plotting both the number of simulations and the absolute error on the
 log scale reveals the rate at which the error decreases with more
 draws.
 
-```{r fig.cap="Absolute error versus number of simulation draws for 100 simulated sequences of $$M = 1\\,000\\,000$$ draws. The blue line is at the 68 percent quantile and the red line at the 95 percent quantile of these draws.  The relationship between the log number of draws and log error is revealed to be linear."}
+Absolute error versus number of simulation draws for 100 simulated sequences of $$M = 1,000,000$$ draws. The blue line is at the 68 percent quantile and the red line at the 95 percent quantile of these draws.  The relationship between the log number of draws and log error is revealed to be linear.
+
+```
 #   commented out bits plot the clt version
 #   geom_line(data = data.frame(x = c(1e4, 1e6),
 #                               y = 2 * c(.5 / sqrt(1e4), .5 / sqrt(1e6))),
