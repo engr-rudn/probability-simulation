@@ -1,5 +1,5 @@
 ---
-title: "Conjugate Posteriors"
+title: "Discrete Markov Chains"
 teaching: 
 exercises:
 questions:
@@ -8,7 +8,6 @@ objectives:
 keypoints:
 
 ---
-
 
 # Infinite Discrete Markov Chains
 
@@ -172,9 +171,9 @@ p_{Y_{t + 1} \mid Y_t}(y_{t + 1} \mid y_t)
 \end{cases}
 $$
 
-These mass functions are all identical in that $$p_{Y_{t+n+1} \mid Y_{t
-+ n}} = p_{Y_{t + 1} \mid Y_t}.$$  In other words, $$Y$$ is a
-time-homogeneous Markov chain.
+These mass functions are all identical in that $$
+p_{Y_{t+n+1} \mid Y_{t + n}} = p_{Y_{t + 1} \mid Y_t}.
+$$  In other words, $$Y$$ is a time-homogeneous Markov chain.
 
 We are interested in two questions pertaining to the gambler. First,
 what is their expected fortune at each time $$t$$? Second, what is the
