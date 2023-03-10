@@ -211,7 +211,9 @@ typically plotted using bar plots, where the outcomes are arrayed on
 the $$x$$ axis with a vertical bar over each one whose height is
 proportional to the frequency of that outcome.
 
-```{r fig.cap="Plot of $$M = 100\\,000$$ simulations of the probability mass function of a random variable defined as the number of heads in ten specific coin flips."}
+Plot of $$M = 100,000$$ simulations of the probability mass function of a random variable defined as the number of heads in ten specific coin flips.
+
+```
 
 set.seed(1234)
 M <- 100000
@@ -239,7 +241,7 @@ area because the bars are of equal width.]
 This plot can easily be repeated to see what happens as the number of
 bins grows.
 
-```{r out.width='80%', fig.cap="Plot of $$M = 1\\,000\\,000$$ simulations of a variable $$Z$$ representing the number of heads in $$N$$ coin flips.  Each plot represents a different $$N$$.  Because the bars are the same width and the $$x$$ axes are scaled to the same range in all plots, the total length of all bars laid end to end is the same in each plot;  similarly, the total area of the bars in each plot is the same."}
+```{r out.width='80%', fig.cap="Plot of $$M = 1,000,000$$ simulations of a variable $$Z$$ representing the number of heads in $$N$$ coin flips.  Each plot represents a different $$N$$.  Because the bars are the same width and the $$x$$ axes are scaled to the same range in all plots, the total length of all bars laid end to end is the same in each plot;  similarly, the total area of the bars in each plot is the same."}
 
 set.seed(1234)
 df <- data.frame()
@@ -615,7 +617,7 @@ values, but also some large values.  For cases like these, we can use
 a bar plot to plot the values.  This time, we're going to use $$M =
 10\,000$$ to get a better picture of the pattern.
 
-```{r fig.cap="Frequency of outcomes in $$10\\,000$$ simulation draws of $$U$$, the number of tails seen before a head in a coin-tossing experiment."}
+```{r fig.cap="Frequency of outcomes in $$10,000$$ simulation draws of $$U$$, the number of tails seen before a head in a coin-tossing experiment."}
 set.seed(1234)
 M <- 10000
 u <- rep(NA, M)
@@ -647,7 +649,7 @@ additional outcome is only a fraction as likely as the previous one.]
 in the counts with the number of tails thrown is more obvious when
 plotted on the log scale.
 
-```{r fig.cap="Frequency of outcomes in $$10\\,000$$ simulation draws of $$U$$, the number of tails seen before a head in a coin-tossing experiment, this time with the outcome count on the log scale to illustrate the exponentially decreasing probabilities of each successive number of tails."}
+```{r fig.cap="Frequency of outcomes in $$10,000$$ simulation draws of $$U$$, the number of tails seen before a head in a coin-tossing experiment, this time with the outcome count on the log scale to illustrate the exponentially decreasing probabilities of each successive number of tails."}
 
 set.seed(1234)
 M <- 10000
