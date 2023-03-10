@@ -68,9 +68,10 @@ We can use simulation to evaluate the probability of an outcome that
 combines multiple random variables. For example, to evaluate
 $$\mbox{Pr}[Z = 2]$$, we run the simulation many times and count the
 proportion of results that are two.^[The sum is calculated using
-notation `sum(y[m, ])`, which is defined to be `sum(y[m, ]) = y[m, 1]
-+ ... + y[m, N],` where `N` is the number of entries in row `m` of the
-variable `y`.]
+notation 
+`sum(y[m, ])`, 
+which is defined to be 
+$$sum(y[m, ]) = y[m, 1] + ... + y[m, N],` where `N` is the number of entries in row `m` of the variable `y`.]
 
 ```
 for (m in 1:M)
@@ -101,7 +102,7 @@ for (k in 1:5) {
 ```
 
 Nailing down that final digit is going to require one hundred times as
-many iterations (i.e, $$M = 10\,000\,000$$ iterations).  Let's see what
+many iterations (i.e, $$M = 10,000,000$$ iterations).  Let's see what
 that looks like.
 
 ```{r}
