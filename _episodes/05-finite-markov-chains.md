@@ -309,8 +309,8 @@ for (t in 2:T)
 ```
 
 Suppose we have the following graph.
-
-```{r, engine="tikz", fig.ext="pdf", out.width="50%", fig.cap="A simplified web.  Each node represents a web page and each edge is a directed link from one page to another web page."}
+[A simplified web.  Each node represents a web page and each edge is a directed link from one page to another web page.]
+$$
 \begin{tikzpicture}[->, auto, node distance=2cm, font=\footnotesize]
 \node[circle,draw,semithick] (A) {1};
 \node[circle,draw,semithick] (B) [above right of=A] {2};
@@ -337,12 +337,17 @@ Suppose we have the following graph.
 \path (D) edge [] node {} (K);
 \path (D) edge [] node {} (L);
 \end{tikzpicture}
+$$
+```
 ```
 
 We can simulate $$T = 100\,000$$ page visits using the algorithm shown
 above and display the proportion of time spent on each page.
 
-```{r fig.cap = "Proportion of time spent on each page by a random surfer taking $$T = 100\\,000$$ page views starting from a random page with a web structured as in the previous diagram."}
+Proportion of time spent on each page by a random surfer taking $$T = 100\\,000$$ page views starting from a random page with a web structured as in the previous diagram.
+
+
+```
 L = matrix(0, 12, 12)
 L[1, c(2, 4)] = 1
 L[2, c(1)] = 1
