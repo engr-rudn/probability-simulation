@@ -241,8 +241,9 @@ area because the bars are of equal width.]
 This plot can easily be repeated to see what happens as the number of
 bins grows.
 
-```{r out.width='80%', fig.cap="Plot of $$M = 1,000,000$$ simulations of a variable $$Z$$ representing the number of heads in $$N$$ coin flips.  Each plot represents a different $$N$$.  Because the bars are the same width and the $$x$$ axes are scaled to the same range in all plots, the total length of all bars laid end to end is the same in each plot;  similarly, the total area of the bars in each plot is the same."}
+Plot of $$M = 1,000,000$$ simulations of a variable $$Z$$ representing the number of heads in $$N$$ coin flips.  Each plot represents a different $$N$$.  Because the bars are the same width and the $$x$$ axes are scaled to the same range in all plots, the total length of all bars laid end to end is the same in each plot;  similarly, the total area of the bars in each plot is the same.
 
+```
 set.seed(1234)
 df <- data.frame()
 for (N in c(5, 10, 15, 20, 25, 30)) {
@@ -283,9 +284,9 @@ p_Y(y) \ = \
 $$
 
 Games like *Monopoly* use a pair of six-sided dice and consider the sum of the results. That is, $$Y_1$$ and $$Y_2$$ are fair six-sided die rolls and $$Z = Y_1 + Y_2$$ is the result. Games like *Dungeons \& Dragons* use a trio of six-sided dice and consider the sum of the results. In that scenario, $$Y_1, Y_2, Y_3$$ are the results of fair six-sided die rolls and $$Z = Y_1 + Y_2 + Y_3$$. Dungeons and Dragons also uses four six-sided die of which the best 3 are summed to produce a result. Let's simulate some of these approaches and see what the results look like based on $$M = 100\,000$$ simulations.^[The simulations are identical to before, only using `1:6` in the range of uniform variables.]
+Estimated $$p_Y(y)$$ for case of $$Y$$ being the sum of three six-sided dice (3d6) or the sum of the highest three of four six-sided dice (3 of 4d6).
 
-```{r fig.cap="Estimated $$p_Y(y)$$ for case of $$Y$$ being the sum of three six-sided dice (3d6) or the sum of the highest three of four six-sided dice (3 of 4d6)."}
-
+```
 M <- 100000
 three_d6 <- sample(6, size = M, replace=TRUE) +
             sample(6, size = M, replace=TRUE) +
@@ -328,7 +329,9 @@ using $$M = 100\,000$$. The counts are converted to estimated
 probabilities on the vertical axis in the usual way by dividing by
 $$M$$.
 
-```{r fig.cap="Estimated $$p_Y(y)$$ for case of $$Y$$ being a single twenty-sided die (d20), the higher two twenty-sided die rolls (max 2d20), and the lower of two 20-sided die rolls (min 2d20)."}
+Estimated $$p_Y(y)$$ for case of $$Y$$ being a single twenty-sided die (d20), the higher two twenty-sided die rolls (max 2d20), and the lower of two 20-sided die rolls (min 2d20).
+
+```
 
 M <- 100000
 d20 <- sample(20, size = M, replace=TRUE)
@@ -473,7 +476,8 @@ twenty-sided die roll and the rolls with advantage (best of two rolls)
 or disadvantage (worst of two rolls).  Here's the result using the
 same simulations as in the last plot, with $$M = 100\,000$$.
 
-```{r fig.cap="Cumulative distribution function for three variables corresponding to rolling a single 20-sided die, or rolling two 20-sided dice and taking the best or worst result."}
+Cumulative distribution function for three variables corresponding to rolling a single 20-sided die, or rolling two 20-sided dice and taking the best or worst result.
+```
 cum_d20 <- cumsum(tot_d20)
 cum_max_2d20 <- cumsum(tot_max_2d20)
 cum_min_2d20 <- cumsum(tot_min_2d20)
@@ -520,7 +524,9 @@ $$
 It's easier to see with a plot how it relates to the usual cumulative
 distribution function.
 
-```{r, fig.cap = "Complementary cumulative distributions for a single 20-sided die, the best of two dice, and the worst of two dice."}
+Complementary cumulative distributions for a single 20-sided die, the best of two dice, and the worst of two dice.
+
+```
 ccum_d20_df <- data.frame(probability = c(1 - cum_d20 / M,
                                           1 - cum_max_2d20 / M,
                                           1 - cum_min_2d20 / M),
@@ -617,7 +623,9 @@ values, but also some large values.  For cases like these, we can use
 a bar plot to plot the values.  This time, we're going to use $$M =
 10\,000$$ to get a better picture of the pattern.
 
-```{r fig.cap="Frequency of outcomes in $$10,000$$ simulation draws of $$U$$, the number of tails seen before a head in a coin-tossing experiment."}
+Frequency of outcomes in $$10,000$$ simulation draws of $$U$$, the number of tails seen before a head in a coin-tossing experiment.
+
+```
 set.seed(1234)
 M <- 10000
 u <- rep(NA, M)
@@ -649,7 +657,9 @@ additional outcome is only a fraction as likely as the previous one.]
 in the counts with the number of tails thrown is more obvious when
 plotted on the log scale.
 
-```{r fig.cap="Frequency of outcomes in $$10,000$$ simulation draws of $$U$$, the number of tails seen before a head in a coin-tossing experiment, this time with the outcome count on the log scale to illustrate the exponentially decreasing probabilities of each successive number of tails."}
+Frequency of outcomes in $$10,000$$ simulation draws of $$U$$, the number of tails seen before a head in a coin-tossing experiment, this time with the outcome count on the log scale to illustrate the exponentially decreasing probabilities of each successive number of tails.
+
+```
 
 set.seed(1234)
 M <- 10000
