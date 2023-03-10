@@ -80,10 +80,10 @@ classic exercise involving cars and trucks from Ross, S.M.,2014. *Introduction t
 Press. Exercise 30, page 279.] We'll treat the sequence of fish types
 as a random process $$Y = Y_1, Y_2, \ldots$$ with values
 
-$$ Y_t = $$
+$$ Y_t $$
 
 $$
-\begin{cases}
+=\begin{cases}
 1 & \mbox{if fish $$t$$ is a pike, and}
 \\[4pt]
 2 & \mbox{if fish $$t$$ is a perch.}
