@@ -7,6 +7,10 @@ objectives:
 
 keypoints:
 
+---
+
+
+
 # Expectations and Variance
 
 Almost all quantities of interest in statistics, ranging from
@@ -211,7 +215,9 @@ errors (e.g., $$5^2 = 25$$).  We can see a plot of the squared
 differences from the mean that would be involved in calculating
 the variance of a 20-sided die.
 
-```{r fig.cap="Squared differences from the mean of 10.5 for a 20-sided die roll.  The mean is indicated with a dashed vertical line."}
+Squared differences from the mean of 10.5 for a 20-sided die roll.  The mean is indicated with a dashed vertical line.
+
+```
 d20_var_df <- data.frame(roll = 1:20, sqe = (1:20 - 10.5)^2)
 d20_var_plot <-
   ggplot(d20_var_df, aes(x = roll, y = sqe)) +
