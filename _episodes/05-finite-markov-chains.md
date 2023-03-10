@@ -162,8 +162,7 @@ from among the balls in both urns and moved to the other urn.^[This
 model was originally introduced as an example of entropy and
 equilibrium in P. Ehrenfest and T. Ehrenfest. 1906. Über eine Aufgabe
 aus der Wahrscheinlichkeitsrechnung, die mit der kinetischen Deutung
-der Entropievermehrung zusammenhängt.
-*Mathematisch-Naturwissenschaftliche Blätter* No. 11 and 12.]
+der Entropievermehrung zusammenhängt. *Mathematisch-Naturwissenschaftliche Blätter* No. 11 and 12.]
 
 The process defines a Markov chain $$Y$$ where transitions are governed
 by
