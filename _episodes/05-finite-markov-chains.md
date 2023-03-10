@@ -81,6 +81,7 @@ Press. Exercise 30, page 279.] We'll treat the sequence of fish types
 as a random process $$Y = Y_1, Y_2, \ldots$$ with values
 
 $$ Y_t = $$
+
 $$
 \begin{cases}
 1 & \mbox{if fish $$t$$ is a pike, and}
@@ -106,7 +107,7 @@ transition diagram is as follows.
 State diagram for finite Markov chain generating sequences of fishes. The last fish observed determines the current state and the arrows indicate transition probabilities to the next fish observed.
 
 $$
-\begin{tikzpicture}[->, auto, node distance=2cm, font=\footnotesize]
+\begin{tikzpicture}
 \node[circle,draw,semithick] (A) {1:pike};
 \node[circle,draw,semithick] (B) [right of=A] {2:perch};
 \path (A) edge [bend left] node {0.80} (B);
