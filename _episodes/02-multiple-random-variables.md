@@ -68,10 +68,9 @@ We can use simulation to evaluate the probability of an outcome that
 combines multiple random variables. For example, to evaluate
 $$\mbox{Pr}[Z = 2]$$, we run the simulation many times and count the
 proportion of results that are two.^[The sum is calculated using
-notation 
-'sum(y[m, ])', 
+notation $$sum(y[m, ])$$, 
 which is defined to be 
-$$sum(y[m, ]) = y[m, 1] + ... + y[m, N],` where `N` is the number of entries in row `m` of the variable `y`.]
+$$sum(y[m, ]) = y[m, 1] + ... + y[m, N],$$ where `N` is the number of entries in row `m` of the variable `y`.]
 
 ```
 for (m in 1:M)
