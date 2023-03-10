@@ -81,7 +81,8 @@ Press. Exercise 30, page 279.] We'll treat the sequence of fish types
 as a random process $$Y = Y_1, Y_2, \ldots$$ with values
 
 $$
-Y_t \ = \\begin{cases}
+Y_t \ = \
+\begin{cases}
 1 & \mbox{if fish $$t$$ is a pike, and}
 \\[4pt]
 2 & \mbox{if fish $$t$$ is a perch.}
@@ -310,6 +311,7 @@ for (t in 2:T)
 
 Suppose we have the following graph.
 [A simplified web.  Each node represents a web page and each edge is a directed link from one page to another web page.]
+
 $$
 \begin{tikzpicture}[->, auto, node distance=2cm, font=\footnotesize]
 \node[circle,draw,semithick] (A) {1};
