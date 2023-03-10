@@ -76,14 +76,12 @@ Suppose a person is ice fishing for perch and pike, and notes that if
 they catch a perch, it is 95% likely that the next fish they catch is
 a perch, whereas if they catch a pike, it is 20% likely the next fish
 they catch is a pike.^[This is a thinly reskinned version of the
-classic exercise involving cars and trucks from Ross, S.M.,
-2014. *Introduction to Probability Models.* Tenth edition. Academic
+classic exercise involving cars and trucks from Ross, S.M.,2014. *Introduction to Probability Models.* Tenth edition. Academic
 Press. Exercise 30, page 279.] We'll treat the sequence of fish types
 as a random process $$Y = Y_1, Y_2, \ldots$$ with values
 
 $$
-Y_t \ = \
-\begin{cases}
+Y_t \ = \\begin{cases}
 1 & \mbox{if fish $$t$$ is a pike, and}
 \\[4pt]
 2 & \mbox{if fish $$t$$ is a perch.}
@@ -104,7 +102,9 @@ The easiest way to visual a Markov chain with only a few states is as
 a state transition diagram.  In the case of the pike and perch, the
 transition diagram is as follows.
 
-```{r, engine="tikz", fig.ext="pdf", out.width="35%", fig.cap="State diagram for finite Markov chain generating sequences of fishes. The last fish observed determines the current state and the arrows indicate transition probabilities to the next fish observed."}
+State diagram for finite Markov chain generating sequences of fishes. The last fish observed determines the current state and the arrows indicate transition probabilities to the next fish observed.
+
+$$
 \begin{tikzpicture}[->, auto, node distance=2cm, font=\footnotesize]
 \node[circle,draw,semithick] (A) {1:pike};
 \node[circle,draw,semithick] (B) [right of=A] {2:perch};
@@ -113,7 +113,7 @@ transition diagram is as follows.
 \path (A) edge [loop above] node {0.20} (A);
 \path (B) edge [loop above] node {0.95} (B);
 \end{tikzpicture}
-```
+$$
 
 Like all such transition graphs, the probabilities on the edges going
 out of a node must sum to one.
@@ -168,8 +168,7 @@ by
 
 $$
 p_{Y_{t+1} \mid Y_t}(y_{t+1} \mid y_t)
-\ = \
-\begin{cases}
+\ = \\begin{cases}
 \displaystyle \frac{y_t}{N}
 & \mbox{if } \ y_{t + 1} = y_t - 1, \ \mbox{and}
 \\[6pt]
@@ -207,8 +206,9 @@ p_Y_t_hat = table(y, 0, N) / T
 Let's run that with $$N = 10$$ and $$T = 100\,000$$ and display the
 results as a bar plot.
 
-```{r fig.cap = 'Long-term distribution of number of balls in the first urn of the Ehrenfest model in which $$N$$ balls are distributed between two urns, then at each time step, a ball is chosen uniformly at random move to the other urn.  The simulation is based on total of $$T = 100\\,000$$ steps with $$N = 10$$ balls, starting with 5 balls in the first urn. The points on the top of the bars are positioned at the mass defined by the binomial distribution, $$\\mbox{binomial}(Y_t \\mid 10, 0.5)$$.'}
+Long-term distribution of number of balls in the first urn of the Ehrenfest model in which $$N$$ balls are distributed between two urns, then at each time step, a ball is chosen uniformly at random move to the other urn.  The simulation is based on total of $$T = 100\\,000$$ steps with $$N = 10$$ balls, starting with 5 balls in the first urn. The points on the top of the bars are positioned at the mass defined by the binomial distribution, $$\\mbox{binomial}(Y_t \\mid 10, 0.5)$$.
 
+```
 set.seed(1234)
 N <- 10
 T <- 1e5
