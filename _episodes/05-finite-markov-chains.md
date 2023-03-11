@@ -92,9 +92,9 @@ $$
 $$
 
 $$
-p_{Y_{t+1} \mid Y_t}(y_{t+1} \mid y_t)$$
+Y_t=$$
 $$
-= \begin{cases}
+\begin{cases}
 \displaystyle \frac{y_t}{N}
 & \mbox{if } \ y_{t + 1} = y_t - 1, \ \mbox{and}
 \\[6pt]
