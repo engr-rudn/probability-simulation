@@ -96,7 +96,7 @@ Y_t=$$
 $$
 \begin{cases}
 1
-& \mbox{if } \ y_{t + 1} = y_t - 1, \ \mbox{and}
+& \mbox{if fish $$t$$ is a pike, and}
 \\[6pt]
 2
 & \mbox{if } \ y_{t + 1} = y_t + 1.
