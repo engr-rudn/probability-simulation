@@ -84,10 +84,10 @@ $$ Y_t= $$
 
 $$
 \begin{cases} 1 
-& \mbox{if fish $$t$$ is a pike, and}
+& \mbox{if fish t is a pike, and}
 \\[4pt]
 2 
-& \mbox{if fish $$t$$ is a perch.}
+& \mbox{if fish t is a perch.}
 \end{cases}
 $$
 
