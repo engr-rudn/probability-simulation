@@ -92,16 +92,6 @@ $$
 $$
 
 $$
-Y_t=$$
-$$
-\begin{cases}
-1
-& \mbox{if } \ fish $$t$$ is a pike, \ \mbox{and}
-\\[6pt]
-2
-& \mbox{if } \ y_{t + 1} = y_t + 1.
-\end{cases}
-$$
 
 The sequence $$Y$$ forms a Markov chain with transition probabilities
 
