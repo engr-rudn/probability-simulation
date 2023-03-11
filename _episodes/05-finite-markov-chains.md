@@ -91,8 +91,6 @@ $$
 \end{cases}
 $$
 
-$$
-
 The sequence $$Y$$ forms a Markov chain with transition probabilities
 
 $$
@@ -109,7 +107,7 @@ transition diagram is as follows.
 
 State diagram for finite Markov chain generating sequences of fishes. The last fish observed determines the current state and the arrows indicate transition probabilities to the next fish observed.
 
-$$
+<!-- 
 \begin{tikzpicture}
 \node[circle,draw,semithick] (A) {1:pike};
 \node[circle,draw,semithick] (B) [right of=A] {2:perch};
@@ -118,8 +116,8 @@ $$
 \path (A) edge [loop above] node {0.20} (A);
 \path (B) edge [loop above] node {0.95} (B);
 \end{tikzpicture}
-$$
-
+ -->
+![](../images/finite_Markov_chain_generating_sequences_of_fishes.jpg)
 Like all such transition graphs, the probabilities on the edges going
 out of a node must sum to one.
 
