@@ -314,9 +314,9 @@ for (t in 2:T)
 ```
 
 Suppose we have the following graph.
-[A simplified web.  Each node represents a web page and each edge is a directed link from one page to another web page.]
-[A simplified web](../images/A_simplified_web.jpg)
+A simplified web.  Each node represents a web page and each edge is a directed link from one page to another web page.
 
+![A simplified web](../images/A_simplified_web.jpg)
 <!--! $$
 \begin{tikzpicture}[->, auto, node distance=2cm, font=\footnotesize]
 \node[circle,draw,semithick] (A) {1};
