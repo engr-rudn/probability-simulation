@@ -181,7 +181,7 @@ eventually get back to state 1.
 
 State diagram for another reducible finite Markov chain.  The chain will eventually get stuck in state 3 and 4 and never exit to visit states 1 or 2 again.
 
-![](../images/another_reducible_finite_Markov_chain.jpg)
+
 
 <!-- ```
 
