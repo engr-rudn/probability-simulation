@@ -90,6 +90,18 @@ $$
 \end{cases}
 $$
 
+$$
+p_{Y_{t+1} \mid Y_t}(y_{t+1} \mid y_t)$$
+$$
+= \begin{cases}
+\displaystyle \frac{y_t}{N}
+& \mbox{if } \ y_{t + 1} = y_t - 1, \ \mbox{and}
+\\[6pt]
+\displaystyle 1 - \frac{y_t}{N}
+& \mbox{if } \ y_{t + 1} = y_t + 1.
+\end{cases}
+$$
+
 The sequence $$Y$$ forms a Markov chain with transition probabilities
 
 $$
