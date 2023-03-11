@@ -209,7 +209,9 @@ p_Y_t_hat = table(y, 0, N) / T
 Let's run that with $$N = 10$$ and $$T = 100\,000$$ and display the
 results as a bar plot.
 
-Long-term distribution of number of balls in the first urn of the Ehrenfest model in which $$N$$ balls are distributed between two urns, then at each time step, a ball is chosen uniformly at random move to the other urn.  The simulation is based on total of $$T = 100\\,000$$ steps with $$N = 10$$ balls, starting with 5 balls in the first urn. The points on the top of the bars are positioned at the mass defined by the binomial distribution, $$\\mbox{binomial}(Y_t \\mid 10, 0.5)$$.
+Long-term distribution of number of balls in the first urn of the Ehrenfest model in which $$N$$ balls are distributed between two urns, then at each time step, a ball is chosen uniformly at random move to the other urn.  The simulation is based on total of $$T = 100,000$$ steps with $$N = 10$$ balls, starting with 5 balls in the first urn. The points on the top of the bars are positioned at the mass defined by the binomial distribution, $$
+\\mbox{binomial}(Y_t \\mid 10, 0.5)
+$$.
 
 ```
 set.seed(1234)
@@ -313,8 +315,9 @@ for (t in 2:T)
 
 Suppose we have the following graph.
 [A simplified web.  Each node represents a web page and each edge is a directed link from one page to another web page.]
+[A simplified web](../images/A_simplified_web.jpg)
 
-$$
+<!--! $$
 \begin{tikzpicture}[->, auto, node distance=2cm, font=\footnotesize]
 \node[circle,draw,semithick] (A) {1};
 \node[circle,draw,semithick] (B) [above right of=A] {2};
@@ -341,14 +344,13 @@ $$
 \path (D) edge [] node {} (K);
 \path (D) edge [] node {} (L);
 \end{tikzpicture}
-$$
-```
-```
+$$ -->
 
-We can simulate $$T = 100\,000$$ page visits using the algorithm shown
+
+We can simulate $$T = 100,000$$ page visits using the algorithm shown
 above and display the proportion of time spent on each page.
 
-Proportion of time spent on each page by a random surfer taking $$T = 100\\,000$$ page views starting from a random page with a web structured as in the previous diagram.
+Proportion of time spent on each page by a random surfer taking $$T = 100,000$$ page views starting from a random page with a web structured as in the previous diagram.
 
 
 ```
