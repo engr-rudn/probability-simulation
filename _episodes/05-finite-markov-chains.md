@@ -83,10 +83,11 @@ as a random process $$Y = Y_1, Y_2, \ldots$$ with values
 $$ Y_t= $$
 
 $$
-\begin{cases}
-1 & \mbox{if fish $$t$$ is a pike, and}
+\begin{cases} 1 
+& \mbox{if fish $$t$$ is a pike, and}
 \\[4pt]
-2 & \mbox{if fish $$t$$ is a perch.}
+2 
+& \mbox{if fish $$t$$ is a perch.}
 \end{cases}
 $$
 
