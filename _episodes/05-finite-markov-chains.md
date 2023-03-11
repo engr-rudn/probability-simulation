@@ -95,10 +95,10 @@ $$
 Y_t=$$
 $$
 \begin{cases}
-\displaystyle \frac{y_t}{N}
+1
 & \mbox{if } \ y_{t + 1} = y_t - 1, \ \mbox{and}
 \\[6pt]
-\displaystyle 1 - \frac{y_t}{N}
+2
 & \mbox{if } \ y_{t + 1} = y_t + 1.
 \end{cases}
 $$
