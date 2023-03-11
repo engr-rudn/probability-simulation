@@ -210,11 +210,13 @@ A Markov chain can be constructed to cycle through states in a regular
 (probabilistic) pattern.  For example, consider the following Markov
 chain transitions.
 
-State diagram for finite Markov chain generating periodic state sequences $$\\ldots, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, \\ldots$$.
+State diagram for finite Markov chain generating periodic state sequences $$
+\\ldots, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, \\ldots
+$$.
 
 
 ![](../images/finite_Markov_chain_generating_periodic_state.jpg)
-<!-- ```
+<!--
 \begin{tikzpicture}[->, auto, node distance=2cm, font=\footnotesize]
 \node[circle,draw,semithick] (A) {1};
 \node[circle,draw,semithick] (B) [below left of=A] {2};
@@ -223,7 +225,7 @@ State diagram for finite Markov chain generating periodic state sequences $$\\ld
 \path (B) edge [bend right] node {1} (C);
 \path (C) edge [bend right] node {1} (A);
 \end{tikzpicture}
-``` -->
+ -->
 
 Regular cycles like this defeat the existence of a stationary
 distribution.  If $$Y_1 = 2$$, the entire chain is deterministically
