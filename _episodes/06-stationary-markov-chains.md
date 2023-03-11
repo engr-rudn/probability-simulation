@@ -183,7 +183,7 @@ State diagram for another reducible finite Markov chain.  The chain will eventua
 
 
 ![](../images/another_reducible_finite_Markov_chain.jpg)
-<!-- ```
+<!-- 
 
 \begin{tikzpicture}[->, auto, node distance=2cm, font=\footnotesize]
 \node[circle,draw,semithick] (A) {1};
@@ -198,7 +198,7 @@ State diagram for another reducible finite Markov chain.  The chain will eventua
 \path (C) edge [loop above] node {1/2} (C);
 \path (D) edge [loop above] node {1/2} (D);
 \end{tikzpicture}
-``` -->
+ -->
 
 In this example, the chain will eventually fall into a state where it
 can only visit states 3 and 4.
