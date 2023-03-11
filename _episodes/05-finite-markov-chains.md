@@ -353,7 +353,7 @@ above and display the proportion of time spent on each page.
 Proportion of time spent on each page by a random surfer taking $$T = 100,000$$ page views starting from a random page with a web structured as in the previous diagram.
 
 
-```
+<!-- ```
 L = matrix(0, 12, 12)
 L[1, c(2, 4)] = 1
 L[2, c(1)] = 1
@@ -401,8 +401,9 @@ pagerank_plot <-
   ylab("rank (proportion of time on page)") +
   ggtheme_tufte()
 pagerank_plot
-```
+``` -->
 
+![](../images/page_rank.jpg)
 Page 1 is the most central hub. Pages 5, 6, 7, and 10 have no links
 coming into them and can only be visited by random chance, so all
 should have the same chance of being visited by the random surfer.
