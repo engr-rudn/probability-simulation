@@ -159,7 +159,9 @@ stationary distributions.  The first of these is reducibility.  A
 chain is reducible if it can get stuck in a state from which other
 states are not guaranteed to be revisited with probability one.
 
-```{r, engine="tikz", fig.ext="pdf", out.width="45%", fig.cap='State diagram for a reducible finite Markov chain.  The chain will eventually get stuck in state 3 and never exit to visit states 1 or 2 again.'}
+State diagram for a reducible finite Markov chain.  The chain will eventually get stuck in state 3 and never exit to visit states 1 or 2 again.
+
+<!-- ```
 \begin{tikzpicture}[->, auto, node distance=2cm, font=\footnotesize]
 \node[circle,draw,semithick] (A) {1};
 \node[circle,draw,semithick] (B) [left of=A] {2};
@@ -168,8 +170,8 @@ states are not guaranteed to be revisited with probability one.
 \path (A) edge [bend left] node[above] {1/2} (C);
 \path (B) edge [bend right] node[below] {1} (A);
 \path (C) edge [loop above] node {1} (C);
-\end{tikzpicture}
-```
+\end{tikzpicture} -->
+![reducible_finite_Markov_chain](../images/reducible_finite_Markov_chain.jpg)
 
 If we start the chain in state 1, it will eventually transition to
 state 3 and get stuck there.^[State 3 is what is known as a *sink
@@ -177,7 +179,11 @@ state.*]  It's not necessary to get stuck in a single state.  The same
 problem arises if state 3 has transitions out, as long as they can't
 eventually get back to state 1.
 
-```{r, engine="tikz", fig.ext="pdf", out.width="65%", fig.cap='State diagram for another reducible finite Markov chain.  The chain will eventually get stuck in state 3 and 4 and never exit to visit states 1 or 2 again.'}
+State diagram for another reducible finite Markov chain.  The chain will eventually get stuck in state 3 and 4 and never exit to visit states 1 or 2 again.
+
+![](../images/another_reducible_finite_Markov_chain.jpg)
+
+<!-- ```
 
 \begin{tikzpicture}[->, auto, node distance=2cm, font=\footnotesize]
 \node[circle,draw,semithick] (A) {1};
@@ -192,7 +198,7 @@ eventually get back to state 1.
 \path (C) edge [loop above] node {1/2} (C);
 \path (D) edge [loop above] node {1/2} (D);
 \end{tikzpicture}
-```
+``` -->
 
 In this example, the chain will eventually fall into a state where it
 can only visit states 3 and 4.
@@ -204,7 +210,11 @@ A Markov chain can be constructed to cycle through states in a regular
 (probabilistic) pattern.  For example, consider the following Markov
 chain transitions.
 
-```{r, engine="tikz", fig.ext="pdf", out.width="35%", fig.cap='State diagram for finite Markov chain generating periodic state sequences $$\\ldots, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, \\ldots$$.'}
+State diagram for finite Markov chain generating periodic state sequences $$\\ldots, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, \\ldots$$.
+
+
+![](../images/finite_Markov_chain_generating_periodic_state.jpg)
+<!-- ```
 \begin{tikzpicture}[->, auto, node distance=2cm, font=\footnotesize]
 \node[circle,draw,semithick] (A) {1};
 \node[circle,draw,semithick] (B) [below left of=A] {2};
@@ -213,7 +223,7 @@ chain transitions.
 \path (B) edge [bend right] node {1} (C);
 \path (C) edge [bend right] node {1} (A);
 \end{tikzpicture}
-```
+``` -->
 
 Regular cycles like this defeat the existence of a stationary
 distribution.  If $$Y_1 = 2$$, the entire chain is deterministically
