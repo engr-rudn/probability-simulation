@@ -255,7 +255,12 @@ $$
 The definition of periodicity is more subtle than just deterministic
 chains.  For example, the following transition graph is also periodic.
 
-```{r, engine="tikz", fig.ext="pdf", out.width="45%", fig.cap='State diagram for finite Markov chain generating periodic state sequences alternating between state 1 and either state 2 or state 3.'}
+State diagram for finite Markov chain generating periodic state sequences alternating between state 1 and either state 2 or state 3.
+
+
+![](../images/finite_Markov_chain_generating_sequences_of_fishes.jpg)
+
+<!--
 \begin{tikzpicture}[->, auto, node distance=2cm, font=\footnotesize]
 \node[circle,draw,semithick] (A) {1};
 \node[circle,draw,semithick] (B) [left of=A] {2};
@@ -265,7 +270,7 @@ chains.  For example, the following transition graph is also periodic.
 \path (B) edge [bend right] node[below] {1} (A);
 \path (C) edge [bend left] node[below] {1} (A);
 \end{tikzpicture}
-```
+ -->
 
 Rather than a deterministic cycle, it cycles between the state 1 and
 the pair of states 2 and 3.  A simulation might look like
