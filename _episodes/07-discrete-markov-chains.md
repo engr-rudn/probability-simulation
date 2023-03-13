@@ -362,13 +362,13 @@ $$
 
 Just to provide some idea of what this looks like, here are 20
 simulated values,
+![](../images/simulated_values_20.jpg)
 
-```{r}
-M <- 20
+<!-- M <- 20
 y <- rbinom(M, 1000, 0.005)
 for (m in 1:M)
   printf("%2.0f ", y[m])
-```
+ -->
 
 We can think of this as 1000 potential customers, each of which has a
 half percent chance of deciding to go to the store any hour. If we
@@ -403,9 +403,12 @@ Let's try different values of $$\phi$$, the average server rate, and
 plot two weeks of service.^[$$24 \mbox{hours/day} \ \times 14 \
 \mbox{days} = 336 \mbox{hours}$$]
 
+
 Multiple simulations of queue size versus time for a queue with $$\mbox{binomial}(1000, 0.005)$$ customers arriving per hour (an average of 5), and a maximum of $$\mbox{binomial}(1000, \phi)$$ customers served per hour, plotted for various $$\phi$$ (as indicated in the row labels).
 
-```
+![](../images/multiple_simulations_of_queue.jpg)
+
+<!-- 
 queue_df <- data.frame(t = c(), queue = c(), run = c(), phi = c())
 
 set.seed(1234)
@@ -440,7 +443,7 @@ queue_plot <-
   ggtheme_tufte() +
   theme(panel.spacing.y = unit(4, "lines")) +
   theme(legend.position = "none")
-queue_plot
-```
+queue_plot -->
+
 
 As can be seen in the plot, the queue not growing out of control is very sensitive to the average service rate per hour.  At an average rate of five customers served per hour (matching the average customer intake), the queue quickly grows out of control.  With as few as five and a half customers served per hour, on average, it becomes stable long term; with seven customers served per hour, things settle down considerably.  When the queue goes up to 50 people, as it does with $$\phi = 0.0055$$, wait times are over ten hours.  Because of the cumulative nature of queues, a high server capacity is required to deal with spikes in customer arrival.
