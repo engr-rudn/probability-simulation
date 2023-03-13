@@ -144,23 +144,23 @@ print 'y = ' y
 ```
 Let's simulate $$M = 10$$ draws and look at the result,
 
-```{r}
-set.seed(1234)
+![](../images/simulated_values_10.jpg)
+
+<!-- set.seed(1234)
 M <- 10
 y = runif(M)
 for (m in 1:M)
   printf('%5.4f ', y[m])
-```
+ -->
 
 These are only printed to a few decimal places.  As usual, it's hard
-to get a sense for the sequence of values as raw numbers.  The most
-popular way to summarize one-dimensional data is with a *histogram*,
-as shown in the following plot.
+to get a sense for the sequence of values as raw numbers.  The most popular way to summarize one-dimensional data is with a *histogram*, as shown in the following plot.
 
 Histogram of 10 draws from a $$\\mbox{uniform}(0, 1)$$ distribution.
 
-```
-df_unif_10 <- data.frame(y = y)
+![](../images/histogram_of_uniform_distribution.jpg)
+
+<!-- df_unif_10 <- data.frame(y = y)
 unif_10_plot <-
   ggplot(df_unif_10, aes(y)) +
   geom_histogram(binwidth = 0.1, center = 0.05,
@@ -170,8 +170,8 @@ unif_10_plot <-
   scale_y_continuous("count", breaks = c(1, 2, 3, 4, 5),
                      expand = c(0.02, 0)) +
   ggtheme_tufte()
-unif_10_plot
-```
+unif_10_plot -->
+
 
 
 The range of values from 0 to 1 is broken up into ten equally spaced
@@ -195,7 +195,7 @@ repetition and sizing to see what's going on.
 
 Histograms for uniform(0, 1) samples of increasing sizes.  The proportion of draws falling into each bin becomes more uniform as the sample size increases.  With each sample plotted to the same height, the vertical count axis varies in scale among the plots.
 
-
+![](../images/List_of_1.jpg)
 <!-- set.seed(1234)
 df_unif <- data.frame()
 for (N in 2^c(2, 4, 6, 8, 10, 12)) {
@@ -226,6 +226,7 @@ first few digits of $$\pi$$. We'll carry this out by formulating an
 event probability over some continuous random variables whose
 probability is a fraction of $$\pi$$.
 
+![](../images/histogram_of_uniform_distribution_of_increasing_size.jpg)
 We start with the basic fact of algebra that that $$\pi$$ is the area of
 a unit radius circle.^[The area of a circle of radius $$r$$ is $$\pi
 \times r^2$$, so when $$r = 1$$, the area is $$\pi$$.] We then assume there
@@ -244,8 +245,9 @@ bearer of area is a disc and the line around its border a circle.
 Mathematicians are picky because, topologically speaking, a disc has
 two dimensions whereas a circle has but one.]
 
-```{r fig.cap="A unit circle (dotted line) centered at the origin is inscribed in a square (dashed lines) with axes running from -1 to 1."}
-radians <- seq(0, 2 * pi, length.out=100)
+A unit circle (dotted line) centered at the origin is inscribed in a square (dashed lines) with axes running from -1 to 1.
+
+<!-- radians <- seq(0, 2 * pi, length.out=100)
 bullseye_target_plot <-
   ggplot(data.frame(x = c(), y = c()), aes(X, Y), xlim = c(-1, 1), ylim = c(-1, 1)) +
   annotate("path", x = cos(radians), y = sin(radians),
@@ -256,8 +258,8 @@ bullseye_target_plot <-
   scale_y_continuous(limits = c(-1, 1), breaks = c(-1, 0, 1)) +
   coord_fixed(ratio = 1) +
   ggtheme_tufte()
-bullseye_target_plot
-```
+bullseye_target_plot -->
+
 
 A point $$(x, y)$$ will fall within the unit circle if^[A point falls on
 a circle of radius $$r$$ if $$x^2 + y^2 = r^2$$.]
@@ -270,9 +272,11 @@ Let's see what this looks like with $$M = 250$$ draws.  The resulting
 plot is known as a *scatterplot*---it places values at their $$(x, y)$$
 coordinates, resulting in them being "scattered."
 
-```{r out.width="80%", fig.cap='$$M = 250$$ simulated draws of $$(x^{(m)}, y^{(m)})$$ from a $$\\mbox{uniform}(-1, 1)$$ distribution.  Points within the circle are plotted using $$+$$ and those outside it with $$\\circ$$.'}
+$$M = 250$$ simulated draws of $$(x^{(m)}, y^{(m)})$$ from a $$\\mbox{uniform}(-1, 1)$$ distribution.  Points within the circle are plotted using $$+$$ and those outside it with $$\\circ$$.
 
-set.seed(1234)
+![](../images/simulated_draws_of_uniform_distribution.jpg)
+
+<!-- set.seed(1234)
 M <- 250
 X <- runif(M, -1, 1)
 Y <- runif(M, -1, 1)
@@ -295,8 +299,8 @@ bullseye_plot <-
   coord_fixed(ratio = 1) +
   ggtheme_tufte() +
   theme(legend.position = "none")
-bullseye_plot
-```
+bullseye_plot -->
+
 
 For random variables $$X, Y \sim \mbox{uniform}(-1, 1)$$, the event of
 their falling within the unit circle is $$X^2 + Y^2 \leq 1$$. Because
