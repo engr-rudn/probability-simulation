@@ -8,6 +8,8 @@ objectives:
 
 keypoints:
 
+---
+
 # Continuous Random Variables
 
 So far, we have only considered discrete random variables, i.e.,
@@ -39,9 +41,11 @@ the value of $$\Theta$$ is between 0 and 360^[The end points are the
 same, representing a complete rotation of 360 degrees; they are
 labeled as such in the plot.]
 
-```{r fig.cap = "A spinner resting at 36 degrees, or ten percent of the way around the circle.  A fair spin might land anywhere between 0 and 360 degrees."}
+A spinner resting at 36 degrees, or ten percent of the way around the circle.  A fair spin might land anywhere between 0 and 360 degrees.
 
-df_spinner <- data.frame(value = c("0-360 degrees"), prob = c(0.3))
+![](../images/spinners_and_continous_variables.jpg)
+
+<!-- df_spinner <- data.frame(value = c("0-360 degrees"), prob = c(0.3))
 plot_spinner <-
   ggplot(data = df_spinner,
          aes(x = factor(1), y = prob, fill = value)) +
@@ -60,7 +64,7 @@ plot_spinner <-
   ggtheme_tufte() +
   theme(legend.position = "none")
 plot_spinner
-```
+ -->
 
 What does fair mean for continuous probabilities?  At the least, we
 should be able to say that the probality of landing in any band is the
@@ -154,7 +158,9 @@ to get a sense for the sequence of values as raw numbers.  The most
 popular way to summarize one-dimensional data is with a *histogram*,
 as shown in the following plot.
 
-```{r fig.cap="Histogram of 10 draws from a $$\\mbox{uniform}(0, 1)$$ distribution."}
+Histogram of 10 draws from a $$\\mbox{uniform}(0, 1)$$ distribution.
+
+```
 df_unif_10 <- data.frame(y = y)
 unif_10_plot <-
   ggplot(df_unif_10, aes(y)) +
@@ -188,9 +194,10 @@ $${10 \choose 1} \times {10 \choose 5} \times \left(\frac{1}{10}\right)^5 \times
 \left(\frac{9}{10}\right)^5 \approx 0.015.$$]  As usual, we turn to
 repetition and sizing to see what's going on.
 
-```{r  fig.cap="Histograms for uniform(0, 1) samples of increasing sizes.  The proportion of draws falling into each bin becomes more uniform as the sample size increases.  With each sample plotted to the same height, the vertical count axis varies in scale among the plots."}
+Histograms for uniform(0, 1) samples of increasing sizes.  The proportion of draws falling into each bin becomes more uniform as the sample size increases.  With each sample plotted to the same height, the vertical count axis varies in scale among the plots.
 
-set.seed(1234)
+
+<!-- set.seed(1234)
 df_unif <- data.frame()
 for (N in 2^c(2, 4, 6, 8, 10, 12)) {
   df_unif <- rbind(df_unif,
@@ -209,7 +216,7 @@ plot <- ggplot(df_unif, aes(y)) +
   ggtheme_tufte()
   theme(aspect.ratio = 0.5)
 plot
-```
+ -->
 
 
 ## Calculating $$\pi$$ via simulation
