@@ -331,14 +331,17 @@ event probability of $$X^2 + Y^2 \leq 1$$ by four.
 
 Let's run this with $$M = 1\,000\,000$$ and see what we get,
 
-```{r}
-set.seed(1234)
+<!-- set.seed(1234)
 M <- 1e6
 X <- runif(M, -1, 1)
 Y <- runif(M, -1, 1)
 Pr_target <- (1 / M) * sum(X^2 + Y^2 < 1)
 printf('Pr[in circle] = %4.3f', Pr_target)
-printf('estimated pi = %4.3f', 4 * Pr_target)
+printf('estimated pi = %4.3f', 4 * Pr_target) -->
+
+```
+Pr[in circle] = 0.784
+estimated pi = 3.138
 ```
 
 We actually knew the answer ahead of time here, $$\pi \approx 3.14159$$.
@@ -392,8 +395,7 @@ X_1, X_2 \sim \mbox{uniform}(0, 1).
 $$
 
 The area of a $$1 x 1$$ square is one, so that the probability of
-falling in a region within that square is proportional to the area of
-the region.^[Thus a point or a line has zero probability in a square.]
+falling in a region within that square is proportional to the area of the region.^[Thus a point or a line has zero probability in a square.]
 
 Going one dimension further, let $$(X_1, X_2, X_3)$$ be random variables
 uniformly distributed in a unit cube, $$(0, 1)^3 = (0, 1) \times (0, 1)
@@ -457,7 +459,9 @@ plugging the value for `x` into the body, `sqrt(sum(x^2))`.
 
 Let's plot what we get out to $$1\,000$$ dimensions or so.
 
-```{r fig.cap='Plot of the average distance (solid line) of a uniform draw from a hypercube to the center of the hypercube as a function of the number of dimensions.  The minimum and maximum distance (dotted lines) are shown based on $$M = 10\\,000$$ simulations.'}
+Plot of the average distance (solid line) of a uniform draw from a hypercube to the center of the hypercube as a function of the number of dimensions.  The minimum and maximum distance (dotted lines) are shown based on $$M = 10\\,000$$ simulations.
+
+```
 
 euclidean_length = function(x) sqrt(sum(x^2))
 
@@ -515,7 +519,7 @@ write as
 $$
 ||x|| = \sqrt{x_1^2 + x_2^2 + \cdots + x_N^2}.
 $$
-
+![](../images/hypercube.jpg)
 In this form, it is clear that as $$N$$ increases, so does $$
 ||x||
 $$ as we
