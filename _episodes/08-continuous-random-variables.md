@@ -459,11 +459,11 @@ plugging the value for `x` into the body, `sqrt(sum(x^2))`.
 
 Let's plot what we get out to $$1\,000$$ dimensions or so.
 
-Plot of the average distance (solid line) of a uniform draw from a hypercube to the center of the hypercube as a function of the number of dimensions.  The minimum and maximum distance (dotted lines) are shown based on $$M = 10\\,000$$ simulations.
+Plot of the average distance (solid line) of a uniform draw from a hypercube to the center of the hypercube as a function of the number of dimensions.  The minimum and maximum distance (dotted lines) are shown based on $$M = 10,000$$ simulations.
 
-```
+![](../images/hypercube.jpg)
 
-euclidean_length = function(x) sqrt(sum(x^2))
+<!-- euclidean_length = function(x) sqrt(sum(x^2))
 
 set.seed(1234)
 M <- 10000
@@ -499,8 +499,8 @@ curse_plot <-
   xlab("Dimensions of unit hypercube") +
   ggtheme_tufte() +
   theme(legend.position = "none")
-curse_plot
-```
+curse_plot -->
+
 
 While it may seem intuitively from thinking in two dimensions that
 draws should be uniformly dispersed and thus appear near the origin,
@@ -519,7 +519,7 @@ write as
 $$
 ||x|| = \sqrt{x_1^2 + x_2^2 + \cdots + x_N^2}.
 $$
-![](../images/hypercube.jpg)
+
 In this form, it is clear that as $$N$$ increases, so does $$
 ||x||
 $$ as we
