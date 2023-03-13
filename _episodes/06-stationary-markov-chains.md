@@ -392,16 +392,18 @@ toss).
 First, we will consider a Markov chain producing independent Bernoulli
 draws.
 
-```{r, engine="tikz", fig.ext="pdf", out.width="25%", fig.cap='State diagram for finite Markov chain generating independent draws.'}
-\begin{tikzpicture}[->, auto, node distance=1.75cm, font=\footnotesize]
+State diagram for finite Markov chain generating independent draws.
+![](../images/Markov_chain_generating_independent_draws.jpg)
+
+<!-- \begin{tikzpicture}[->, auto, node distance=1.75cm, font=\footnotesize]
 \node[circle,draw,semithick] (A) {{\bf 0}};
 \node[circle,draw,semithick] (B) [right of=A] {{\bf 1}};
 \path (A) edge [bend left] node {0.5} (B);
 \path (B) edge [bend left] node {0.5} (A);
 \path (A) edge [loop above] node {0.5} (A);
 \path (B) edge [loop above] node {0.5} (B);
-\end{tikzpicture}
-```
+\end{tikzpicture} -->
+
 
 Whether it is currently in state 0 or state 1, there is a 50% chance
 the next state is 0 and a 50% chance it is 1. Thus each element of the
@@ -481,7 +483,8 @@ An initial segment of a Markov chain $$Y = Y_1, Y_2, \ldots, Y_T$$ can
 be visualized as a traceplot, a line plot of the value at each
 iteration.
 
-```{r out.width = "40%", fig.cap = "Traceplot of chain producing independent draws, simulated for 100 time steps.  The horizontal axis is time ($$t$$) and the vertical axis the value of e iteration number and the value is the value ($$Y_t$$)."}
+Traceplot of chain producing independent draws, simulated for 100 time steps.  The horizontal axis is time ($$t$$) and the vertical axis the value of e iteration number and the value is the value ($$Y_t$$).
+```
 traceplot_bool <- function (y) {
   df <- data.frame(iteration = 1:length(y), draw = y)
   plot <- ggplot(df, aes(x = iteration, y = draw)) +
@@ -494,6 +497,8 @@ traceplot_bool <- function (y) {
 }
 traceplot_bool(y)
 ```
+
+![](../images/Traceplot_of_chain_generating_independent_draws.jpg)
 
 The flat segments are runs of the same value.  This Markov chain
 occasionally has runs of the same value, but otherwise mixes quite
@@ -510,16 +515,17 @@ chain goes down in error as $$\sqrt{T}$$
 Now consider a Markov chain which is still symmetric in the states,
 but with a tendency to stay in the same state.
 
-```{r, engine='tikz', fig.ext="pdf", out.width="25%", fig.cap = "State diagram for correlated draws."}
-\begin{tikzpicture}[->, auto, node distance=1.75cm, font=\footnotesize]
+State diagram for correlated draws."
+
+<!-- \begin{tikzpicture}[->, auto, node distance=1.75cm, font=\footnotesize]
 \node[circle,draw,semithick] (A) {{\bf 0}};
 \node[circle,draw,semithick] (B) [right of=A] {{\bf 1}};
 \path (A) edge [bend left] node {0.1} (B);
 \path (B) edge [bend left] node {0.1} (A);
 \path (A) edge [loop above] node {0.9} (A);
 \path (B) edge [loop above] node {0.9} (B);
-\end{tikzpicture}
-```
+\end{tikzpicture} -->
+
 
 It has the same stationary distribution of 0.5.  Letting $$\theta =
 \begin{bmatrix}0.9 & 0.1 \\ 0.1 & 0.9 \end{bmatrix}$$ be the transition
@@ -557,9 +563,10 @@ y <- sample_chain(M, 1, matrix(c(0.9, 0.1,
 print_3_rows_of_33(y)
 ```
 
-```{r fig.height=2, out.width = "40%", fig.cap = "Traceplot for chain with correlated draws."}
-traceplot_bool(y)
-```
+<!-- {r fig.height=2, out.width = "40%", fig.cap = "Traceplot for chain with correlated draws."}
+traceplot_bool(y) -->
+
+![](../images/Traceplot_of_chain_with_correlated_draws.jpg)
 
 As expected, there are now long runs of the same value being produced.
 This leads to much poorer mixing and a longer time for estimates based
@@ -568,29 +575,35 @@ on the draws to converge.
 Finally, we consider the opposite case of a symmetric chain that
 favors moving to a new state each time step.
 
-```{r, engine='tikz', fig.ext="pdf", out.width="25%", fig.cap="State diagram for anticorrelated draws."}
-\begin{tikzpicture}[->, auto, node distance=1.75cm, font=\footnotesize]
+State diagram for anticorrelated draws.
+
+![](../images/State_diagram_of_anticorrelated_draws.jpg)
+
+<!-- \begin{tikzpicture}[->, auto, node distance=1.75cm, font=\footnotesize]
 \node[circle,draw,semithick] (A) {{\bf 0}};
 \node[circle,draw,semithick] (B) [right of=A] {{\bf 1}};
 \path (A) edge [bend left] node {0.9} (B);
 \path (B) edge [bend left] node {0.9} (A);
 \path (A) edge [loop above] node {0.1} (A);
 \path (B) edge [loop above] node {0.1} (B);
-\end{tikzpicture}
-```
+\end{tikzpicture} -->
+
 
 Sampling, printing, and plotting the values produces
+![](../images/sampling_figure-28.jpg)
 
-```{r fig.cap="Chain with anticorrelated draws."}
-set.seed(1234)
+Chain with anticorrelated draws.
+![](../images/Traceplot_of_chain_with_anticorrelated_draws.jpg)
+
+<!-- set.seed(1234)
 y <- sample_chain(M, 1, matrix(c(0.1, 0.9,
                                  0.9, 0.1), 2, 2))
-print_3_rows_of_33(y)
-```
+print_3_rows_of_33(y) -->
 
-```{r out.width = "40%", fig.cap="Traceplot of chain with anticorrelated draws."}
-traceplot_bool(y)
-```
+
+Traceplot of chain with anticorrelated draws.
+<!--  -->traceplot_bool(y)
+
 
 The draws form a dramatic sawtooth pattern as they alternate
 between zero and one.
@@ -599,8 +612,11 @@ Now let's see how quickly estimates based on long-run averages from
 the chain converge in a side-by-side comparison.
 A single chain is enough to illustrate the dramatic differences.
 
-```{r}
-set.seed(1234)
+Estimate of the stationary probability $$\\pi_1$$ of state 1 as a function of $$t$$ under three conditions, correlated, independent, and anticorrelated transitions.  For each condition, 25 simulations of a chain of size $$T = 10,000$$ are generated and overplotted.
+
+![](../images/Estimate_of_the_stationary_probability.jpg)
+
+<!-- set.seed(1234)
 build_discrete_mcmc_df <- function(trans_matrix, label, J, M) {
   df <- data.frame(y = c(), x = c(), chain = c(), id = c())
   for (j in 1:J) {
@@ -623,12 +639,12 @@ M <- 1e4
 df_compare_discrete_mcmc <-
   rbind(build_discrete_mcmc_df(corr_trans, 'correlated', J, M),
         build_discrete_mcmc_df(ind_trans, 'independent', J, M),
-        build_discrete_mcmc_df(anti_trans, 'anticorrelated', J, M))
-```
+        build_discrete_mcmc_df(anti_trans, 'anticorrelated', J, M)) -->
 
-```{r out.height = "150%", fig.cap = 'Estimate of the stationary probability $$\\pi_1$$ of state 1 as a function of $$t$$ under three conditions, correlated, independent, and anticorrelated transitions.  For each condition, 25 simulations of a chain of size $$T = 10\\,000$$ are generated and overplotted.'}
 
-compare_discrete_mcmc_plot <-
+
+
+<!-- compare_discrete_mcmc_plot <-
   ggplot(df_compare_discrete_mcmc, aes(x = x, y = y, group = id)) +
   geom_hline(yintercept = 0.5, linetype = 'dotted', size = 0.5) +
   facet_wrap(vars(chain), ncol = 1) +
@@ -642,7 +658,7 @@ compare_discrete_mcmc_plot <-
   ggtheme_tufte() +
   theme(panel.spacing.y = unit(1, "lines"))
 compare_discrete_mcmc_plot
-```
+ -->
 
 
 ## Reversibility
