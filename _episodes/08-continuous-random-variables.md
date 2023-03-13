@@ -1,4 +1,3 @@
-
 ---
 title: "Continuous Random Variables"
 teaching: 
