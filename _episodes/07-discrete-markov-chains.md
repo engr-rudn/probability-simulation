@@ -65,9 +65,9 @@ We'll simulate from both processes for $$M = 1000$$ steps and plot.
 
 Drunkard's walks of 10,000 steps with equal chance of going left or right (blue) versus a sixty percent chance of going left (red).  The dotted line is drawn at the starting point. As time progresses, the biased random walk drifts further and further from its starting point.
 
-```
+![](../images/Drunkards_walk.jpg)
 
-set.seed(1234)
+<!-- set.seed(1234)
 M <- 10000
 z1 <- rbinom(M, 1, 0.5)
 z2 <- rbinom(M, 1, 0.6)
@@ -91,8 +91,8 @@ drunkards_plot <-
   ylab("position") +
   ggtheme_tufte() +
   theme(panel.spacing.x = unit(4, "lines"))
-drunkards_plot
-```
+drunkards_plot -->
+
 
 For the balanced drunkard, the expected drift per step is zero as
 there is equal chance of going in either direction. After 10,000
@@ -211,9 +211,9 @@ of $$N = 5$$ with several values of $$\theta$$ and plot the expected
 fortunes.
 
 Expected returns for gambler starting with stake $$N$$ and having a $$\theta$$ chance at each time point of increasing their fortune by 1 and a $$1 - \theta$$ chance of reducing their fortune by 1.  The horizontal dotted line is at the initial fortune and the dashed line is at zero.
-```
 
-set.seed(1234)
+
+<!-- set.seed(1234)
 N <- 5
 T <- 50
 M <- 10000
@@ -253,14 +253,14 @@ plot_ruin <-
   ylab("expected fortune") +
   ggtheme_tufte() +
   theme(panel.spacing.x = unit(4, "lines"))
-plot_ruin
-```
+plot_ruin -->
+
 
 Next, we'll tackle the problem of estimating the probability that a
 gambler has run out of money at time $$t$$. In symbols, we are
 going to use simulations $$y^{(1)}, \ldots, y^{(M)}$$ of the gambler's
 time series,
-
+![](../images/Expected_return_for_gambler.jpg)
 $$
 \begin{array}{rcl}
 \mbox{Pr}[Y_t = 0]
