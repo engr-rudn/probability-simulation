@@ -1013,7 +1013,7 @@ $$
 $$
 
 with $$a(u) = \exp(u)$$ and $$b(x) = -x.$$
-]
+
 
 $$
 \begin{array}{rcl}
