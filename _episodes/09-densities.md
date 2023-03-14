@@ -114,11 +114,11 @@ $$
 \begin{array}{rcl}
 \mbox{Pr}[180 < \Theta \leq 270]
 & = & \mbox{Pr}[\Theta \leq 270] \ - \ \mbox{Pr}[\Theta \leq 180]
-\[2pt]
+\\[2pt]
 & = & F_{\Theta}(270) - F_{\Theta}(180)
-\[2pt]
+\\[2pt]
 & = & \frac{3}{4} - \frac{1}{2}
-\[2pt]
+\\[2pt]
 & = & \frac{1}{4}.
 \end{array}
 $$
@@ -989,8 +989,8 @@ First, we calculate the inverse transform,
 
 $$
 \begin{array}{rcl}
-Y & = & -\log U \[3pt]
--Y & = & \log U \[3pt]
+Y & = & -\log U \\[3pt]
+-Y & = & \log U \\[3pt]
 \exp(-Y) & = & U
 \end{array}
 $$
@@ -1021,7 +1021,7 @@ $$
 \begin{array}{rcl}
 \frac{\textrm{d}}{\textrm{d}y} f^{-1}(y)
 & = & \frac{\textrm{d}}{\textrm{d}y} \exp(-y)
-\[4pt]
+\\[4pt]
 & = & -\exp(-y).
 \end{array}
 $$
@@ -1040,12 +1040,12 @@ p_U(f^{-1}(y))
 \left|
 \frac{\textrm{d}}{\textrm{d}y} \exp(-y)
 \right|
-\[8pt]
+\\[8pt]
 & = &
 \textrm{uniform}(f^{-1}(y) \mid 0, 1)
 \cdot
 \left| -\exp(-y) \right|
-\[8pt]
+\\[8pt]
 & = & \exp(-y).
 \end{array}
 $$
@@ -1062,11 +1062,11 @@ $$
 \int f(x) \, \textrm{d}x \, \Big|_{x = b}
 \ - \
 \int f(x) \, \textrm{d}x \, \Big|_{x = a}
-\[6pt]
+\\[6pt]
 & = & -\exp(-x)\Big|_{x = b} - -\exp(-x)\Big|_{x = a}
-\[6pt]
+\\[6pt]
 & = & -\exp(-b) + \exp(-a).
-\end{array}
+\end{array}]
 $$
 
 Plugging in $$a = 0$$ and $$b = \infty$$ (the latter is really taking a
@@ -1119,12 +1119,12 @@ p_V\left(h^{-1}(y)\right)
 \left|
 \frac{\textrm{d}}{\textrm{d}y} h^{-1}(y)
 \right|
-\[8pt]
+\\[8pt]
 & = &
 p_V(\lambda \cdot y)
 \cdot
 \left| \frac{\textrm{d}}{\textrm{d}y} \lambda \cdot y \right|
-\[8pt]
+\\[8pt]
 & = &
 \exp(-\lambda \cdot y)
 \cdot
