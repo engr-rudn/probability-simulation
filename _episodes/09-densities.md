@@ -646,15 +646,15 @@ print 'Pr[-2 < Phi < 2] = ' success / M
 
 Let's run that for $$M = 100,000$$ simulation draws and see what we get,
 
-```{r}
-set.seed(1234)
+![](../images/simulated_draws_for_M_100_000.jpg)
+<!-- set.seed(1234)
 M <- 1e5
 Phi = logit(runif(M, 0, 1))
 success <- 0
 for (m in 1:M)
   if (-2 < Phi[m] && Phi[m] < 2) success <- success + 1
-printf('Pr[-2 < Phi < 2] = %3.2f\n', success / M)
-```
+printf('Pr[-2 < Phi < 2] = %3.2f\n', success / M) -->
+
 
 What is perhaps more remarkable than not requiring calculus is that we
 don't even require the formula for the density function $$p_{\Phi}$$---we
