@@ -980,10 +980,13 @@ exp_hist_plot -->
 While the histogram plot lets us visualize the density, we can also
 derive the density $$p_Y$$ from the uniform density $$p_U$$ given the
 transform
+
 $$
 Y \ = \ f(U) \ = \ -\log U.
 $$
+
 First, we calculate the inverse transform,
+
 $$
 \begin{array}{rcl}
 Y & = & -\log U \[3pt]
@@ -991,12 +994,16 @@ Y & = & -\log U \[3pt]
 \exp(-Y) & = & U
 \end{array}
 $$
+
 so that
+
 $$
 f^{-1}(Y) = \exp(-U).
 $$
+
 We'll need the derivative of this inverse for the Jacobian,^[We need
 to employ the chain rule here,
+
 $$
 \frac{\textrm{d}}{\textrm{d}x} a(b(x))
 \ = \
@@ -1004,8 +1011,10 @@ $$
  \cdot
 \left( \frac{\textrm{d}}{\textrm{d}{x}} b(x) \right),
 $$
+
 with $$a(u) = \exp(u)$$ and $$b(x) = -x.$$
 ]
+
 $$
 \begin{array}{rcl}
 \frac{\textrm{d}}{\textrm{d}y} f^{-1}(y)
@@ -1013,9 +1022,11 @@ $$
 \[4pt]
 & = & -\exp(-y).
 \end{array}
+
 $$
 We can now derive the density of $$Y = f(U) = -\log U$$, where $$U \sim
  \textrm{uniform}(0, 1),$$
+ 
 $$
 \begin{array}{rcl}
 p_Y(y)
@@ -1034,10 +1045,12 @@ p_U(f^{-1}(y))
 & = & \exp(-y).
 \end{array}
 $$
+
 The result, as simple as it looks, is a properly normalized
 density.^[Given the derivative $$\frac{\textrm{d}}{\textrm{d}y}
 -\exp(-y) \ = \
 \exp(-y),$$ the basic rule for computing definite integrals,
+
 $$
 \begin{array}{rcl}
 \int_a^b f(x) \, \textrm{d}x
@@ -1057,9 +1070,11 @@ limit), gives us $$-\exp(-\infty) + \exp(-0) = 0 + 1 = 1.$$]
 This distribution is popular enough to get its own name, the
 exponential distribution, the standard version of which is
 conventionally defined by
+
 $$
 \textrm{exponential}(y \mid 1) = \exp(-y).
 $$
+
 As for other distributions, we will write $$Y \sim
 \textrm{exponential}(1)$$ if $$p_Y(y) = \textrm{exponential}(y) =
 \exp(-y).$$
@@ -1075,14 +1090,19 @@ exponential variate, $$Y \sim \textrm{exponential}(\lambda).$$
 
 To define the general exponential density, we just apply the Jacobian
 formula again, keeping in mind that our transform is
+
 $$
 h(V) = V / \lambda,
 $$
+
 which has an inverse
+
 $$
 h^{-1}(Y) = \lambda \cdot Y.
 $$
+
 Plugging this into the formula for a change of variables, we get
+
 $$
 \begin{array}{rcl}
 p_Y(y)
@@ -1104,7 +1124,9 @@ p_V(\lambda \cdot y)
 \lambda.
 \end{array}
 $$
+
 This gives us the final form of the exponential distribution,
+
 $$
 \textrm{exponential}(y \mid \lambda)
 \ = \
