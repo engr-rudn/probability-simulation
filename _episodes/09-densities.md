@@ -366,14 +366,14 @@ print 'Estimated E[Phi] = ' E_Phi
 
 Let's run that for $$M = 1,000,000$$ and see what we get.
 
-```{r}
-M <- 1e6
+![](../images/estimated_e_phi.jpg)
+<!-- M <- 1e6
 phi <- rlogis(M)
 E_Phi <- sum(phi) / M
 var_Phi <- sum((phi - E_Phi)^2) / M
 printf('Estimated  E[Phi] = %3.2f;  var[Phi] = %3.2f;  sd[Phi] = %3.2f',
-       E_Phi, var_Phi, sqrt(var_Phi))
-```
+       E_Phi, var_Phi, sqrt(var_Phi)) -->
+
 
 The true value of the expectation $$\mathbb{E}[Y]$$ is zero, and the
 true value of the variance is $$\frac{\pi^2}{3} \approx 3.29$$.^[The
