@@ -1012,7 +1012,9 @@ $$
 \left( \frac{\textrm{d}}{\textrm{d}{x}} b(x) \right),
 $$
 
-with $$a(u) = \exp(u)$$ and $$b(x) = -x.$$
+with $$a(u) = \exp(u)$$ and $$
+b(x) = -x.
+$$
 
 
 $$
@@ -1022,10 +1024,12 @@ $$
 \[4pt]
 & = & -\exp(-y).
 \end{array}
-
 $$
-We can now derive the density of $$Y = f(U) = -\log U$$, where $$U \sim
- \textrm{uniform}(0, 1),$$
+
+We can now derive the density of $$Y = f(U) = -\log U$$, where $$
+U \sim
+ \textrm{uniform}(0, 1),
+ $$
  
 $$
 \begin{array}{rcl}
@@ -1064,8 +1068,11 @@ $$
 & = & -\exp(-b) + \exp(-a).
 \end{array}
 $$
+
 Plugging in $$a = 0$$ and $$b = \infty$$ (the latter is really taking a
-limit), gives us $$-\exp(-\infty) + \exp(-0) = 0 + 1 = 1.$$]
+limit), gives us $$
+-\exp(-\infty) + \exp(-0) = 0 + 1 = 1.
+$$
 
 This distribution is popular enough to get its own name, the
 exponential distribution, the standard version of which is
