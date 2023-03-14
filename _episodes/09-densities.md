@@ -37,8 +37,9 @@ This is a linear function of $$\theta$$, i.e., $$\frac{1}{360} \times
 
 Cumulative distribution function for the angle $$\theta$$ (in degrees) resulting from a fair spin of a spinner.  The dotted line shows the value at 180 degrees, which is a probability of one half and the dashed line at 270 degrees, which is a probability of three quarters.
 
-```
-library(ggplot2)
+![](../images/cumulative_distribution_function.png)
+
+<!-- library(ggplot2)
 df_cdf_spinner <- data.frame(x = c(-90, 0, 360, 450), y = c(0, 0, 1, 1))
 cdf_spinner_plot <-
   ggplot(df_cdf_spinner, aes(x = x, y = y)) +
@@ -58,7 +59,7 @@ cdf_spinner_plot <-
                color="#333333", linetype="dashed", size = 0.5) +
   ggtheme_tufte()
 cdf_spinner_plot
-```
+ -->
 
 We can verify this result using simulation.  To estimate cumulative
 distribution functions, we take $$M$$ simulated values $$\theta^{(m)}$$ and
@@ -74,14 +75,14 @@ prob <- (1:M) / M
 The expression `(1:M)` denotes the sequence $$1, 2, \ldots, M$$, so that
 `(1:M) / M` denotes $$\frac{1}{M}, \frac{2}{M}, \ldots, \frac{M}{M}$$.
 The trick is to put the sorted random variable the $$x$$-axis and the
-probability values on the $$y$$ axis. Here's a run with $$M = 1\,000$$
+probability values on the $$y$$ axis. Here's a run with $$M = 1,000$$
 simulated values.
 
 Plot of the cumulative distribution function of a random variable $$\theta$$ representing the result of a fair spin of a spinner from 0 to 360 degrees.  As expected, it is a simple linear function because the underlying variable $$\theta$$ has a uniform distribution.
 
-```
 
-M <- 1000
+
+<!-- M <- 1000
 theta <- runif(M, 0, 360)
 theta_asc <- sort(theta)
 prob <- (1:M)/M
@@ -95,10 +96,11 @@ unif_cdf_plot <-
   xlab(expression(theta)) +
   ylab(expression(F[Theta](theta))) +
   ggtheme_tufte()
-unif_cdf_plot
-```
+unif_cdf_plot -->
 
-Even with $$M = 1\,000$$, this is pretty much indistinguishable from the
+![](../images/plot_of_cumulative_distribution_function.jpg)
+
+Even with $$M = 1,000$$, this is pretty much indistinguishable from the
 one plotted analytically.
 
 As with discrete parameters, the cumulative distribution function may
@@ -159,22 +161,24 @@ print 'alpha = ' alpha[1:10] ' ... '
 
 We can run this and see the first ten values,
 
-```{r}
-set.seed(1234)
+![](../images/first_ten_values.jpg)
+
+<!-- set.seed(1234)
 M <- 10000
 logit <- function(x) log(x / (1 - x))
 theta <- runif(M)
 alpha <- logit(theta)
 for (m in 1:10)
   printf('%3.2f ', alpha[m])
-printf(' ... \n')
-```
+printf(' ... \n') -->
+
 
 To understand the distribution of values of $$\Phi$$, let's look at histograms.  First, we have the uniform draws of $$\Theta$$, and then the transform to log odds $$\Phi = \mathrm{logit}(\Theta)$$,
 Histogram of 10,000 simulated draws of $$\theta \sim \mbox{uniform}(0, 1)$$.
 
-```
-df_prob_unif <- data.frame(theta = theta)
+![](../images/histogram_of_10000_simulated_draw_.jpg)
+
+<!-- df_prob_unif <- data.frame(theta = theta)
 unif_prob_plot <-
   ggplot(df_prob_unif, aes(theta)) +
   geom_histogram(binwidth = 1/34, center = 1/68, color = "black",
@@ -183,12 +187,14 @@ unif_prob_plot <-
   scale_y_continuous(lim = c(0, 1300), breaks = c(500, 1000)) +
   xlab(expression(paste(Theta, " ~ uniform(0, 1)"))) +
   ggtheme_tufte()
-unif_prob_plot
-```
+unif_prob_plot -->
+
 
 Histogram of 10,000 simulated draws of $$\theta \sim \mbox{uniform}(0, 1)$$ transformed to the log odds scale by $$\Phi = \mbox{logit}(\theta).$$
-```
-df_log_odds <- data.frame(alpha = alpha)
+
+![](../images/histogram_of_10000_simulated_draw_of_thetha.jpg)
+
+<!-- df_log_odds <- data.frame(alpha = alpha)
 log_odds_plot <-
   ggplot(df_log_odds, aes(alpha)) +
   geom_histogram(binwidth = 0.5, color = "black", fill="#ffffe6",
@@ -197,8 +203,8 @@ log_odds_plot <-
   scale_y_continuous(lim = c(0, 1300), breaks = c(500, 1000)) +
   xlab(expression(paste(Phi, " = ", logit(Theta)))) +
   ggtheme_tufte()
-log_odds_plot
-```
+log_odds_plot -->
+
 
 Even though the probability variable $$\Theta \sim \mbox{uniform}(0,
 1)$$ is uniform by construction, the log odds variable $$\Phi =
@@ -228,7 +234,7 @@ statistically and will resurface in categorical regressions.
 
 The third relevant feature of the log odds plot is that almost all of
 the values are within $$\pm 6$$ of the origin. This is not surprising
-given that we took $$10\,000$$ draws and
+given that we took $$10,000$$ draws and
 
 $$
 \mbox{logit}^{-1}(-6) = 0.0025
@@ -253,13 +259,14 @@ theta_ascending <- sort(theta)
 prob <- (1:M) / M
 ```
 
-We again plot with $$M = 1\,000$$ simulated values.
+We again plot with $$M = 1,000$$ simulated values.
 
 Plot of the cumulative distribution function of a random variable $$\Phi = \mbox{logit}(\theta)$$ representing the log odds transform of a uniformly distributed random variable $$\theta \sim \mbox{uniform}(0, 1)$$.  The curve it picks out is S-shaped.  The asymptotes at 0 and 1 are indicated with dashed lines; the symmetries around 0 on the $$x$$-axis and 0.5 on the $$y$$-axis are picked out with dotted lines.
 
-```
 
-logit <- function(u) log(u / (1 - u))
+![](../images/plot_of_cumulative_distribution_function_of_random_variable_thetha.jpg)
+
+<!-- logit <- function(u) log(u / (1 - u))
 
 M <- 1000
 phi <- logit(runif(M))
@@ -284,8 +291,8 @@ logistic_cdf_plot <-
   xlab(expression(phi)) +
   ylab(expression(F[Phi](phi))) +
   ggtheme_tufte()
-logistic_cdf_plot
-```
+logistic_cdf_plot -->
+
 
 The result is an S-shaped function whose values lie between 0 and 1,
 with asymptotes at one as $$\theta$$ approaches $$\infty$$ and at zero as
@@ -357,7 +364,7 @@ print 'Estimated E[Phi] = ' E_Phi
       '; sd[Phi] = ' sqrt(var_Phi)
 ```
 
-Let's run that for $$M = 1\,000\,000$$ and see what we get.
+Let's run that for $$M = 1,000,000$$ and see what we get.
 
 ```{r}
 M <- 1e6
@@ -383,12 +390,13 @@ random variables. Instead, there is a probability density function,
 which in simulation terms may usefully be thought of as a limit of a
 histogram as the number of draws increases and the width of bins
 shrinks.  Letting the number of simulations grow from $$10$$ to
-$$1\,000\,000$$, we see the limiting behavior of the histograms.
+$$1,000,000$$, we see the limiting behavior of the histograms.
 
-Histograms of $$M$$ simulated draws of $$\theta \sim \mbox{uniform}(0, 1)$$ transformed to the log odds scale by $$\Phi = \mbox{logit}(\theta).$$ The limiting behavior is shown in the bell-shaped curve in the lower right based on $$1\,000\,000$$ draws.
+Histograms of $$M$$ simulated draws of $$\theta \sim \mbox{uniform}(0, 1)$$ transformed to the log odds scale by $$\Phi = \mbox{logit}(\theta).$$ The limiting behavior is shown in the bell-shaped curve in the lower right based on $$1,000,000$$ draws.
 
-```
-set.seed(1234)
+![](../images/histogram_of_M_simulated_draw_of_thetha.jpg)
+
+<!-- set.seed(1234)
 df_log_odds_growth <- data.frame()
 for (log10M in 1:6) {
   M <- 10^log10M
@@ -410,8 +418,8 @@ log_odds_growth_plot <-
         axis.ticks.y = element_blank(),
         panel.spacing.x = unit(2, "lines"),
         panel.spacing.y = unit(2, "lines"))
-log_odds_growth_plot
-```
+log_odds_growth_plot -->
+
 
 In a histogram, a bin's height is proportional to the number of
 simulations that landed in that bin. Because each bin is the same
@@ -443,12 +451,13 @@ the function gets smoother and smoother. In the limit as $$M
 \rightarrow \infty$$, it approaches a smooth function. That smooth
 function is called the *probability density function* of the random
 variable.  Let's see what that limiting function looks like with $$M =
-1\,000\,000$$ draws.
+1,000,000$$ draws.
 
-Histogram of $$M = 1\,000\,000$$ simulations of $$\theta \sim \mbox{uniform}(0,1)$$ transformed to $$\Phi = \mbox{logit}(\theta)$$. The black line connects the tops of the histogram bins.  In the limit, as the number of draws and bins approach infinity, the connecting line approaches the probability density function for the variable being simulated.
+Histogram of $$M = 1,000,000$$ simulations of $$\theta \sim \mbox{uniform}(0,1)$$ transformed to $$\Phi = \mbox{logit}(\theta)$$. The black line connects the tops of the histogram bins.  In the limit, as the number of draws and bins approach infinity, the connecting line approaches the probability density function for the variable being simulated.
 
-```
-set.seed(1234)
+![](../images/histogram_of_M_1_000_000_simulated_draw_of_thetha.jpg)
+
+<!-- set.seed(1234)
 M <- 1e6
 alpha <- logit(runif(M))
 density_limit_df = data.frame(alpha = alpha)
@@ -467,8 +476,8 @@ density_limit_plot <-
   ggtheme_tufte() +
   theme(axis.text.y = element_blank(),
         axis.ticks.y = element_blank())
-density_limit_plot
-```
+density_limit_plot -->
+
 
 
 ## A detour through calculus
@@ -564,8 +573,9 @@ constant, so the density for a uniform distribution must be constant.]
  $$p_{\Theta}(\theta) = c$$ for some constant $$c$$. Let's see what that
 looks like so the solution for $$c$$ becomes evident.
 
-```{r}
-uniform_pdf_df <- data.frame(y = c(0, 1), p_y = c(1, 1))
+
+![](../images/plot_of_area_from_a_to_b_under_c.jpg)
+<!-- uniform_pdf_df <- data.frame(y = c(0, 1), p_y = c(1, 1))
 uniform_pdf_plot <-
   ggplot(uniform_pdf_df, aes(x = y, y = p_y)) +
   geom_line(size = 0.5, color = '#333333') +
@@ -583,8 +593,8 @@ uniform_pdf_plot <-
   geom_point(aes(x = 0, y = 0), size = 1.5, shape = 21, fill = '#ffffe6') +
   geom_point(aes(x = 1, y = 0), size = 1.5, shape = 21, fill = '#ffffe6') +
   ggtheme_tufte()
-uniform_pdf_plot
-```
+uniform_pdf_plot -->
+
 
 The plot shows the area from $$a$$ to $$b$$ under $$c$$ to be $$(b - a)
 \times c$$. Given that we require the area to be one, that is, $$(b - a)
@@ -634,7 +644,7 @@ for (m in 1:M)
 print 'Pr[-2 < Phi < 2] = ' success / M
 ```
 
-Let's run that for $$M = 100\,000$$ simulation draws and see what we get,
+Let's run that for $$M = 100,000$$ simulation draws and see what we get,
 
 ```{r}
 set.seed(1234)
@@ -950,9 +960,10 @@ printf("min = %3.2f;  max = %3.2f", min(y), max(y))
 It's clear that the variable has a mean and standard deviation of one,
 but is highly right skewed.
 
-```{r fig.cap="Histogram of $$M = 10^6$$ draws from $$U \sim \textrm{uniform}(0, 1)$$ transformed to $$Y = -\log U.$$  The mean and standard deviation are 1, but the distribution is highly right skewed."}
+Histogram of $$M = 10^6$$ draws from $$U \sim \textrm{uniform}(0, 1)$$ transformed to $$Y = -\log U.$$  The mean and standard deviation are 1, but the distribution is highly right skewed.
+![](../images/histogram_of_M_1_000_000_draws_from_uniform.jpg)
 
-y = -log(runif(1e6))
+<!-- y = -log(runif(1e6))
 exp_df <- data.frame(y = y)
 exp_hist_plot <-
   ggplot(exp_df, aes(x = y)) +
@@ -963,8 +974,8 @@ exp_hist_plot <-
   ggtheme_tufte() +
   theme(axis.text.y = element_blank(),
         axis.ticks.y = element_blank())
-exp_hist_plot
-```
+exp_hist_plot -->
+
 
 While the histogram plot lets us visualize the density, we can also
 derive the density $$p_Y$$ from the uniform density $$p_U$$ given the
