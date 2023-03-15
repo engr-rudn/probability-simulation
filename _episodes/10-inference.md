@@ -468,7 +468,7 @@ to do with any posterior is check that it's reasonable.
 For visualizing draws of a single variable, such as the proportion of
 boy births $$\theta$$, histograms are handy.
 
-Histogram of one thousand draws from the posterior $$p(\\theta \\mid y)$$.   With thirty bins, the histogram appears ragged, but conveys the rough shape and location of the posterior.
+Histogram of one thousand draws from the posterior $$p(\theta \mid y)$$.   With thirty bins, the histogram appears ragged, but conveys the rough shape and location of the posterior.
 
 
 
@@ -492,7 +492,7 @@ other expectations conditioned on data. For histograms, many draws are
 required to ensure low relative error in every bin so that the
 resulting histogram is smooth.]
 
-Histogram of one million draws from the posterior $$p(\\theta \\mid y)$$.  A *much* larger $$M$$ is required to get a fine-grained view of the whole posterior distribution than is required for an accurate summary statistic.'}
+Histogram of one million draws from the posterior $$p(\theta \mid y)$$.  A *much* larger $$M$$ is required to get a fine-grained view of the whole posterior distribution than is required for an accurate summary statistic.'}
 
 ![](../images/histogram_of_million_draws_from_posterior.jpg)
 
@@ -615,13 +615,12 @@ to the model, to be
 Now let's overlay the median and central 90% interval.
 
 Histogram of $$1,000,000$$ draws from the posterior 
-p(
-$$\\theta \\mid y, N) \\propto \\mbox{binomial}(y \\mid N, \\theta),
+$$p(\theta \mid y, N) \propto \mbox{binomial}(y \mid N, \theta),
 $$ given 
 $$
 N = 10, y = 3
 $$.  The median (50 percent quantile) is indicated with a dashed line and the boundaries of the central 90 percent interval (5 percent and 95 percent quantiles) are picked out with dotted lines.  The proportion of the total area shaded to the right of 0.5 represents the posterior probability that $$
-\\theta > 0.5,
+\theta > 0.5,
 $$ which is about 11 percent.
 
 <!-- q05 <- quantile(binom_post_df2$$theta, 0.05)
@@ -810,7 +809,7 @@ existence of beer goes to La Delicias Mexicanas.]
 To get a sense of the posterior, we can construct a histogram of
 posterior draws of $$\Delta = \Theta_1 - \Theta_2$$.
 
-Histogram of posterior differences between probability of Downtown Bakery getting a 5-star review ($$\\theta_1$$) and that of La Delicias Mexicanas getting one ($$\\theta_2$$).  The draws for which $$\\delta > 0$$ (equivalently, $$\\theta_1 > \\theta_2$$) are shaded darker.  The area of the darker region divided by the total area is the estimate of the probability that Downtown Bakery is more likely to get a 5-star review than La Delicias Mexicanas.
+Histogram of posterior differences between probability of Downtown Bakery getting a 5-star review ($$\theta_1$$) and that of La Delicias Mexicanas getting one ($$\theta_2$$).  The draws for which $$\delta > 0$$ (equivalently, $$\theta_1 > \theta_2$$) are shaded darker.  The area of the darker region divided by the total area is the estimate of the probability that Downtown Bakery is more likely to get a 5-star review than La Delicias Mexicanas.
 
 <!-- delta <- theta1 - theta2
 delicias_df <- data.frame(delta = delta)
