@@ -696,7 +696,7 @@ higher than 51% chance of a male birth.  The central 90% posterior
 interval calculated from quantiles of the sample is $$(0.510, 0.513)$$.
 
 What about the event probability that boy births are more likely than
-girl births, i.e., $$\mbox{Pr}[\theta > 0.5]$$?  If we make our usual
+girl births, i.e., $$\mbox{Pr}\[\theta > 0.5\]$$?  If we make our usual
 calculation, taking draws $$\theta^{(1)}, \ldots, \theta^{(M)}$$ from
 the posterior and look at the proportion for which $$\theta^{(m)} >
 0.5$$, the result is 1.  No decimal places, just 1.  If we look at the
