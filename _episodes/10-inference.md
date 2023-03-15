@@ -615,8 +615,8 @@ to the model, to be
 Now let's overlay the median and central 90% interval.
 
 Histogram of $$1,000,000$$ draws from the posterior 
-$$p(
-\\theta \\mid y, N) \\propto \\mbox{binomial}(y \\mid N, \\theta),
+p(
+$$\\theta \\mid y, N) \\propto \\mbox{binomial}(y \\mid N, \\theta),
 $$ given 
 $$
 N = 10, y = 3
