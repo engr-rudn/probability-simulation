@@ -797,7 +797,7 @@ printf('Pr[theta[1] > theta[2] | y, M] = %3.2f\n',
        sum(theta1 > theta2) / M) -->
 
 ![](../images/test_run_for_M_10000_simulations.jpg)
-Only about a `r as.integer(100 * sum(theta1 > theta2) / M)`% chance
+Only about a `52`% chance
 that Downtown Bakery is the better bet for a 5-star meal.^[As much as
 this diner loves Downtown Bakery, the nod for food, ambience, and the
 existence of beer goes to La Delicias Mexicanas.]
