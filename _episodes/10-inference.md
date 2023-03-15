@@ -615,9 +615,10 @@ to the model, to be
 Now let's overlay the median and central 90% interval.
 
 Histogram of $$1,000,000$$ draws from the posterior 
+$$p(
+\\theta \\mid y, N) \\propto \\mbox{binomial}(y \\mid N, \\theta),
+$$ given 
 $$
-p(\\theta \\mid y, N) \\propto \\mbox{binomial}(y \\mid N, \\theta),
-$$ given $$
 N = 10, y = 3
 $$.  The median (50 percent quantile) is indicated with a dashed line and the boundaries of the central 90 percent interval (5 percent and 95 percent quantiles) are picked out with dotted lines.  The proportion of the total area shaded to the right of 0.5 represents the posterior probability that $$
 \\theta > 0.5,
