@@ -420,15 +420,15 @@ they don't have priors.  Here, we'll just take $$N = 10$$ for
 pedagogical convenience.  Let's run it a few times and see what we
 get.
 
-```{r}
-set.seed(123)
+![](../images/simulated_thetha.jpg)
+<!-- set.seed(123)
 N = 10
 for (m in 1:5) {
   theta = runif(1, 0, 1)
   y = rbinom(1, N, theta)
   printf('theta = %3.2f;  y = %d\n', theta, y)
 }
-```
+ -->
 
 The values simulated for $$\theta$$ are not round numbers, so we know
 that we won't satisfy $$y = N \times \theta$$, the expected value of a
@@ -452,14 +452,13 @@ print 'theta = ' theta[1:10] '...'
 
 Let's run that and see what a few posterior draws look like.
 
-```{r}
-M <- 1000
+![](../images/posterior_draws.jpg)
+<!-- M <- 1000
 N <- 10
 y <- 3
 theta <- rbeta(M, y + 1, N - y + 1)
 printf('theta = ')
-for (n in 1:10) printf('%3.2f  ', theta[n])
-```
+for (n in 1:1 -->0) printf('%3.2f  ', theta[n]) 
 
 It's hard to glean much from the draws. What it does tell us is that
 the posterior in the range we expect it to be in---near 0.3, because
@@ -469,10 +468,11 @@ to do with any posterior is check that it's reasonable.
 For visualizing draws of a single variable, such as the proportion of
 boy births $$\theta$$, histograms are handy.
 
-```{r fig.cap = 'Histogram of one thousand draws from the posterior $$p(\\theta \\mid y)$$.   With thirty bins, the histogram appears ragged, but conveys the rough shape and location of the posterior.'}
+Histogram of one thousand draws from the posterior $$p(\\theta \\mid y)$$.   With thirty bins, the histogram appears ragged, but conveys the rough shape and location of the posterior.
 
 
-binom_post_df <- data.frame(theta = theta)
+
+<!-- binom_post_df <- data.frame(theta = theta)
 binomial_post_plot <-
   ggplot(binom_post_df, aes(x = theta)) +
   geom_histogram(color = 'black', fill = '#ffffe6', size = 0.25) +
@@ -482,9 +482,9 @@ binomial_post_plot <-
   ylab("posterior draw proportion") +
   ggtheme_tufte() +
   theme(axis.text.y = element_blank())
-binomial_post_plot
-```
+binomial_post_plot -->
 
+![](../images/histogram_of_1000_draws_.jpg)
 Let's up $$M$$ to $$1\,000\,000$$ and double the number of bins to get a
 better look at the posterior density. ^[A sample size $$M > 100$$ is
 rarely necessary for calculating estimates, event probabilities, or
@@ -492,9 +492,11 @@ other expectations conditioned on data. For histograms, many draws are
 required to ensure low relative error in every bin so that the
 resulting histogram is smooth.]
 
-```{r fig.cap = 'Histogram of one million draws from the posterior $$p(\\theta \\mid y)$$.  A *much* larger $$M$$ is required to get a fine-grained view of the whole posterior distribution than is required for an accurate summary statistic.'}
+Histogram of one million draws from the posterior $$p(\\theta \\mid y)$$.  A *much* larger $$M$$ is required to get a fine-grained view of the whole posterior distribution than is required for an accurate summary statistic.'}
 
-set.seed(1234)
+![](../images/histogram_of_million_draws_from_posterior.jpg)
+
+<!-- set.seed(1234)
 M <- 1e6
 theta <- rbeta(M, y + 1, N - y + 1)
 
@@ -509,8 +511,8 @@ binomial_post_plot2 <-
   ylab("posterior draw proportion") +
   ggtheme_tufte() +
   theme(axis.text.y = element_blank())
-binomial_post_plot2
-```
+binomial_post_plot2 -->
+
 
 Histograms have their limitations. The distribution is slightly
 asymmetric, with a longer tail to the right than to the left, but
@@ -541,10 +543,9 @@ print 'estimated posterior sd = ' sd(theta) '
 
 Let's see what we get.
 
-```{r}
-printf('estimated posterior mean = %3.2f', mean(theta))
-printf('estimated posterior   sd = %3.2f', sd(theta))
-```
+<!-- printf('estimated posterior mean = %3.2f', mean(theta))
+printf('estimated posterior   sd = %3.2f', sd(theta)) -->
+![](../images/estimated_posterior.jpg)
 
 The posterior mean and standard deviation are excellent marginal
 summary statistics for posterior quantities that have a roughly normal
@@ -565,12 +566,12 @@ print 'estimated posterior central 80 pct interval = '
 Running this produces the following.^[The median is slightly lower
 than the mean, as they will be in right skewed distributions.]
 
-```{r}
-printf('estimated posterior median = %3.2f\n',
+![](../images/estimated_posterior_interval.jpg)
+
+<!-- printf('estimated posterior median = %3.2f\n',
        quantile(theta, 0.5))
 printf('estimated posterior central 90 pct interval = (%3.2f, %3.2f)\n',
-       quantile(theta, 0.1), quantile(theta, 0.9))
-```
+       quantile(theta, 0.1), quantile(theta, 0.9)) -->
 
 The posterior simulations and summaries answer Laplace's question
 about the value of $$\theta$$, i.e., the proportion of boys born, at
@@ -606,15 +607,16 @@ Running this, we see that with 3 boys in 10 births, the probability
 boys represent more than 50% of the live births is estimated, relative
 to the model, to be
 
-```{r}
-printf('estimated Pr[theta > 0.5] = %3.2f\n', sum(theta > 0.5) / M)
-```
+
+<!-- printf('estimated Pr[theta > 0.5] = %3.2f\n', sum(theta > 0.5) / M) -->
+
+![](../images/estimated_probability_thetha.jpg)
 
 Now let's overlay the median and central 90% interval.
 
-```{r fig.cap = 'Histogram of $$1\\,000\\,000$$ draws from the posterior $$p(\\theta \\mid y, N) \\propto \\mbox{binomial}(y \\mid N, \\theta),$$ given $$N = 10, y = 3$$.  The median (50 percent quantile) is indicated with a dashed line and the boundaries of the central 90 percent interval (5 percent and 95 percent quantiles) are picked out with dotted lines.  The proportion of the total area shaded to the right of 0.5 represents the posterior probability that $$\\theta > 0.5,$$ which is about 11 percent.'}
+Histogram of $$1,000,000$$ draws from the posterior $$p(\\theta \\mid y, N) \\propto \\mbox{binomial}(y \\mid N, \\theta),$$ given $$N = 10, y = 3$$.  The median (50 percent quantile) is indicated with a dashed line and the boundaries of the central 90 percent interval (5 percent and 95 percent quantiles) are picked out with dotted lines.  The proportion of the total area shaded to the right of 0.5 represents the posterior probability that $$\\theta > 0.5,$$ which is about 11 percent.
 
-q05 <- quantile(binom_post_df2$$theta, 0.05)
+<!-- q05 <- quantile(binom_post_df2$$theta, 0.05)
 q50 <- quantile(binom_post_df2$$theta, 0.50)
 q95 <- quantile(binom_post_df2$$theta, 0.95)
 
@@ -647,9 +649,9 @@ binomial_post_plot3 <-
   ylab("posterior draw proportion") +
   ggtheme_tufte() +
   theme(axis.text.y = element_blank())
-binomial_post_plot3
-```
+binomial_post_plot3 -->
 
+![](../images/histogram_of_1million_draws_from_posterior.jpg)
 ## Laplace's data
 
 What happens if we use Laplace's data, rather than our small data set,
@@ -660,8 +662,8 @@ We'll take $$M = 1\,000\,000$$ simulations $$\theta^{(1)}, \ldots,
 \theta^{(M)}$$ here because they are cheap and we would like low
 sampling error.
 
-```{r}
-set.seed(1234)
+
+<!-- set.seed(1234)
 M <- 1000000
 boys <- 110312
 girls <- 105287
@@ -678,8 +680,9 @@ laplace_plot <-
   xlab(expression(theta)) +
   ylab("posterior draws") +
   ggtheme_tufte()
-laplace_plot  
-```
+laplace_plot -->  
+
+![](../images/histogram_of_1million_draws_from_laplace_data.jpg)
 
 The mean of the posterior sample is approximately 0.511, or a slightly
 higher than 51% chance of a male birth.  The central 90% posterior
@@ -781,16 +784,16 @@ print 'Pr[theta[1] > theta[2] | y, M] = ' success / M
 
 Let's run that with $$M = 10\,000$$ simulations and see what we get:
 
-```{r}
-M <- 10000
+
+<!-- M <- 10000
 y <- c(114, 24)
 N <- c(235, 51)
 theta1 <- rbeta(M, y[1] + 1, N[1] + 1)
 theta2 <- rbeta(M, y[2] + 1, N[2] + 1)
 printf('Pr[theta[1] > theta[2] | y, M] = %3.2f\n',
-       sum(theta1 > theta2) / M)
-```
+       sum(theta1 > theta2) / M) -->
 
+![](../images/test_run_for_M_10000_simulations.jpg)
 Only about a `r as.integer(100 * sum(theta1 > theta2) / M)`% chance
 that Downtown Bakery is the better bet for a 5-star meal.^[As much as
 this diner loves Downtown Bakery, the nod for food, ambience, and the
@@ -799,9 +802,9 @@ existence of beer goes to La Delicias Mexicanas.]
 To get a sense of the posterior, we can construct a histogram of
 posterior draws of $$\Delta = \Theta_1 - \Theta_2$$.
 
-```{r fig.cap = 'Histogram of posterior differences between probability of Downtown Bakery getting a 5-star review ($$\\theta_1$$) and that of La Delicias Mexicanas getting one ($$\\theta_2$$).  The draws for which $$\\delta > 0$$ (equivalently, $$\\theta_1 > \\theta_2$$) are shaded darker.  The area of the darker region divided by the total area is the estimate of the probability that Downtown Bakery is more likely to get a 5-star review than La Delicias Mexicanas.'}
+Histogram of posterior differences between probability of Downtown Bakery getting a 5-star review ($$\\theta_1$$) and that of La Delicias Mexicanas getting one ($$\\theta_2$$).  The draws for which $$\\delta > 0$$ (equivalently, $$\\theta_1 > \\theta_2$$) are shaded darker.  The area of the darker region divided by the total area is the estimate of the probability that Downtown Bakery is more likely to get a 5-star review than La Delicias Mexicanas.
 
-delta <- theta1 - theta2
+<!-- delta <- theta1 - theta2
 delicias_df <- data.frame(delta = delta)
 
 delicias_plot <-
@@ -815,8 +818,9 @@ delicias_plot <-
   ylab("posterior draw proportion") +
   ggtheme_tufte() +
   theme(axis.text.y = element_blank())
-delicias_plot
-```
+delicias_plot -->
+
+![](../images/histogram_of_posterior_difference.jpg)
 
 There is substantial uncertainty, and only 52% of the draws lie to the
 right of zero.  That is,
