@@ -453,12 +453,12 @@ print 'theta = ' theta[1:10] '...'
 Let's run that and see what a few posterior draws look like.
 
 ![](../images/posterior_draws.jpg)
-<!-- M <- 1000
+<!-- <!-- M <- 1000
 N <- 10
 y <- 3
 theta <- rbeta(M, y + 1, N - y + 1)
 printf('theta = ')
-for (n in 1:1 -->0) printf('%3.2f  ', theta[n]) 
+for (n in 1:1 -->0) printf('%3.2f  ', theta[n]) --> 
 
 It's hard to glean much from the draws. What it does tell us is that
 the posterior in the range we expect it to be in---near 0.3, because
