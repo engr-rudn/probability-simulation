@@ -701,8 +701,7 @@ calculation, taking draws $$\theta^{(1)}, \ldots, \theta^{(M)}$$ from
 the posterior and look at the proportion for which $$\theta^{(m)} >
 0.5$$, the result is 1.  No decimal places, just 1.  If we look at the
 draws, the minimum value of $$\theta^{(m)}$$ in $$1\,000,000$$ draws was
-approximately 0.506.  The proportion of draws for which $$\theta^{(m)}
-> 0.5$$ is thus 100%, which forms our estimate for $$\mbox{Pr}[\theta >
+approximately 0.506.  The proportion of draws for which $$\theta^{(m)} > 0.5$$ is thus 100%, which forms our estimate for $$\mbox{Pr}[\theta >
 0.5]$$.
 
 As we have seen before, simulation-based estimates provide
@@ -711,10 +710,7 @@ draws, we are sure that the answer is 1.0000 to within plus or minus
 0.0001 or less.^[Tolerances can be calculated using the central limit
 theorem, which we will define properly when we introduce the normal
 distribution later.]  We know the answer must be strictly less
-than one.  Using some analytic techniques,^[The cumulataive
-distribution function of the posterior, which is known to be the beta
-distribution $$p(\theta \mid y, N) = \mbox{beta}(\theta \mid y + 1, N
-- y + 1).$$] the true estimate to within 27 decimal places is
+than one.  Using some analytic techniques,\[The cumulative distribution function of the posterior, which is known to be the beta distribution $$p(\theta \mid y, N) = \mbox{beta}(\theta \mid y + 1, N - y + 1).$$\] the true estimate to within 27 decimal places is
 
 $$
 \mbox{Pr}[\theta > 0.5] = 1 - 10^{-27}.
